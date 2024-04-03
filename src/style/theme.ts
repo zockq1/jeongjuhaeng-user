@@ -84,34 +84,12 @@ const border = {
   default: `1px solid ${colors.lightGrey}`,
 };
 
-type CSSArgs = Parameters<typeof css>;
-
-const media = {
-  desktop: (...args: CSSArgs) => css`
-    @media (width >= 992px) {
-      ${css(...args)};
-    }
-  `,
-  expanded: (...args: CSSArgs) => css`
-    @media (width >= 768px) {
-      ${css(...args)};
-    }
-  `,
-  tablet: (...args: CSSArgs) => css`
-    @media (width >= 768px) and (width <= 991px) {
-      ${css(...args)};
-    }
-  `,
-  portable: (...args: CSSArgs) => css`
-    @media (width <= 991px) {
-      ${css(...args)};
-    }
-  `,
-  mobile: (...args: CSSArgs) => css`
-    @media (width <= 767px) {
-      ${css(...args)};
-    }
-  `,
+export const media = {
+  desktop: '(width >= 992px)',
+  expanded: '(width >= 768px)',
+  tablet: '(width >= 768px) and (width <= 991px)',
+  portable: '(width <= 991px)',
+  mobile: '(width <= 767px)',
 };
 
 const theme: DefaultTheme = {
@@ -128,7 +106,7 @@ const theme: DefaultTheme = {
 
 export type FontSizes = typeof fontSizes;
 export type Colors = typeof colors;
-export type DeviceSizes = typeof media;
+export type Media = typeof media;
 export type FontWeight = typeof fontWeight;
 export type Shadow = typeof shadow;
 export type Margin = typeof margin;

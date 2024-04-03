@@ -6,6 +6,8 @@
   ],
   "plugins": ["stylelint-prettier"],
   "rules": {
-    "prettier/prettier": true
+    "prettier/prettier": true,
+    "media-query-no-invalid": null,
+    "no-invalid-double-slash-comments": null
   }
 }

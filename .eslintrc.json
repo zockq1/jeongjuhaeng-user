@@ -46,11 +46,6 @@
     "@typescript-eslint/naming-convention": [
       "warn",
       {
-        "format": ["camelCase", "UPPER_CASE", "PascalCase"],
-        "selector": "variable",
-        "leadingUnderscore": "allow"
-      },
-      {
         "format": ["camelCase", "PascalCase"],
         "selector": "function"
       },
