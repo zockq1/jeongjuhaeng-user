@@ -1,6 +1,6 @@
-import Header from '@/component/ui/header';
+import Header from '@/share/layout/header';
 import Layout from '@/share/layout/Layout';
-import Popover from '@/share/popover/Popover';
+import Popover from '@/share/ui/popover/Popover';
 
 export default function HomePage() {
   return (

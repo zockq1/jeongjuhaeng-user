@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import Logo from '@/share/icon/Logo';
+import Logo from '@/share/ui/icon/Logo';
 
 import AuthButton from '../AuthButton';
 import SlideMenu from '../SlideMenu';

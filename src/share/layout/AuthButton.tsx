@@ -5,12 +5,12 @@ import styled, { ThemeContext } from 'styled-components';
 
 import kakao from '@/assets/images/kakao.png';
 import naver from '@/assets/images/naver.png';
-import Button from '@/share/button/Button';
-import Icon from '@/share/icon/Icon';
-import Logo from '@/share/icon/Logo';
-import Modal from '@/share/modal/Modal';
-import useModal from '@/share/modal/useModal';
-import Popover from '@/share/popover/Popover';
+import Button from '@/share/ui/button/Button';
+import Icon from '@/share/ui/icon/Icon';
+import Logo from '@/share/ui/icon/Logo';
+import Modal from '@/share/ui/modal/Modal';
+import useModal from '@/share/ui/modal/useModal';
+import Popover from '@/share/ui/popover/Popover';
 import { logout } from '@/store/slices/authSlice';
 import { RootState } from '@/store/store';
 

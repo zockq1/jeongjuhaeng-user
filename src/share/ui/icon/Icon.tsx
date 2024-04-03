@@ -1,7 +1,8 @@
 /// <reference types="vite-plugin-svgr/client" />
 
-import { Content } from '../../types/jjhTypes';
-import { TopicCategory } from '../../types/topicTypes';
+import { Content } from '@/types/jjhTypes';
+import { TopicCategory } from '@/types/topicTypes';
+
 import Arrow from './svg/arrow.svg?react';
 import Fail from './svg/ban.svg?react';
 import Office from './svg/bank.svg?react';

@@ -9,13 +9,21 @@ import { ThemeProvider } from 'styled-components';
 
 import HomePage from './pages/home/HomePage';
 import { persistor, store } from './store/store';
-import theme from './style/theme';
+import theme from './theme/theme';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <HomePage />,
   },
+  // {
+  //   path: '/oauth/kakao/login',
+  //   element: <KakaoRedirectPage />,
+  // },
+  // {
+  //   path: '/oauth/naver/login',
+  //   element: <NaverRedirectPage />,
+  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

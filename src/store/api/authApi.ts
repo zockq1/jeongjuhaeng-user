@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { GetTokenModel } from '../../types/authTypes';
+import { GetTokenModel } from '@/types/authTypes';
 
 export const authApi = createApi({
   reducerPath: 'authApi',

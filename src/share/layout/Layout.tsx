@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
-import { media } from '../../style/theme';
+import { media } from '@/theme/theme';
+
 import { Desktop, Expanded } from './Responsive';
 
 interface LayoutProps {

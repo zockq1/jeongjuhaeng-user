@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Icon from '@/share/icon/Icon';
+import Icon from '@/share/ui/icon/Icon';
 
 export default function SlideMenu() {
   const [isMenuOpen, setMenuOpen] = useState(false);

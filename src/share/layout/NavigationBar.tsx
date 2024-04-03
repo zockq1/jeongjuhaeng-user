@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Button from '@/share/button/Button';
+import Button from '@/share/ui/button/Button';
 
 const NavigationBarContainer = styled.nav`
   display: flex;
