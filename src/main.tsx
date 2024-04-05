@@ -7,23 +7,25 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import { ThemeProvider } from 'styled-components';
 
-import HomePage from './pages/home/HomePage';
-import { persistor, store } from './store/store';
-import theme from './theme/theme';
+import KakaoLoginPage from '@/app/auth/KakaoLoginPage';
+import NaverLoginPage from '@/app/auth/NaverLoginPage';
+import HomePage from '@/app/home/HomePage';
+import { persistor, store } from '@/store/store';
+import theme from '@/theme/theme';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <HomePage />,
   },
-  // {
-  //   path: '/oauth/kakao/login',
-  //   element: <KakaoRedirectPage />,
-  // },
-  // {
-  //   path: '/oauth/naver/login',
-  //   element: <NaverRedirectPage />,
-  // },
+  {
+    path: '/oauth/kakao/login',
+    element: <KakaoLoginPage />,
+  },
+  {
+    path: '/oauth/naver/login',
+    element: <NaverLoginPage />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

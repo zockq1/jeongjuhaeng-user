@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { GetTokenModel } from '@/types/authTypes';
+import { GetTokenModel, GetTokenParams } from '@/types/authTypes';
 
 export const authApi = createApi({
   reducerPath: 'authApi',
@@ -8,66 +8,9 @@ export const authApi = createApi({
     credentials: 'include',
   }),
   endpoints: (builder) => ({
-    getKakaoToken: builder.query<
-      GetTokenModel,
-      { code: string; local: string; protocol: string }
-    >({
-      query: ({ code, local, protocol }) =>
-        `${import.meta.env.VITE_API_URL}login/kakao?code=${code}&url=${local}&protocol=${protocol}`,
-      transformResponse: (response: { id: string; isNew: boolean }, meta) => {
-        const accessToken = meta?.response?.headers.get('Authorization');
-        const refreshToken = meta?.response?.headers.get('Refresh-Token');
-        return {
-          id: response.id,
-          isNew: response.isNew,
-          accessToken: accessToken || '',
-          refreshToken: refreshToken || '',
-        };
-      },
-    }),
-
-    getNaverToken: builder.query<
-      GetTokenModel,
-      { code: string; local: string; protocol: string }
-    >({
-      query: ({ code, local, protocol }) =>
-        `${import.meta.env.VITE_API_URL}login/naver?code=${code}&url=${local}&protocol=${protocol}`,
-      transformResponse: (response: { id: string; isNew: boolean }, meta) => {
-        const accessToken = meta?.response?.headers.get('Authorization');
-        const refreshToken = meta?.response?.headers.get('Refresh-Token');
-        return {
-          id: response.id,
-          isNew: response.isNew,
-          accessToken: accessToken || '',
-          refreshToken: refreshToken || '',
-        };
-      },
-    }),
-
-    getAppleToken: builder.query<
-      GetTokenModel,
-      { code: string; local: string; protocol: string }
-    >({
-      query: ({ code, local, protocol }) =>
-        `${import.meta.env.VITE_API_URL}login/apple?code=${code}&url=${local}&protocol=${protocol}`,
-      transformResponse: (response: { id: string; isNew: boolean }, meta) => {
-        const accessToken = meta?.response?.headers.get('Authorization');
-        const refreshToken = meta?.response?.headers.get('Refresh-Token');
-        return {
-          id: response.id,
-          isNew: response.isNew,
-          accessToken: accessToken || '',
-          refreshToken: refreshToken || '',
-        };
-      },
-    }),
-
-    getGoogleToken: builder.query<
-      GetTokenModel,
-      { code: string; local: string; protocol: string }
-    >({
-      query: ({ code, local, protocol }) =>
-        `${import.meta.env.VITE_API_URL}login/kakao?code=${code}&url=${local}&protocol=${protocol}`,
+    getOAuthToken: builder.query<GetTokenModel, GetTokenParams>({
+      query: ({ code, local, protocol, serviceType }) =>
+        `${import.meta.env.VITE_API_URL}login/${serviceType}?code=${code}&url=${local}&protocol=${protocol}`,
       transformResponse: (response: { id: string; isNew: boolean }, meta) => {
         const accessToken = meta?.response?.headers.get('Authorization');
         const refreshToken = meta?.response?.headers.get('Refresh-Token');
@@ -82,8 +25,4 @@ export const authApi = createApi({
   }),
 });
 
-export const {
-  useGetKakaoTokenQuery,
-  useLazyGetKakaoTokenQuery,
-  useGetNaverTokenQuery,
-} = authApi;
+export const { useGetOAuthTokenQuery } = authApi;
