@@ -1,4 +1,4 @@
-import { IconType } from '../share/icon/Icon';
+import { IconType } from '@/share/ui/icon/Icon';
 
 export type ContentState =
   | 'Complete'

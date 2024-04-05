@@ -65,6 +65,8 @@ const LayoutContainer = styled.div`
 `;
 
 const LeftContainer = styled.aside`
+  position: fixed;
+
   @media ${media.expanded} {
     grid-column: 1/2;
     grid-row: 2/3;
@@ -72,6 +74,8 @@ const LeftContainer = styled.aside`
 `;
 
 const RightContainer = styled.aside`
+  position: fixed;
+
   @media ${media.desktop} {
     grid-column: 3/4;
     grid-row: 2/3;
@@ -79,8 +83,9 @@ const RightContainer = styled.aside`
 `;
 
 const MainContainer = styled.div`
+  padding: 10px;
+
   @media ${media.mobile} {
-    padding: 0 10px;
     grid-row: 2/3;
   }
 

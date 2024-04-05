@@ -1,6 +1,9 @@
 import Header from '@/share/layout/header';
 import Layout from '@/share/layout/Layout';
+import ContentBox from '@/share/ui/content-box/ContentBox';
 import Popover from '@/share/ui/popover/Popover';
+
+import PolicyAgreePage from '../auth/_component/PolicyAgree';
 
 export default function HomePage() {
   return (
@@ -8,9 +11,7 @@ export default function HomePage() {
       <Header />
       <Layout.Left>asd</Layout.Left>
       <Layout.Main>
-        <Popover content={<div>내용</div>} trigger="hover" placement="bottom">
-          <button>버튼</button>
-        </Popover>
+        <ContentBox title="고조선" subTitle="BC 2333 ~ BC 108"></ContentBox>
       </Layout.Main>
       <Layout.Right>asd</Layout.Right>
     </Layout>
