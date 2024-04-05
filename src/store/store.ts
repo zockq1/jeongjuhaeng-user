@@ -10,17 +10,17 @@ import { timelineApi } from './api/timelineApi';
 import { topicApi } from './api/topicApi';
 import { withdrawalApi } from './api/withdrawalApi';
 import authReducer from './slices/authSlice';
-import keywordReducer from './slices/keywordSlice';
+import toggleReducer from './slices/toggleSlice';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['content', 'auth', 'keyword'],
+  whitelist: ['content', 'auth', 'toggle'],
 };
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  keyword: keywordReducer,
+  toggle: toggleReducer,
   [chapterApi.reducerPath]: chapterApi.reducer,
   [topicApi.reducerPath]: topicApi.reducer,
   [authApi.reducerPath]: authApi.reducer,
