@@ -1,9 +1,9 @@
 import Header from '@/share/layout/header';
 import Layout from '@/share/layout/Layout';
 
+import TopicAnchor from '../topic/_component/TopicAnchor';
 import JJHSideMenu from './_component/JJHSideMenu';
 import JJHTopicList from './_component/JJHTopicList';
-import TopicAnchor from './_component/TopicAnchor';
 
 export default function JJHTopicPage() {
   return (

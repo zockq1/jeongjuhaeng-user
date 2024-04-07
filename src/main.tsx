@@ -15,10 +15,10 @@ import LearningTopicPage from '@/app/topic/LearningTopicPage';
 import { persistor, store } from '@/store/store';
 import theme from '@/theme/theme';
 
-import JJHListPage from './app/topic/JJHListPage';
-import JJHTopicPage from './app/topic/JJHTopicPage';
-import LearningTimelinePage from './app/topic/LearningTimelinePage';
-import TimelineListPage from './app/topic/TimelineListPage';
+import JJHListPage from './app/jjh/JJHListPage';
+import JJHTopicPage from './app/jjh/JJHTopicPage';
+import LearningTimelinePage from './app/timeline/LearningTimelinePage';
+import TimelineListPage from './app/timeline/TimelineListPage';
 
 const router = createBrowserRouter([
   {
