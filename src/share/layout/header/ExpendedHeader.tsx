@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
 import Logo from '@/share/ui/icon/Logo';
+import { media } from '@/theme/theme';
 
 import AuthButton from '../AuthButton';
 import NavigationBar from '../NavigationBar';
 
 const HeaderContainer = styled.header`
-  display: grid;
+  display: flex;
+  justify-content: space-between;
   position: fixed;
   top: 0;
   left: 50%;
@@ -19,19 +21,38 @@ const HeaderContainer = styled.header`
 
   background-color: ${({ theme }) => theme.colors.bg};
 
-  grid-template-columns: 1fr auto 1fr;
-  place-items: center;
   transform: translate(-50%, 0);
+
+  @media ${media.tablet} {
+    max-width: 980px;
+  }
+
+  @media ${media.desktop} {
+    max-width: 1260px;
+  }
+
+  & > .logo {
+    display: flex;
+    flex-basis: 180px;
+  }
+
+  & > .auth {
+    display: flex;
+    flex-basis: 180px;
+    justify-content: end;
+  }
 `;
 
-function ExpendedHeader() {
+export default function ExpendedHeader() {
   return (
     <HeaderContainer>
-      <Logo size={30} />
+      <div className="logo">
+        <Logo size={30} />
+      </div>
       <NavigationBar />
-      <AuthButton />
+      <div className="auth">
+        <AuthButton />
+      </div>
     </HeaderContainer>
   );
 }
-
-export default ExpendedHeader;

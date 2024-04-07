@@ -27,7 +27,7 @@ function NavigationBar() {
         onClick={() => navigate('/learning')}
         active={location.pathname.includes('/learning')}
       >
-        자료
+        단원별
       </Navigation>
       <Navigation
         onClick={() => navigate('/timeline-list')}
@@ -35,7 +35,7 @@ function NavigationBar() {
       >
         연표
       </Navigation>
-      <Navigation
+      {/* <Navigation
         onClick={() => navigate('/question/quiz-list')}
         active={location.pathname.includes('/question/quiz')}
       >
@@ -64,7 +64,7 @@ function NavigationBar() {
         active={location.pathname.includes('bookmark')}
       >
         북마크
-      </Navigation>
+      </Navigation> */}
     </NavigationBarContainer>
   );
 }

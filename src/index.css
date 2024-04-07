@@ -198,6 +198,7 @@ section {
 }
 body {
   line-height: 1;
+  font-family: 'Spoqa Han Sans Neo';
 }
 menu,
 ol,
@@ -225,7 +226,7 @@ body {
 
 * {
   box-sizing: border-box;
-  font-family: Spoqa Han Sans Neo;
+  font-family: ' Spoqa Han Sans Neo';
 }
 
 a {

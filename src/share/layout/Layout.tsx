@@ -53,19 +53,22 @@ const LayoutContainer = styled.div`
     grid-template:
       'header header' 90px
       '   .     .   ' minmax(calc(100vh - 90px), auto)
-      'footer footer' 90px / 250px minmax(400px, 700px);
+      'footer footer' 90px / 280px minmax(400px, 700px);
   }
 
   @media ${media.desktop} {
     grid-template:
       'header header header' 90px
       '   .     .      .   ' minmax(calc(100vh - 90px), auto)
-      'footer footer footer' 90px / 250px minmax(400px, 700px) 250px;
+      'footer footer footer' 90px / 280px minmax(400px, 700px) 280px;
   }
 `;
 
 const LeftContainer = styled.aside`
   position: fixed;
+
+  width: 280px;
+  padding: 10px;
 
   @media ${media.expanded} {
     grid-column: 1/2;
@@ -75,6 +78,7 @@ const LeftContainer = styled.aside`
 
 const RightContainer = styled.aside`
   position: fixed;
+  padding: 10px;
 
   @media ${media.desktop} {
     grid-column: 3/4;

@@ -10,6 +10,8 @@ import { ThemeProvider } from 'styled-components';
 import KakaoLoginPage from '@/app/auth/KakaoLoginPage';
 import NaverLoginPage from '@/app/auth/NaverLoginPage';
 import HomePage from '@/app/home/HomePage';
+import ChapterListPage from '@/app/topic/ChapterListPage';
+import LearningTopicPage from '@/app/topic/LearningTopicPage';
 import { persistor, store } from '@/store/store';
 import theme from '@/theme/theme';
 
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
   {
     path: '/oauth/naver/login',
     element: <NaverLoginPage />,
+  },
+  {
+    path: '/learning',
+    element: <ChapterListPage />,
+  },
+  {
+    path: '/learning/chapter',
+    element: <LearningTopicPage />,
   },
 ]);
 

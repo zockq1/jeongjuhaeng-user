@@ -3,7 +3,8 @@
 import { Content } from '@/types/jjhTypes';
 import { TopicCategory } from '@/types/topicTypes';
 
-import Arrow from './svg/arrow.svg?react';
+import AngleDown from './svg/angle-down.svg?react';
+import AngleRight from './svg/angle-right.svg?react';
 import Fail from './svg/ban.svg?react';
 import Office from './svg/bank.svg?react';
 import Topic from './svg/blog-text.svg?react';
@@ -57,6 +58,8 @@ import King from './svg/user-crown.svg?react';
 import Organization from './svg/users-alt.svg?react';
 
 export type IconType =
+  | 'angleRight'
+  | 'angleDown'
   | 'run'
   | 'home'
   | 'questionSquare'
@@ -73,7 +76,6 @@ export type IconType =
   | 'user'
   | 'lock'
   | 'back'
-  | 'arrow'
   | 'check'
   | 'checkBox'
   | 'one'
@@ -136,6 +138,8 @@ function Icon({ icon, size = 'inherit', color = 'inherit' }: Iconprops) {
     신분: Identity,
 
     //아이콘
+    angleDown: AngleDown,
+    angleRight: AngleRight,
     run: Run,
     home: Home,
     questionSquare: QuestionSquare,
@@ -148,7 +152,6 @@ function Icon({ icon, size = 'inherit', color = 'inherit' }: Iconprops) {
     question: Question,
     infinity: Infinity,
     again: Again,
-    arrow: Arrow,
     fail: Fail,
     dice: Dice,
     login: Login,

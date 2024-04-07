@@ -31,7 +31,7 @@ export default function ContentBox({
   }, [isContentBoxOn, setToggle]);
 
   return (
-    <ContentBoxContainer>
+    <ContentBoxContainer id={title}>
       <Header onClick={toggle}>
         <Title $color={lock ? theme?.colors.red : ''}>{title}</Title>
         <SubTitle $color={lock ? theme?.colors.lightRed : ''}>
@@ -62,6 +62,7 @@ export default function ContentBox({
 const ContentBoxContainer = styled.article`
   overflow: hidden;
 
+  margin: 6px 0;
   border: 1px solid ${({ theme }) => theme.colors.lightGrey};
   border-radius: 10px;
 

@@ -85,10 +85,10 @@ const border = {
 };
 
 export const media = {
-  desktop: '(width >= 992px)',
+  desktop: '(width >= 1280px)',
   expanded: '(width >= 768px)',
-  tablet: '(width >= 768px) and (width <= 991px)',
-  portable: '(width <= 991px)',
+  tablet: '(width >= 768px) and (width <= 1279px)',
+  portable: '(width <= 1279px)',
   mobile: '(width <= 767px)',
 };
 
