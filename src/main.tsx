@@ -16,6 +16,7 @@ import { persistor, store } from '@/store/store';
 import theme from '@/theme/theme';
 
 import JJHListPage from './app/jjh/JJHListPage';
+import JJHTimelinePage from './app/jjh/JJHTimlinePage';
 import JJHTopicPage from './app/jjh/JJHTopicPage';
 import LearningTimelinePage from './app/timeline/LearningTimelinePage';
 import TimelineListPage from './app/timeline/TimelineListPage';
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
   {
     path: 'jeong-ju-haeng/chapter',
     element: <JJHTopicPage />,
+  },
+  {
+    path: 'jeong-ju-haeng/timeline',
+    element: <JJHTimelinePage />,
   },
 ]);
 

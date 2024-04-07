@@ -171,7 +171,10 @@ export default function JJHSideMenu() {
                           lock={state === 'Locked'}
                         >
                           <Icon icon={icon} size={10} />
-                          &nbsp;{title}
+                          &nbsp;{title}&nbsp;
+                          {title.includes('연표') && (
+                            <Icon icon="TIMELINE_QUESTION" size={12} />
+                          )}
                         </Menu.Item>
                       );
                     })}

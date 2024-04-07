@@ -10,6 +10,8 @@ import {
   useGetContentListQuery,
 } from '@/store/api/jjhApi';
 
+import QuizButton from './QuizButton';
+
 export default function JJHTopicList() {
   const { chapter: chapterNumber, jjh: jjhNumber } = useQuesryString();
   const { data: topicList } = useGetChapterTopicListQuery(chapterNumber);
@@ -33,13 +35,7 @@ export default function JJHTopicList() {
                     key={title}
                     title="단원 마무리 문제"
                     lock={state === 'Locked'}
-                    extraButton={
-                      <Button>
-                        <Icon icon="exam" size={14} />
-                        &nbsp;{' '}
-                        <span style={{ marginTop: '3px' }}>문제 풀이</span>
-                      </Button>
-                    }
+                    extraButton={<QuizButton />}
                   >
                     {null}
                   </ContentBox>
