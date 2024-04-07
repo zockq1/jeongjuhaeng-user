@@ -42,8 +42,8 @@ export default function TopicList() {
                               arr[index - 1].dateComment === keyword.dateComment
                                 ? ''
                                 : keyword.dateComment,
-                            comment: keyword.name,
-                            keywordList: keyword.comment
+                            title: keyword.name,
+                            comment: keyword.comment
                               .trim()
                               .split('.')
                               .filter(Boolean),

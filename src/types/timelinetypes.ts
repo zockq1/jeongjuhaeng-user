@@ -2,6 +2,7 @@ export interface TimeLineItemModel {
   comment: string;
   date: number;
   keywordList: string[] | null;
+  dateComment: string;
 }
 
 export interface TimelineListModel {

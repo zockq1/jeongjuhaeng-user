@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
-type Color = 'red' | 'blue' | 'black' | 'green';
+import { Color } from '@/types/commonTypes';
 
 const colorStyles = {
   red: css`
@@ -35,7 +35,7 @@ export default function MenuItem({
 }: MenuItemProps) {
   return (
     <MenuItemContainer
-      onClick={onClick}
+      onClick={lock ? () => {} : onClick}
       className={selected ? 'selected' : ''}
       $color={color}
       $isLock={lock}

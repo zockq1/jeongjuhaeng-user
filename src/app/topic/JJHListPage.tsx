@@ -1,14 +1,14 @@
 import Header from '@/share/layout/header';
 import Layout from '@/share/layout/Layout';
 
-import TimelineSideMenu from './_component/TimelineSideMenu';
+import JJHSideMenu from './_component/JJHSideMenu';
 
-export default function TimelineListPage() {
+export default function JJHListPage() {
   return (
     <Layout>
       <Header />
       <Layout.Left>
-        <TimelineSideMenu />
+        <JJHSideMenu />
       </Layout.Left>
       <Layout.Main></Layout.Main>
       <Layout.Right></Layout.Right>

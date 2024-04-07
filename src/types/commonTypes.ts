@@ -2,6 +2,8 @@ import { ReactNode } from 'react';
 
 import { ContentState } from './jjhTypes';
 
+export type Color = 'red' | 'blue' | 'black' | 'green';
+
 export interface MenuModel {
   type: 'Base' | 'Qustion' | 'Progress';
   title: ReactNode;

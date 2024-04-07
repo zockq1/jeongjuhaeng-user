@@ -26,7 +26,7 @@ interface MenuGroupProps {
   color?: Color;
   lock?: boolean;
   open?: boolean;
-  title: string;
+  title: ReactNode;
   length: number;
 }
 
@@ -45,7 +45,7 @@ export default function MenuGroup({
         $isLock={lock}
         $color={color}
         className={isOpen ? 'selected' : ''}
-        onClick={toggle}
+        onClick={lock ? () => {} : toggle}
       >
         <Icon size={12} icon={isOpen ? 'angleDown' : 'angleRight'} />
         &nbsp;&nbsp;{title}

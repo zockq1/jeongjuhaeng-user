@@ -15,6 +15,10 @@ import LearningTopicPage from '@/app/topic/LearningTopicPage';
 import { persistor, store } from '@/store/store';
 import theme from '@/theme/theme';
 
+import JJHListPage from './app/topic/JJHListPage';
+import LearningTimelinePage from './app/topic/LearningTimelinePage';
+import TimelineListPage from './app/topic/TimelineListPage';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -35,6 +39,18 @@ const router = createBrowserRouter([
   {
     path: '/learning/chapter',
     element: <LearningTopicPage />,
+  },
+  {
+    path: '/timeline-list',
+    element: <TimelineListPage />,
+  },
+  {
+    path: '/timeline',
+    element: <LearningTimelinePage />,
+  },
+  {
+    path: 'jeong-ju-haeng',
+    element: <JJHListPage />,
   },
 ]);
 

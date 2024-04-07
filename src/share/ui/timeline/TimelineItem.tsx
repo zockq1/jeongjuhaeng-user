@@ -4,9 +4,9 @@ import Keyword from '../keyword/Keyword';
 
 interface TimelineTopicProps {
   dateItem: {
-    comment: string;
+    title: string;
     date: number | string | null;
-    keywordList: string[] | null;
+    comment: string[] | null;
     file?: string;
   };
   isQuestion?: boolean;
@@ -16,7 +16,7 @@ export default function TimelineItem({
   dateItem,
   isQuestion = false,
 }: TimelineTopicProps) {
-  const { comment, date, keywordList, file } = dateItem;
+  const { title, date, comment, file } = dateItem;
   return (
     <>
       <TimelineItemContainer $isQuestion={isQuestion}>
@@ -33,11 +33,11 @@ export default function TimelineItem({
             </Date>
           )}
           <Keyword
-            comment={keywordList?.join('.') || ''}
+            comment={comment?.join('.') || ''}
             file={file}
             commentOff={isQuestion}
           >
-            {comment}
+            {title}
           </Keyword>
         </div>
       </TimelineItemContainer>

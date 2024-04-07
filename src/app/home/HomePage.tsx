@@ -39,11 +39,6 @@ export default function HomePage() {
       <Layout.Main>
         <ContentBox title="고조선" subTitle="BC 2333 ~ BC 108">
           <Keyword comment="설명1.설명2">8조법</Keyword>
-          <Timeline>
-            {dateList.map((item, index) => {
-              return <Timeline.Item dateItem={item} key={index} />;
-            })}
-          </Timeline>
         </ContentBox>
       </Layout.Main>
       <Layout.Right>asd</Layout.Right>

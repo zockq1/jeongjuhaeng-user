@@ -2,11 +2,12 @@ import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import useQuesryString from '@/share/hook/useQueryString';
+import Async from '@/share/state/Async';
 import Menu from '@/share/ui/menu/Menu';
 import { useGetChapterListQuery } from '@/store/api/chapterApi';
 import { ChapterModel } from '@/types/chapterTypes';
 
-function ChapterSideMenu() {
+export default function ChapterSideMenu() {
   const { chapter: currentChapter } = useQuesryString();
   const navigate = useNavigate();
   const { data: chapterList } = useGetChapterListQuery();
@@ -30,32 +31,35 @@ function ChapterSideMenu() {
   }, [chapterList, currentChapter]);
 
   return (
-    <Menu>
-      {groupedByDateComment &&
-        Object.entries(groupedByDateComment).map(([dateComment, chapters]) => (
-          <Menu.Group
-            key={dateComment}
-            title={`${dateComment} (${chapters.length})`}
-            open={currentDateComment === dateComment}
-            length={chapters.length}
-          >
-            {chapters.map((chapter: ChapterModel) => (
-              <Menu.Item
-                key={chapter.number}
-                selected={currentChapter === chapter.number}
-                onClick={() =>
-                  navigate(
-                    `/learning/chapter?chapter=${chapter.number}&title=${chapter.title}`,
-                  )
-                }
+    <Async data={groupedByDateComment}>
+      {(groupedByDateComment) => (
+        <Menu>
+          {Object.entries(groupedByDateComment).map(
+            ([dateComment, chapters]) => (
+              <Menu.Group
+                key={dateComment}
+                title={`${dateComment} (${chapters.length})`}
+                open={currentDateComment === dateComment}
+                length={chapters.length}
               >
-                {`${chapter.title} (${chapter.topicCount})`}
-              </Menu.Item>
-            ))}
-          </Menu.Group>
-        ))}
-    </Menu>
+                {chapters.map((chapter: ChapterModel) => (
+                  <Menu.Item
+                    key={chapter.number}
+                    selected={currentChapter === chapter.number}
+                    onClick={() =>
+                      navigate(
+                        `/learning/chapter?chapter=${chapter.number}&title=${chapter.title}`,
+                      )
+                    }
+                  >
+                    {`${chapter.title} (${chapter.topicCount})`}
+                  </Menu.Item>
+                ))}
+              </Menu.Group>
+            ),
+          )}
+        </Menu>
+      )}
+    </Async>
   );
 }
-
-export default ChapterSideMenu;

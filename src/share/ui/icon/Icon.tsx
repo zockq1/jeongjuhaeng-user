@@ -58,6 +58,7 @@ import King from './svg/user-crown.svg?react';
 import Organization from './svg/users-alt.svg?react';
 
 export type IconType =
+  | ''
   | 'angleRight'
   | 'angleDown'
   | 'run'
