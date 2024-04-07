@@ -1,12 +1,12 @@
 import { ButtonHTMLAttributes } from 'react';
 import styled, { css } from 'styled-components';
 
-type Variant = 'text';
+type Variant = 'textHover' | 'text';
 
 type Size = 'small' | 'medium' | 'large';
 
 const variantStyles = {
-  text: css`
+  textHover: css`
     color: ${({ theme }) => theme.colors.grey};
     font-weight: ${({ theme }) => theme.fontWeight.light};
 
@@ -14,6 +14,10 @@ const variantStyles = {
       color: ${({ theme }) => theme.colors.textBlue};
       font-weight: ${({ theme }) => theme.fontWeight.regular};
     }
+  `,
+  text: css`
+    color: ${({ theme }) => theme.colors.textBlue};
+    font-weight: ${({ theme }) => theme.fontWeight.regular};
   `,
 };
 
@@ -36,6 +40,9 @@ interface StyledButtonProps {
 }
 
 const ButtonContainer = styled.button<StyledButtonProps>`
+  display: flex;
+  align-items: center;
+
   width: max-content;
   ${({ $variant }) => variantStyles[$variant]}
   ${({ $size }) => sizeStyles[$size]}

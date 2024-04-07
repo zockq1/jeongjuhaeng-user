@@ -20,18 +20,21 @@ function NavigationBar() {
       <Navigation
         onClick={() => navigate('/jeong-ju-haeng')}
         active={location.pathname.includes('/jeong-ju-haeng')}
+        variant="textHover"
       >
         정주행
       </Navigation>
       <Navigation
         onClick={() => navigate('/learning')}
         active={location.pathname.includes('/learning')}
+        variant="textHover"
       >
         단원별
       </Navigation>
       <Navigation
         onClick={() => navigate('/timeline-list')}
         active={location.pathname === '/timeline'}
+        variant="textHover"
       >
         연표
       </Navigation>

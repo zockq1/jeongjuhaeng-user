@@ -25,6 +25,7 @@ export default function ContentBox({
   const theme = useContext(ThemeContext);
   const { isContentBoxOn } = useSelector((state: RootState) => state.toggle);
   const [isOpen, toggle, setToggle] = useToggle(isContentBoxOn);
+  const isEmpty = children === null;
 
   useEffect(() => {
     setToggle(isContentBoxOn);
@@ -40,15 +41,17 @@ export default function ContentBox({
       </Header>
       {!lock && (
         <>
-          {isOpen && <Content>{children}</Content>}
+          {!isEmpty && isOpen && <Content>{children}</Content>}
           <Footer>
-            <ToggleButton onClick={toggle}>
-              {isOpen ? (
-                <Icon icon="up" size={40} />
-              ) : (
-                <Icon icon="down" size={40} />
-              )}
-            </ToggleButton>
+            {!isEmpty && (
+              <ToggleButton onClick={toggle}>
+                {isOpen ? (
+                  <Icon icon="up" size={40} />
+                ) : (
+                  <Icon icon="down" size={40} />
+                )}
+              </ToggleButton>
+            )}
             {extraButton && (
               <ExtraButtonContainer>{extraButton}</ExtraButtonContainer>
             )}
