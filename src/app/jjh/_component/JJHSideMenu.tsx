@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import useQuesryString from '@/share/hook/useQueryString';
@@ -29,6 +29,7 @@ export default function JJHSideMenu() {
   const { jjh: currentJJH } = useQuesryString();
   const navigate = useNavigate();
   const { data: jjhList, isLoading, isError } = useGetJJHListQuery();
+  const [currentGroup, setCurrentGroup] = useState('');
 
   const groupedByDateComment = useMemo(() => {
     if (!jjhList) return;
@@ -39,6 +40,7 @@ export default function JJHSideMenu() {
         [key: string]: JJHModel[];
       }>((acc, current) => {
         const { dateComment, title, number, state, jjhNumber } = current;
+        if (jjhNumber === currentJJH) setCurrentGroup(dateComment);
         const key = dateComment;
         if (!acc[key]) {
           acc[key] = [];
@@ -60,6 +62,7 @@ export default function JJHSideMenu() {
       jjhList.timelineList.forEach((timeline) => {
         function setJJH(timeline: JJHTimelineModel) {
           const { title, id, state, jjhNumber, endDate, startDate } = timeline;
+          if (jjhNumber === currentJJH) setCurrentGroup(key);
           initialGroup[key].push({
             number: id,
             jjhNumber: jjhNumber,
@@ -127,13 +130,7 @@ export default function JJHSideMenu() {
     );
 
     return finalGroup;
-  }, [jjhList, navigate]);
-
-  const currentDateComment = useMemo(() => {
-    return jjhList?.chapterList.find(
-      (chapter) => chapter.jjhNumber === currentJJH,
-    )?.dateComment;
-  }, [jjhList, currentJJH]);
+  }, [jjhList, navigate, currentJJH]);
 
   return (
     <Async data={groupedByDateComment} isLoading={isLoading} isError={isError}>
@@ -151,7 +148,7 @@ export default function JJHSideMenu() {
                       &nbsp;{dateComment}
                     </>
                   }
-                  open={currentDateComment === dateComment}
+                  open={currentGroup === dateComment}
                   length={chapters.items.length}
                   color={color}
                   lock={chapters.state === 'Locked'}
