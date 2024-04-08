@@ -44,7 +44,7 @@ const LayoutContainer = styled.div`
   @media ${media.mobile} {
     width: 100%;
     grid-template:
-      'header' 70px
+      'header' 65px
       '   .  ' minmax(calc(100vh - 65px), auto)
       'footer' 90px;
   }
@@ -87,13 +87,13 @@ const RightContainer = styled.aside`
 `;
 
 const MainContainer = styled.div`
-  padding: 10px;
-
   @media ${media.mobile} {
     grid-row: 2/3;
   }
 
   @media ${media.expanded} {
+    padding: 10px;
+
     grid-column: 2/3;
     grid-row: 2/3;
   }

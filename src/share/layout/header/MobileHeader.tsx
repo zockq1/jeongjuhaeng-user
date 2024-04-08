@@ -24,7 +24,6 @@ const MobileHeaderContainer = styled.div`
   z-index: 100;
 
   width: 100%;
-  margin-bottom: 10px;
   padding: 15px 24px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.lightGrey};
   box-shadow: ${({ theme }) => theme.shadow.defaultShadow};

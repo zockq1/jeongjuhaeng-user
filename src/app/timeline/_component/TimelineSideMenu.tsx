@@ -9,10 +9,10 @@ import { useGetTimelineListQuery } from '@/store/api/timelineApi';
 export default function TimelineSideMenu() {
   const navigate = useNavigate();
   const { timeline: currentTimeline } = useQuesryString();
-  const { data: timelineList } = useGetTimelineListQuery();
+  const { data: timelineList, isLoading, isError } = useGetTimelineListQuery();
 
   return (
-    <Async data={timelineList}>
+    <Async data={timelineList} isLoading={isLoading} isError={isError}>
       {(timelineList) => (
         <Menu>
           {[...timelineList]

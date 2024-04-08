@@ -3,15 +3,14 @@ import Layout from '@/share/layout/Layout';
 import ContentBox from '@/share/ui/content-box/ContentBox';
 import Keyword from '@/share/ui/keyword/Keyword';
 import Menu from '@/share/ui/menu/Menu';
-import Timeline from '@/share/ui/timeline/Timeline';
 import { useGetTimelineQuery } from '@/store/api/timelineApi';
 
 export default function HomePage() {
   const { data: dateList } = useGetTimelineQuery(14);
-  const a = new Array(100).fill(0).map((x, index) => {
+  const a = new Array(100).fill(0).map((_, index) => {
     return index + 1 + '번 메뉴';
   });
-  const b = new Array(5).fill(0).map((x, index) => {
+  const b = new Array(5).fill(0).map((_, index) => {
     return index + 1 + '번 보조 메뉴';
   });
 

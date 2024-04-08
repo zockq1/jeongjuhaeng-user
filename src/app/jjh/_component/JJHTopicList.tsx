@@ -1,8 +1,8 @@
+import { useNavigate } from 'react-router-dom';
+
 import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
-import Button from '@/share/ui/button/Button';
 import ContentBox from '@/share/ui/content-box/ContentBox';
-import Icon from '@/share/ui/icon/Icon';
 import Keyword from '@/share/ui/keyword/Keyword';
 import Timeline from '@/share/ui/timeline/Timeline';
 import {
@@ -10,21 +10,27 @@ import {
   useGetContentListQuery,
 } from '@/store/api/jjhApi';
 
-import QuizButton from './QuizButton';
+import QuizButton from '../../quiz/_component/QuizButton';
 
 export default function JJHTopicList() {
+  const navigate = useNavigate();
   const { chapter: chapterNumber, jjh: jjhNumber } = useQuesryString();
   const { data: topicList } = useGetChapterTopicListQuery(chapterNumber);
-  const { data: contentList } = useGetContentListQuery(jjhNumber);
+  const {
+    data: contentList,
+    isLoading,
+    isError,
+  } = useGetContentListQuery(jjhNumber);
 
   return (
-    <Async data={contentList}>
+    <Async data={contentList} isLoading={isLoading} isError={isError}>
       {(data) => (
         <>
           {[...data]
             .sort((a, b) => a.contentNumber - b.contentNumber)
             .map((topic) => {
-              const { title, dateComment, state, content } = topic;
+              const { title, dateComment, state, content, contentNumber } =
+                topic;
               const keywordList =
                 topicList?.find((topic) => topic.title === title)
                   ?.keywordList || [];
@@ -35,7 +41,15 @@ export default function JJHTopicList() {
                     key={title}
                     title="단원 마무리 문제"
                     lock={state === 'Locked'}
-                    extraButton={<QuizButton />}
+                    extraButton={
+                      <QuizButton
+                        onClick={() =>
+                          navigate(
+                            `/jeong-ju-haeng/chapter/quiz?jjh=${jjhNumber}&chapter=${chapterNumber}&content=${contentNumber}&title=${title}`,
+                          )
+                        }
+                      />
+                    }
                   >
                     {null}
                   </ContentBox>
@@ -49,10 +63,13 @@ export default function JJHTopicList() {
                   subTitle={dateComment}
                   lock={state === 'Locked'}
                   extraButton={
-                    <Button>
-                      <Icon icon="exam" size={14} />
-                      &nbsp; <span style={{ marginTop: '3px' }}>문제 풀이</span>
-                    </Button>
+                    <QuizButton
+                      onClick={() =>
+                        navigate(
+                          `/jeong-ju-haeng/topic/quiz?jjh=${jjhNumber}&chapter=${chapterNumber}&topic=${title}&content=${contentNumber}&title=${title}`,
+                        )
+                      }
+                    />
                   }
                 >
                   {keywordList

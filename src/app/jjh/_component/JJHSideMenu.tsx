@@ -28,7 +28,7 @@ interface FinalGroup {
 export default function JJHSideMenu() {
   const { jjh: currentJJH } = useQuesryString();
   const navigate = useNavigate();
-  const { data: jjhList } = useGetJJHListQuery();
+  const { data: jjhList, isLoading, isError } = useGetJJHListQuery();
 
   const groupedByDateComment = useMemo(() => {
     if (!jjhList) return;
@@ -136,7 +136,7 @@ export default function JJHSideMenu() {
   }, [jjhList, currentJJH]);
 
   return (
-    <Async data={groupedByDateComment}>
+    <Async data={groupedByDateComment} isLoading={isLoading} isError={isError}>
       {(groupedByDateComment) => (
         <Menu>
           {Object.entries(groupedByDateComment).map(
@@ -159,12 +159,11 @@ export default function JJHSideMenu() {
                   {[...chapters.items]
                     .sort((a, b) => a.jjhNumber - b.jjhNumber)
                     .map((chapter: JJHModel) => {
-                      const { number, jjhNumber, title, state, onClick } =
-                        chapter;
+                      const { jjhNumber, title, state, onClick } = chapter;
                       const { color, icon } = getColorAndIcon(state);
                       return (
                         <Menu.Item
-                          key={number}
+                          key={jjhNumber}
                           selected={currentJJH === jjhNumber}
                           onClick={onClick}
                           color={color}

@@ -7,10 +7,14 @@ import { useGetChapterTopicListQuery } from '@/store/api/jjhApi';
 
 export default function TopicList() {
   const { chapter: chapterNumber } = useQuesryString();
-  const { data: topicList } = useGetChapterTopicListQuery(chapterNumber);
+  const {
+    data: topicList,
+    isLoading,
+    isError,
+  } = useGetChapterTopicListQuery(chapterNumber);
 
   return (
-    <Async data={topicList}>
+    <Async data={topicList} isLoading={isLoading} isError={isError}>
       {(data) => (
         <>
           {data.map((topic) => {

@@ -10,7 +10,7 @@ import { ChapterModel } from '@/types/chapterTypes';
 export default function ChapterSideMenu() {
   const { chapter: currentChapter } = useQuesryString();
   const navigate = useNavigate();
-  const { data: chapterList } = useGetChapterListQuery();
+  const { data: chapterList, isLoading, isError } = useGetChapterListQuery();
 
   const groupedByDateComment = useMemo(() => {
     return chapterList?.reduce<{
@@ -31,7 +31,7 @@ export default function ChapterSideMenu() {
   }, [chapterList, currentChapter]);
 
   return (
-    <Async data={groupedByDateComment}>
+    <Async data={groupedByDateComment} isLoading={isLoading} isError={isError}>
       {(groupedByDateComment) => (
         <Menu>
           {Object.entries(groupedByDateComment).map(

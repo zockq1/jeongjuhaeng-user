@@ -9,6 +9,7 @@
     "prettier/prettier": true,
     "media-query-no-invalid": null,
     "no-invalid-double-slash-comments": null,
-    "custom-property-empty-line-before": null
+    "custom-property-empty-line-before": null,
+    "font-family-no-missing-generic-family-keyword": null
   }
 }
