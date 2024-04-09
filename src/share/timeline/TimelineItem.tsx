@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
-import Keyword from '../keyword/Keyword';
+import Keyword from '../ui/keyword/Keyword';
 
 interface TimelineTopicProps {
   dateItem: {
@@ -45,17 +45,31 @@ export default function TimelineItem({
   );
 }
 
-interface StyledTimelineItemProps {
-  $isQuestion?: boolean;
-}
+const slideDownFadeIn = keyframes`
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
 
-const TimelineItemContainer = styled.li<StyledTimelineItemProps>`
+  to {
+    max-height: 1000px;
+    opacity: 1;
+  }
+`;
+
+const TimelineItemContainer = styled.li<{
+  $isQuestion?: boolean;
+}>`
   display: grid;
   align-items: top;
 
-  /* margin: ${({ $isQuestion }) => ($isQuestion ? '30px 0' : '10px 0 5px')}; */
-
   grid-template-columns: 34px 1fr;
+
+  ${({ $isQuestion }) =>
+    $isQuestion &&
+    css`
+      animation: ${slideDownFadeIn} 0.5s ease-out forwards;
+    `};
 `;
 
 const InnerCircle = styled.div<{ $visible: boolean }>`

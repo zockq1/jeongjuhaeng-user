@@ -2,9 +2,9 @@ import { useNavigate } from 'react-router-dom';
 
 import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
+import Timeline from '@/share/timeline/Timeline';
 import ContentBox from '@/share/ui/content-box/ContentBox';
 import Keyword from '@/share/ui/keyword/Keyword';
-import Timeline from '@/share/ui/timeline/Timeline';
 import {
   useGetChapterTopicListQuery,
   useGetContentListQuery,
@@ -34,6 +34,7 @@ export default function JJHTopicList() {
               const keywordList =
                 topicList?.find((topic) => topic.title === title)
                   ?.keywordList || [];
+              console.log(contentNumber);
 
               if (content === 'CHAPTER_COMPLETE_QUESTION') {
                 return (

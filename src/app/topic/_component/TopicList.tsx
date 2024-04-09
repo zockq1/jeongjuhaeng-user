@@ -1,8 +1,8 @@
 import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
+import Timeline from '@/share/timeline/Timeline';
 import ContentBox from '@/share/ui/content-box/ContentBox';
 import Keyword from '@/share/ui/keyword/Keyword';
-import Timeline from '@/share/ui/timeline/Timeline';
 import { useGetChapterTopicListQuery } from '@/store/api/jjhApi';
 
 export default function TopicList() {

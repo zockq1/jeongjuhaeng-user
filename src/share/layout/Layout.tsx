@@ -88,6 +88,7 @@ const RightContainer = styled.aside`
 
 const MainContainer = styled.div`
   @media ${media.mobile} {
+    padding: 10px;
     grid-row: 2/3;
   }
 

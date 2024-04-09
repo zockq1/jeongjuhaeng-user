@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
+import TimelineButton from './TimelineButton';
 import TimelineItem from './TimelineItem';
 
 interface TimelineListProps {
@@ -17,6 +18,7 @@ export default function Timeline({ children }: TimelineListProps) {
 }
 
 Timeline.Item = TimelineItem;
+Timeline.Button = TimelineButton;
 
 const Line = styled.li`
   position: absolute;

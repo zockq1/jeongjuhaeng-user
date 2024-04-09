@@ -18,11 +18,13 @@ import theme from '@/theme/theme';
 import App from './App';
 import JJHChapterQuizPage from './app/jjh/JJHChapterQuizPage';
 import JJHListPage from './app/jjh/JJHListPage';
-import JJHTimelinePage from './app/jjh/JJHTimlinePage';
+import JJHTimelinePage from './app/jjh/JJHTimelinePage';
+import JJHTimelineQuizPage from './app/jjh/JJHTimelineQuizPage';
 import JJHTopicPage from './app/jjh/JJHTopicPage';
 import JJHTopicQuizPage from './app/jjh/JJHTopicQuizPage';
 import LearningTimelinePage from './app/timeline/LearningTimelinePage';
 import TimelineListPage from './app/timeline/TimelineListPage';
+import TimelineQuizPage from './app/timeline/TimelineQuizPage';
 
 const router = createBrowserRouter([
   {
@@ -55,6 +57,10 @@ const router = createBrowserRouter([
         element: <LearningTimelinePage />,
       },
       {
+        path: '/timeline/quiz',
+        element: <TimelineQuizPage />,
+      },
+      {
         path: 'jeong-ju-haeng',
         element: <JJHListPage />,
       },
@@ -73,6 +79,10 @@ const router = createBrowserRouter([
       {
         path: 'jeong-ju-haeng/topic/quiz',
         element: <JJHTopicQuizPage />,
+      },
+      {
+        path: 'jeong-ju-haeng/timeline/quiz',
+        element: <JJHTimelineQuizPage />,
       },
     ],
   },

@@ -65,7 +65,7 @@ export default function ContentBox({
 const ContentBoxContainer = styled.article`
   overflow: hidden;
 
-  margin: 6px 0;
+  margin: 5px;
   border: 1px solid ${({ theme }) => theme.colors.lightGrey};
   border-radius: 10px;
 

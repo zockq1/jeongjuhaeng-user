@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes } from 'react';
 import styled, { css } from 'styled-components';
 
-type Variant = 'textHover' | 'text';
+type Variant = 'textHover' | 'text' | 'box';
 
 type Size = 'small' | 'medium' | 'large';
 
@@ -18,6 +18,18 @@ const variantStyles = {
   text: css`
     color: ${({ theme }) => theme.colors.textBlue};
     font-weight: ${({ theme }) => theme.fontWeight.regular};
+  `,
+  box: css`
+    padding: ${({ theme }) => theme.padding.small};
+    border: ${({ theme }) => `1px solid ${theme.colors.lightGrey}`};
+    border-radius: 10px;
+    box-shadow: ${({ theme }) => theme.shadow.defaultShadow};
+
+    background-color: ${({ theme }) => theme.colors.keywordBg};
+
+    color: ${({ theme }) => theme.colors.textBlue};
+    font-weight: ${({ theme }) => theme.fontWeight.medium};
+    font-size: ${({ theme }) => theme.fontSizes.large};
   `,
 };
 

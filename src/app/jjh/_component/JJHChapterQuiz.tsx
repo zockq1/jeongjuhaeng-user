@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 
-import Quiz from '@/app/quiz/_component/Quiz';
 import useQuesryString from '@/share/hook/useQueryString';
+import Quiz from '@/share/quiz/Quiz';
 import Async from '@/share/state/Async';
 import { useUpdateProgressMutation } from '@/store/api/jjhApi';
 import { useGetKtoTQuestionQuery } from '@/store/api/questionApi';
