@@ -14,7 +14,7 @@ const colorStyles = {
     color: ${({ theme }) => theme.colors.blue};
   `,
   green: css`
-    color: ${({ theme }) => theme.colors.green};
+    color: ${({ theme }) => theme.colors.textBlue};
   `,
   black: css`
     color: ${({ theme }) => theme.colors.textBlue};
@@ -65,17 +65,10 @@ const MenuGroupContainer = styled.li`
 
   margin: 6px;
   border: 1px solid transparent;
-  border-radius: 10px;
 
   transition: 0.1s;
 
   user-select: none;
-
-  &:hover,
-  &.selected {
-    border: 1px solid ${({ theme }) => theme.colors.lightGrey};
-    box-shadow: ${({ theme }) => theme.shadow.defaultShadow};
-  }
 `;
 
 const MenuGroupTitle = styled.button<{
@@ -102,7 +95,6 @@ const MenuGroupTitle = styled.button<{
 
   &:hover,
   &.selected {
-    background-color: ${({ theme }) => theme.colors.white};
     font-weight: ${({ theme }) => theme.fontWeight.bold};
   }
 `;
@@ -113,6 +105,7 @@ const MenuItemList = styled.ul<{
   overflow: hidden;
 
   max-height: 0;
+  padding-left: 10px;
 
   transition: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 

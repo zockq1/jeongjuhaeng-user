@@ -11,7 +11,7 @@ const colorStyles = {
     color: ${({ theme }) => theme.colors.blue};
   `,
   green: css`
-    color: ${({ theme }) => theme.colors.green};
+    color: ${({ theme }) => theme.colors.textBlue};
   `,
   black: css`
     color: ${({ theme }) => theme.colors.textBlue};
