@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
+import { StyleSheetManager } from 'styled-components';
 
 export default function App() {
   const location = useLocation();
@@ -10,7 +11,9 @@ export default function App() {
 
   return (
     <main>
-      <Outlet />
+      <StyleSheetManager enableVendorPrefixes>
+        <Outlet />
+      </StyleSheetManager>
     </main>
   );
 }
