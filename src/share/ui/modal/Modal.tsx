@@ -30,13 +30,13 @@ export default function Modal({ isVisible, onClose, children }: ModalProps) {
 const Overlay = styled.div`
   display: flex;
   position: fixed;
+  top: 0;
+  left: 0;
 
-  width: 100vw;
+  width: 100%;
   height: 100vh;
 
   background-color: rgb(0 0 0 / 50%);
-
-  inset: 0;
 `;
 
 const ModalContent = styled.div`

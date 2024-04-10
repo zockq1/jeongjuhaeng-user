@@ -11,7 +11,8 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   position: fixed;
   top: 0;
-  left: 50%;
+  right: 0;
+  left: 0;
   z-index: 99;
 
   width: 100%;
@@ -20,8 +21,6 @@ const HeaderContainer = styled.header`
   padding: 15px;
 
   background-color: ${({ theme }) => theme.colors.bg};
-
-  transform: translate(-50%, 0);
 
   @media ${media.tablet} {
     max-width: 980px;
