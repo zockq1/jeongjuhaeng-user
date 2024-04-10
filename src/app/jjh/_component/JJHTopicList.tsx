@@ -63,6 +63,7 @@ export default function JJHTopicList() {
                   title={title}
                   subTitle={dateComment}
                   lock={state === 'Locked'}
+                  run={state === 'InProgress'}
                   extraButton={
                     <QuizButton
                       onClick={() =>

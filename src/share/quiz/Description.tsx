@@ -1,5 +1,3 @@
-import 'react-toastify/dist/ReactToastify.css';
-
 import styled from 'styled-components';
 
 import { QuestionModel } from '@/types/questionTypes';
@@ -78,7 +76,7 @@ const DescriptionContainer = styled.ul`
   border-radius: ${({ theme }) => theme.borderRadius.xxs};
   box-shadow: ${({ theme }) => theme.shadow.defaultShadow};
 
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.keywordBg};
 `;
 
 const Image = styled.img`

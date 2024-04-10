@@ -1,5 +1,6 @@
 import Header from '@/share/layout/header';
 import Layout from '@/share/layout/Layout';
+import { Mobile } from '@/share/layout/Responsive';
 
 import ChapterSideMenu from './_component/ChapterSideMenu';
 
@@ -10,7 +11,11 @@ export default function ChapterListPage() {
       <Layout.Left>
         <ChapterSideMenu />
       </Layout.Left>
-      <Layout.Main></Layout.Main>
+      <Layout.Main>
+        <Mobile>
+          <ChapterSideMenu />
+        </Mobile>
+      </Layout.Main>
       <Layout.Right></Layout.Right>
     </Layout>
   );

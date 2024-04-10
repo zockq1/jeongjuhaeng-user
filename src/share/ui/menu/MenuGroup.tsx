@@ -83,20 +83,13 @@ const MenuGroupTitle = styled.button<{
   width: 100%;
   padding: 10px;
 
-  background-color: ${({ theme }) => theme.colors.bg};
-
-  font-weight: ${({ theme }) => theme.fontWeight.medium};
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
   font-size: ${({ theme }) => theme.fontSizes.base};
   text-align: left;
 
   cursor: ${({ $isLock }) => ($isLock ? 'not-allowed' : 'pointer')};
 
   transition: 0.1s ease;
-
-  &:hover,
-  &.selected {
-    font-weight: ${({ theme }) => theme.fontWeight.bold};
-  }
 `;
 
 const MenuItemList = styled.ul<{

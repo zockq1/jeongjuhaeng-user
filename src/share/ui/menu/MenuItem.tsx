@@ -60,9 +60,7 @@ const MenuItemContainer = styled.li<{
   border: 1px solid transparent;
   border-radius: 10px;
 
-  background-color: ${({ theme }) => theme.colors.bg};
-
-  font-weight: ${({ theme }) => theme.fontWeight.regular};
+  font-weight: ${({ theme }) => theme.fontWeight.medium};
   font-size: ${({ theme }) => theme.fontSizes.small};
 
   cursor: ${({ $isLock }) => ($isLock ? 'not-allowed' : 'pointer')};
@@ -74,8 +72,8 @@ const MenuItemContainer = styled.li<{
     border: 1px solid ${({ theme }) => theme.colors.lightGrey};
     box-shadow: ${({ theme }) => theme.shadow.defaultShadow};
 
-    background-color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.keywordBg};
 
-    font-weight: ${({ theme }) => theme.fontWeight.medium};
+    font-weight: ${({ theme }) => theme.fontWeight.bold};
   }
 `;

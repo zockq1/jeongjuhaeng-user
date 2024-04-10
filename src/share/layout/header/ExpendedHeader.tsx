@@ -19,8 +19,12 @@ const HeaderContainer = styled.header`
   height: 80px;
   margin: 0 auto;
   padding: 15px;
+  border-right: 2px solid ${({ theme }) => theme.colors.textBlue};
+  border-bottom: 2px solid ${({ theme }) => theme.colors.textBlue};
+  border-left: 2px solid ${({ theme }) => theme.colors.textBlue};
+  border-radius: 0 0 10px 10px;
 
-  background-color: ${({ theme }) => theme.colors.bg};
+  background-color: ${({ theme }) => theme.colors.white};
 
   @media ${media.tablet} {
     max-width: 980px;
@@ -38,6 +42,7 @@ const HeaderContainer = styled.header`
   & > .auth {
     display: flex;
     flex-basis: 180px;
+    align-items: center;
     justify-content: end;
   }
 `;

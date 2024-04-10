@@ -32,7 +32,7 @@ export default function SlideMenu() {
           <Icon icon="TIMELINE_STUDY" size={14} />
           &nbsp; 연표
         </MenuItem>
-        <MenuItem to="/question/quiz-list">
+        {/* <MenuItem to="/question/quiz-list">
           <Icon icon="question" size={14} />
           &nbsp; 퀴즈
         </MenuItem>
@@ -59,7 +59,7 @@ export default function SlideMenu() {
         <MenuItem to="/option">
           <Icon icon="setting" size={14} />
           &nbsp; 설정
-        </MenuItem>
+        </MenuItem> */}
       </SlidingMenu>
     </>
   );

@@ -67,7 +67,7 @@ const ImageChoiceContainer = styled.div<AnswerCheckProps>`
   border-radius: 10px;
   box-shadow: ${({ theme }) => theme.shadow.defaultShadow};
 
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.keywordBg};
 
   color: ${({ theme }) => theme.colors.black};
 `;

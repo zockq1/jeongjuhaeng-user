@@ -1,5 +1,3 @@
-import 'react-toastify/dist/ReactToastify.css';
-
 import { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 

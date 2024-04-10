@@ -66,7 +66,7 @@ const StringChoiceContainer = styled.div<AnswerCheckProps>`
   border-radius: ${({ theme }) => theme.borderRadius.xxs};
   box-shadow: ${({ theme }) => theme.shadow.defaultShadow};
 
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.keywordBg};
 
   color: ${({ theme }) => theme.colors.textBlue};
 `;

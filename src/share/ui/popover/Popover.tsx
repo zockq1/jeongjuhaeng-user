@@ -74,7 +74,7 @@ const Content = styled.div<{ $placement: PopoverProps['placement'] }>`
 
   width: max-content;
   padding: 8px;
-  border: ${({ theme }) => theme.border.default};
+  border: 2px solid ${({ theme }) => theme.colors.textBlue};
   border-radius: ${({ theme }) => theme.borderRadius.xxs};
   box-shadow: ${({ theme }) => theme.shadow.defaultShadow};
 
@@ -97,7 +97,7 @@ const Content = styled.div<{ $placement: PopoverProps['placement'] }>`
           top: 100%;
           left: 50%;
 
-          transform: translateX(-50%);
+          transform: translateX(-70%);
         `;
       case 'left':
         return css`

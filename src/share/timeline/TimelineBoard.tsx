@@ -47,7 +47,7 @@ const Board = styled.div`
   display: grid;
   z-index: 98;
 
-  border: 1px solid ${({ theme }) => theme.colors.lightGrey};
+  border: 2px solid ${({ theme }) => theme.colors.textBlue};
   border-radius: 10px;
 
   background-color: ${({ theme }) => theme.colors.white};
@@ -65,7 +65,7 @@ const Board = styled.div`
     height: 60px;
     border-top: 0;
     border-right: 0;
-    border-bottom: 1 solid ${({ theme }) => theme.colors.lightGrey};
+    border-bottom: 2px solid ${({ theme }) => theme.colors.textBlue};
     border-left: 0;
     border-radius: 0;
   }
@@ -76,6 +76,7 @@ const Board = styled.div`
 
     height: 70px;
     margin: 5px;
+    margin-bottom: 20px;
   }
 
   & > div.next {
@@ -85,7 +86,7 @@ const Board = styled.div`
 
     width: 100%;
     height: 100%;
-    border-right: 1px solid ${({ theme }) => theme.colors.lightGrey};
+    border-right: 2px solid ${({ theme }) => theme.colors.textBlue};
 
     font-weight: ${({ theme }) => theme.fontWeight.medium};
     font-size: ${({ theme }) => theme.fontSizes.large};
@@ -113,7 +114,7 @@ const Board = styled.div`
 
     width: 100%;
     height: 100%;
-    border-top: 1px solid ${({ theme }) => theme.colors.lightGrey};
+    border-top: 2px solid ${({ theme }) => theme.colors.textBlue};
 
     color: ${({ theme }) => theme.colors.red};
 

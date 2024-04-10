@@ -275,8 +275,10 @@ const TimelineQuizContainer = styled.div`
 
   margin: 5px;
   padding: 10px;
-  border: 1px solid ${({ theme }) => theme.colors.lightGrey};
+  border: 2px solid ${({ theme }) => theme.colors.textBlue};
   border-radius: 10px;
+
+  background-color: ${({ theme }) => theme.colors.white};
 
   @media ${media.mobile} {
     margin-top: 60px;

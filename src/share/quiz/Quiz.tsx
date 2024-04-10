@@ -1,5 +1,3 @@
-import 'react-toastify/dist/ReactToastify.css';
-
 import { useMemo, useReducer } from 'react';
 import { useSelector } from 'react-redux';
 

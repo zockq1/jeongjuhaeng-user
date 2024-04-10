@@ -13,6 +13,7 @@ interface ContentBoxProps {
   children?: ReactNode;
   extraButton?: ReactNode;
   lock?: boolean;
+  run?: boolean;
 }
 
 export default function ContentBox({
@@ -21,34 +22,40 @@ export default function ContentBox({
   children,
   extraButton,
   lock = false,
+  run = false,
 }: ContentBoxProps) {
   const theme = useContext(ThemeContext);
   const { isContentBoxOn } = useSelector((state: RootState) => state.toggle);
   const [isOpen, toggle, setToggle] = useToggle(isContentBoxOn);
   const isEmpty = children === null;
 
+  const color = lock ? theme?.colors.red : run ? theme?.colors.blue : '';
+
   useEffect(() => {
     setToggle(isContentBoxOn);
   }, [isContentBoxOn, setToggle]);
 
   return (
-    <ContentBoxContainer id={title}>
+    <ContentBoxContainer id={title} $color={color}>
       <Header onClick={toggle}>
-        <Title $color={lock ? theme?.colors.red : ''}>{title}</Title>
-        <SubTitle $color={lock ? theme?.colors.lightRed : ''}>
-          {subTitle}
-        </SubTitle>
+        <Title $color={color}>{title}</Title>
+        <SubTitle $color={color}>{subTitle}</SubTitle>
+        {run && (
+          <div className="icon">
+            <Icon icon="run" color={theme?.colors.blue} size={30} />
+          </div>
+        )}
       </Header>
-      {!lock && (
+      {!lock ? (
         <>
           {!isEmpty && isOpen && <Content>{children}</Content>}
           <Footer>
             {!isEmpty && (
               <ToggleButton onClick={toggle}>
                 {isOpen ? (
-                  <Icon icon="up" size={40} />
+                  <Icon icon="up" size={40} color={color} />
                 ) : (
-                  <Icon icon="down" size={40} />
+                  <Icon icon="down" size={40} color={color} />
                 )}
               </ToggleButton>
             )}
@@ -57,25 +64,43 @@ export default function ContentBox({
             )}
           </Footer>
         </>
+      ) : (
+        <div className="icon">
+          <Icon icon="lock" color={theme?.colors.red} size={30} />
+        </div>
       )}
     </ContentBoxContainer>
   );
 }
 
-const ContentBoxContainer = styled.article`
+const ContentBoxContainer = styled.article<{ $color?: string }>`
   overflow: hidden;
+  position: relative;
 
   margin: 5px;
-  border: 1px solid ${({ theme }) => theme.colors.lightGrey};
+  border: 2px solid
+    ${({ theme, $color }) => ($color ? $color : theme.colors.textBlue)};
   border-radius: 10px;
 
+  background-color: ${({ theme }) => theme.colors.white};
+
+  color: ${({ theme, $color }) => ($color ? $color : theme.colors.textBlue)};
+
   user-select: none;
+
+  div.icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+
+    transform: translateY(-50%);
+  }
 `;
 
 const Header = styled.header`
-  padding: 15px;
+  position: relative;
 
-  background-color: ${({ theme }) => theme.colors.white};
+  padding: 15px;
 
   cursor: pointer;
 `;
@@ -96,7 +121,6 @@ const SubTitle = styled.h2<{ $color?: string }>`
 
 const Content = styled.section`
   padding: 15px;
-  background-color: ${({ theme }) => theme.colors.bg};
 `;
 
 const Footer = styled.footer`
@@ -105,8 +129,6 @@ const Footer = styled.footer`
 
   width: 100%;
   height: 40px;
-
-  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 const ToggleButton = styled.button`

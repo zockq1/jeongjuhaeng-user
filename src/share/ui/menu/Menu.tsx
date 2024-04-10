@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
+import { media } from '@/theme/theme';
+
 import MenuGroup from './MenuGroup';
 import MenuItem from './MenuItem';
 
@@ -17,11 +19,7 @@ Menu.Group = MenuGroup;
 
 const MenuContainer = styled.ul`
   overflow: hidden scroll;
-
-  width: 100%;
-  height: calc(100vh - 150px);
-
-  background-color: ${({ theme }) => theme.colors.bg};
+  margin: 5px;
 
   &::-webkit-scrollbar {
     width: 18px;
@@ -36,5 +34,17 @@ const MenuContainer = styled.ul`
 
   &::-webkit-scrollbar-track {
     background: transparent;
+  }
+
+  @media ${media.expanded} {
+    height: calc(100vh - 150px);
+  }
+
+  @media ${media.mobile} {
+    height: calc(100vh - 150px);
+    border: 2px solid ${({ theme }) => theme.colors.textBlue};
+    border-radius: 10px;
+
+    background: ${({ theme }) => theme.colors.white};
   }
 `;

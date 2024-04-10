@@ -61,7 +61,7 @@ const CommentContaineer = styled.ul<{ $open: boolean; $color: string }>`
   border-radius: ${({ theme }) => theme.padding.base};
 
   background-color: ${({ theme, $open }) =>
-    $open ? theme.colors.white : 'transparent'};
+    $open ? theme.colors.keywordBg : 'transparent'};
 
   color: ${({ $open }) => ($open ? 'inherit' : 'transparent')};
 

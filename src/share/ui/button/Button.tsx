@@ -16,7 +16,7 @@ const variantStyles = {
     }
   `,
   text: css`
-    color: ${({ theme }) => theme.colors.textBlue};
+    color: inherit;
     font-weight: ${({ theme }) => theme.fontWeight.regular};
   `,
   box: css`
