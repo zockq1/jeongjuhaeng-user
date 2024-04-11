@@ -8,11 +8,11 @@ type Size = 'small' | 'medium' | 'large';
 const variantStyles = {
   textHover: css`
     color: ${({ theme }) => theme.colors.grey};
-    font-weight: ${({ theme }) => theme.fontWeight.light};
+    font-weight: ${({ theme }) => theme.fontWeight.medium};
 
     &:hover {
       color: ${({ theme }) => theme.colors.textBlue};
-      font-weight: ${({ theme }) => theme.fontWeight.regular};
+      font-weight: ${({ theme }) => theme.fontWeight.bold};
     }
   `,
   text: css`
@@ -21,7 +21,7 @@ const variantStyles = {
   `,
   box: css`
     padding: ${({ theme }) => theme.padding.small};
-    border: ${({ theme }) => `1px solid ${theme.colors.lightGrey}`};
+    border: 1px solid ${({ theme }) => theme.colors.lightGrey};
     border-radius: 10px;
     box-shadow: ${({ theme }) => theme.shadow.defaultShadow};
 
@@ -62,7 +62,7 @@ const ButtonContainer = styled.button<StyledButtonProps>`
     $isActive &&
     css`
       color: ${({ theme }) => theme.colors.textBlue};
-      font-weight: ${({ theme }) => theme.fontWeight.regular};
+      font-weight: ${({ theme }) => theme.fontWeight.bold};
     `}
 `;
 

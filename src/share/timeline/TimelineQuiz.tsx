@@ -180,8 +180,6 @@ export default function TimelineQuiz({
     onFinish,
   ]);
 
-  console.log(nextDateList[0]);
-
   const handleSelect = (select: Select, index: number) => {
     if (select.isWrong) return;
 

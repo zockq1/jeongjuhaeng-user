@@ -34,7 +34,6 @@ export default function JJHTopicList() {
               const keywordList =
                 topicList?.find((topic) => topic.title === title)
                   ?.keywordList || [];
-              console.log(contentNumber);
 
               if (content === 'CHAPTER_COMPLETE_QUESTION') {
                 return (

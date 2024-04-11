@@ -20,6 +20,7 @@ const MobileHeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   position: fixed;
+  top: 0;
   left: 0;
   z-index: 100;
 

@@ -1,46 +1,28 @@
 import Header from '@/share/layout/header';
+import MobileHeader from '@/share/layout/header/MobileHeader';
 import Layout from '@/share/layout/Layout';
-import ContentBox from '@/share/ui/content-box/ContentBox';
-import Keyword from '@/share/ui/keyword/Keyword';
-import Menu from '@/share/ui/menu/Menu';
-import { useGetTimelineQuery } from '@/store/api/timelineApi';
+import { Mobile } from '@/share/layout/Responsive';
+
+import StaggerTestimonials from './_component/CardList';
+import Ribbon from './_component/Ribbon';
+import Title from './_component/Title';
 
 export default function HomePage() {
-  const { data: dateList } = useGetTimelineQuery(14);
-  const a = new Array(100).fill(0).map((_, index) => {
-    return index + 1 + '번 메뉴';
-  });
-  const b = new Array(5).fill(0).map((_, index) => {
-    return index + 1 + '번 보조 메뉴';
-  });
-
-  if (!dateList) return <></>;
-
   return (
-    <Layout>
+    <>
       <Header />
-      <Layout.Left>
-        <Menu>
-          <Menu.Group title="asd" length={b.length}>
-            {b.map((menu, index) => (
-              <Menu.Item key={menu} color="black" selected={index === 1}>
-                {menu}
-              </Menu.Item>
-            ))}
-          </Menu.Group>
-          {a.map((menu, index) => (
-            <Menu.Item key={menu} color="black" selected={index === 1}>
-              {menu}
-            </Menu.Item>
-          ))}
-        </Menu>
-      </Layout.Left>
-      <Layout.Main>
-        <ContentBox title="고조선" subTitle="BC 2333 ~ BC 108">
-          <Keyword comment="설명1.설명2">8조법</Keyword>
-        </ContentBox>
-      </Layout.Main>
-      <Layout.Right>asd</Layout.Right>
-    </Layout>
+      <Title />
+      <StaggerTestimonials />
+      <Ribbon />
+    </>
+    // <Layout>
+    //   <Header />
+    //   <Layout.Left></Layout.Left>
+    //   <Layout.Full>
+    //     <StaggerTestimonials />
+    //     <Ribbon />
+    //   </Layout.Full>
+    //   <Layout.Right></Layout.Right>
+    // </Layout>
   );
 }

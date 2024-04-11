@@ -86,7 +86,6 @@ const KeywordContainer = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.large};
 
   cursor: pointer;
-  user-select: none;
 
   word-break: keep-all;
 `;

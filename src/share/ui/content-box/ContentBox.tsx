@@ -86,8 +86,6 @@ const ContentBoxContainer = styled.article<{ $color?: string }>`
 
   color: ${({ theme, $color }) => ($color ? $color : theme.colors.textBlue)};
 
-  user-select: none;
-
   div.icon {
     position: absolute;
     top: 50%;

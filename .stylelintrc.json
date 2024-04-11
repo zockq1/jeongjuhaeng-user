@@ -10,6 +10,7 @@
     "media-query-no-invalid": null,
     "no-invalid-double-slash-comments": null,
     "custom-property-empty-line-before": null,
-    "font-family-no-missing-generic-family-keyword": null
+    "font-family-no-missing-generic-family-keyword": null,
+    "value-keyword-case": null
   }
 }

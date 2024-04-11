@@ -21,6 +21,7 @@ function NavigationBar() {
         onClick={() => navigate('/jeong-ju-haeng')}
         active={location.pathname.includes('/jeong-ju-haeng')}
         variant="textHover"
+        size="large"
       >
         정주행
       </Navigation>
@@ -28,6 +29,7 @@ function NavigationBar() {
         onClick={() => navigate('/learning')}
         active={location.pathname.includes('/learning')}
         variant="textHover"
+        size="large"
       >
         단원별
       </Navigation>
@@ -35,6 +37,7 @@ function NavigationBar() {
         onClick={() => navigate('/timeline-list')}
         active={location.pathname === '/timeline'}
         variant="textHover"
+        size="large"
       >
         연표
       </Navigation>

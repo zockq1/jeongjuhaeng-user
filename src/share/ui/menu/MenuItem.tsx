@@ -62,6 +62,7 @@ const MenuItemContainer = styled.li<{
 
   font-weight: ${({ theme }) => theme.fontWeight.medium};
   font-size: ${({ theme }) => theme.fontSizes.small};
+  line-height: 120%;
 
   cursor: ${({ $isLock }) => ($isLock ? 'not-allowed' : 'pointer')};
 

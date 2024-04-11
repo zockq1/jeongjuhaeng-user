@@ -33,6 +33,10 @@ function Main({ children }: LayoutProps) {
   return <MainContainer>{children}</MainContainer>;
 }
 
+function Full({ children }: LayoutProps) {
+  return <FullContainer>{children}</FullContainer>;
+}
+
 const LayoutContainer = styled.div`
   display: grid;
   position: relative;
@@ -46,21 +50,21 @@ const LayoutContainer = styled.div`
     grid-template:
       'header' 65px
       '   .  ' minmax(calc(100vh - 65px), auto)
-      'footer' 90px;
+      'footer' 0;
   }
 
   @media ${media.tablet} {
     grid-template:
       'header header' 90px
       '   .     .   ' minmax(calc(100vh - 90px), auto)
-      'footer footer' 90px / 280px minmax(400px, 700px);
+      'footer footer' 0 / 280px minmax(400px, 700px);
   }
 
   @media ${media.desktop} {
     grid-template:
       'header header header' 90px
       '   .     .      .   ' minmax(calc(100vh - 90px), auto)
-      'footer footer footer' 90px / 280px minmax(400px, 700px) 280px;
+      'footer footer footer' 0 / 280px minmax(400px, 700px) 280px;
   }
 `;
 
@@ -100,8 +104,21 @@ const MainContainer = styled.div`
   }
 `;
 
+const FullContainer = styled.div`
+  @media ${media.mobile} {
+    grid-row: 2/3;
+    overflow-x: hidden;
+  }
+
+  @media ${media.expanded} {
+    grid-column: 1/4;
+    grid-row: 2/3;
+  }
+`;
+
 Layout.Left = Left;
 Layout.Right = Right;
 Layout.Main = Main;
+Layout.Full = Full;
 
 export default Layout;

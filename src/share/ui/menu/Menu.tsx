@@ -41,7 +41,6 @@ const MenuContainer = styled.ul`
   }
 
   @media ${media.mobile} {
-    height: calc(100vh - 150px);
     border: 2px solid ${({ theme }) => theme.colors.textBlue};
     border-radius: 10px;
 
