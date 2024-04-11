@@ -1,7 +1,4 @@
 import Header from '@/share/layout/header';
-import MobileHeader from '@/share/layout/header/MobileHeader';
-import Layout from '@/share/layout/Layout';
-import { Mobile } from '@/share/layout/Responsive';
 
 import StaggerTestimonials from './_component/CardList';
 import Ribbon from './_component/Ribbon';
@@ -15,14 +12,5 @@ export default function HomePage() {
       <StaggerTestimonials />
       <Ribbon />
     </>
-    // <Layout>
-    //   <Header />
-    //   <Layout.Left></Layout.Left>
-    //   <Layout.Full>
-    //     <StaggerTestimonials />
-    //     <Ribbon />
-    //   </Layout.Full>
-    //   <Layout.Right></Layout.Right>
-    // </Layout>
   );
 }
