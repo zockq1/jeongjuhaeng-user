@@ -16,6 +16,8 @@ import { persistor, store } from '@/store/store';
 import theme from '@/theme/theme';
 
 import App from './App';
+import PrivacyPage from './app/auth/PrivacyPage';
+import OptionPage from './app/home/OptionPage';
 import JJHChapterQuizPage from './app/jjh/JJHChapterQuizPage';
 import JJHListPage from './app/jjh/JJHListPage';
 import JJHTimelinePage from './app/jjh/JJHTimelinePage';
@@ -32,10 +34,13 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: '', element: <HomePage /> },
+      { path: '/option', element: <OptionPage /> },
+      { path: '/option/privacy', element: <PrivacyPage /> },
       {
         path: '/oauth/kakao/login',
         element: <KakaoLoginPage />,
       },
+
       {
         path: '/oauth/naver/login',
         element: <NaverLoginPage />,

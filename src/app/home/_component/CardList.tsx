@@ -104,7 +104,7 @@ function MenuCard({ position, menu, handleMove }: TestimonialProps) {
   const isMobile = useMediaQuery({ maxWidth: 640 });
   const isActive = position === 0;
   const cardSize = useMemo(() => {
-    return isMobile ? 250 : 365;
+    return isMobile ? 240 : 365;
   }, [isMobile]);
   const { imgSrc, title, to, button, description } = menu;
 

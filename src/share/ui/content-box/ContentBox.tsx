@@ -77,6 +77,7 @@ const ContentBoxContainer = styled.article<{ $color?: string }>`
   overflow: hidden;
   position: relative;
 
+  width: 100%;
   margin: 5px;
   border: 2px solid
     ${({ theme, $color }) => ($color ? $color : theme.colors.textBlue)};

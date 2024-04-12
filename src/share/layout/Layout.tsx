@@ -105,6 +105,9 @@ const MainContainer = styled.div`
 `;
 
 const FullContainer = styled.div`
+  position: relative;
+  padding: 10px;
+
   @media ${media.mobile} {
     grid-row: 2/3;
     overflow-x: hidden;
