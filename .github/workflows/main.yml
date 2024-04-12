@@ -27,12 +27,12 @@ jobs:
       - name: .env 설정
         run: |
           echo "PORT=${{ secrets.PORT }}" >> .env
-          echo "REACT_APP_API_URL=${{ secrets.VITE_API_URL }}" >> .env
-          echo "REACT_APP_IP=${{ secrets.VITE_IP }}" >> .env
-          echo "REACT_APP_KAKAO_KEY=${{ secrets.VITE_KAKAO_KEY }}" >> .env
-          echo "REACT_APP_NAVER_KEY=${{ secrets.VITE_NAVER_KEY }}" >> .env
-          echo "REACT_APP_PROTOCOL=${{ secrets.VITE_PROTOCOL }}" >> .env
-          echo "REACT_APP_URL=${{ secrets.VITE_URL }}" >> .env
+          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> .env
+          echo "VITE_IP=${{ secrets.VITE_IP }}" >> .env
+          echo "VITE_KAKAO_KEY=${{ secrets.VITE_KAKAO_KEY }}" >> .env
+          echo "VITE_NAVER_KEY=${{ secrets.VITE_NAVER_KEY }}" >> .env
+          echo "VITE_PROTOCOL=${{ secrets.VITE_PROTOCOL }}" >> .env
+          echo "VITE_URL=${{ secrets.VITE_URL }}" >> .env
 
       - name: 리액트 빌드
         run: |
