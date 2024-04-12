@@ -34,12 +34,11 @@ const LayoutContainer = styled.div`
   width: 100%;
 
   @media ${media.mobile} {
-    width: 100%;
     grid-template:
       'navigation ' auto
       'description' auto
       'choice     ' auto
-      'button     ' auto;
+      'button     ' auto / 100%;
   }
 
   @media ${media.expanded} {

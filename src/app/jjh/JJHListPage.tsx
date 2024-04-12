@@ -1,6 +1,7 @@
 import Header from '@/share/layout/header';
 import Layout from '@/share/layout/Layout';
 import { Mobile } from '@/share/layout/Responsive';
+import Title from '@/share/layout/Title';
 
 import JJHSideMenu from './_component/JJHSideMenu';
 
@@ -13,6 +14,7 @@ export default function JJHListPage() {
       </Layout.Left>
       <Layout.Main>
         <Mobile>
+          <Title>정주행 목록</Title>
           <JJHSideMenu />
         </Mobile>
       </Layout.Main>

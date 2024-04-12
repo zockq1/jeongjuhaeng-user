@@ -1,11 +1,14 @@
+import useQuesryString from '@/share/hook/useQueryString';
 import Header from '@/share/layout/header';
 import Layout from '@/share/layout/Layout';
+import Title from '@/share/layout/Title';
 
 import TopicAnchor from '../topic/_component/TopicAnchor';
 import JJHSideMenu from './_component/JJHSideMenu';
 import JJHTimelineList from './_component/JJHTimelineList';
 
 export default function JJHTimelinePage() {
+  const { title } = useQuesryString();
   return (
     <Layout>
       <Header />
@@ -13,6 +16,7 @@ export default function JJHTimelinePage() {
         <JJHSideMenu />
       </Layout.Left>
       <Layout.Main>
+        <Title>정주행 - {title}</Title>
         <JJHTimelineList />
       </Layout.Main>
       <Layout.Right>

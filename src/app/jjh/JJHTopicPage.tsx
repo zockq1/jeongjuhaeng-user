@@ -1,11 +1,14 @@
+import useQuesryString from '@/share/hook/useQueryString';
 import Header from '@/share/layout/header';
 import Layout from '@/share/layout/Layout';
+import Title from '@/share/layout/Title';
 
 import TopicAnchor from '../topic/_component/TopicAnchor';
 import JJHSideMenu from './_component/JJHSideMenu';
 import JJHTopicList from './_component/JJHTopicList';
 
 export default function JJHTopicPage() {
+  const { title } = useQuesryString();
   return (
     <Layout>
       <Header />
@@ -13,6 +16,7 @@ export default function JJHTopicPage() {
         <JJHSideMenu />
       </Layout.Left>
       <Layout.Main>
+        <Title>정주행 - {title}</Title>
         <JJHTopicList />
       </Layout.Main>
       <Layout.Right>

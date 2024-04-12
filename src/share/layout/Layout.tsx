@@ -50,7 +50,7 @@ const LayoutContainer = styled.div`
     grid-template:
       'header' 65px
       '   .  ' minmax(calc(100vh - 65px), auto)
-      'footer' 0;
+      'footer' 0/100%;
   }
 
   @media ${media.tablet} {

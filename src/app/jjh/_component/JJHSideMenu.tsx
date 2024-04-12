@@ -70,7 +70,7 @@ export default function JJHSideMenu() {
             state: state,
             onClick: () =>
               navigate(
-                `/jeong-ju-haeng/timeline?jjh=${jjhNumber}&timeline=${id}&title=${title}&date=${getDate(startDate).year} ~ ${getDate(endDate).year}`,
+                `/jeong-ju-haeng/timeline?jjh=${jjhNumber}&timeline=${id}&title=${title} 연표&date=${getDate(startDate).year} ~ ${getDate(endDate).year}`,
               ),
           });
         }

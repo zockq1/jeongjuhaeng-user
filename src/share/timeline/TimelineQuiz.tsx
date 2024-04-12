@@ -277,8 +277,4 @@ const TimelineQuizContainer = styled.div`
   border-radius: 10px;
 
   background-color: ${({ theme }) => theme.colors.white};
-
-  @media ${media.mobile} {
-    margin-top: 60px;
-  }
 `;
