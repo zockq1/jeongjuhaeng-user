@@ -114,7 +114,7 @@ const ItemContainer = styled.span`
 
   padding: 16px;
 
-  color: black;
+  color: ${({ theme }) => theme.colors.textBlue};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   font-size: ${({ theme }) => theme.fontSizes.xxl};
   white-space: nowrap;
@@ -125,7 +125,7 @@ const ItemContainer = styled.span`
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #e5e7eb;
+    background-color: ${({ theme }) => theme.colors.lightGrey};
   }
 `;
 
