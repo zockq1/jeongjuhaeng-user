@@ -15,7 +15,7 @@ export default function LearningTimelinePage() {
         <TimelineSideMenu />
       </Layout.Left>
       <Layout.Main>
-        <Title>{title}</Title>
+        <Title>연표 - {title}</Title>
         <TimelineList />
       </Layout.Main>
       <Layout.Right></Layout.Right>

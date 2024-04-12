@@ -33,8 +33,8 @@ function Main({ children }: LayoutProps) {
   return <MainContainer>{children}</MainContainer>;
 }
 
-function Full({ children }: LayoutProps) {
-  return <FullContainer>{children}</FullContainer>;
+function Center({ children }: LayoutProps) {
+  return <CenterContainer>{children}</CenterContainer>;
 }
 
 const LayoutContainer = styled.div`
@@ -104,24 +104,21 @@ const MainContainer = styled.div`
   }
 `;
 
-const FullContainer = styled.div`
+const CenterContainer = styled.div`
   position: relative;
+
+  max-width: 800px;
+  margin: 0 auto;
   padding: 10px;
 
-  @media ${media.mobile} {
-    grid-row: 2/3;
-    overflow-x: hidden;
-  }
+  grid-column: 1/4;
 
-  @media ${media.expanded} {
-    grid-column: 1/4;
-    grid-row: 2/3;
-  }
+  grid-row: 2/3;
 `;
 
 Layout.Left = Left;
 Layout.Right = Right;
 Layout.Main = Main;
-Layout.Full = Full;
+Layout.Center = Center;
 
 export default Layout;

@@ -127,7 +127,7 @@ function MenuCard({ position, menu, handleMove }: TestimonialProps) {
         damping: 50,
       }}
     >
-      <img src={imgSrc} />
+      <img src={imgSrc} alt={title} />
       <h1>{title}</h1>
       <p>{description}</p>
       <Button

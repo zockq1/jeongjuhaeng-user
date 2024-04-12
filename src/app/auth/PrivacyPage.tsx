@@ -7,9 +7,9 @@ export default function PrivacyPage() {
   return (
     <Layout>
       <Header />
-      <Layout.Full>
+      <Layout.Center>
         <PrivacyPolicy />
-      </Layout.Full>
+      </Layout.Center>
     </Layout>
   );
 }

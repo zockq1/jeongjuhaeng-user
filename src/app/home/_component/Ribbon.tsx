@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { media } from '@/theme/theme';
@@ -25,10 +24,10 @@ const RibbonFlex = styled.div`
   display: flex;
   overflow: hidden;
 
-  border-top: 4px solid #1f2937;
-  border-bottom: 4px solid #1f2937;
+  border-top: 4px solid ${({ theme }) => theme.colors.textBlue};
+  border-bottom: 4px solid ${({ theme }) => theme.colors.textBlue};
 
-  background-color: #f3f4f6;
+  background-color: ${({ theme }) => theme.colors.bg};
 `;
 
 export default function Ribbon() {
@@ -39,58 +38,58 @@ export default function Ribbon() {
           transform: 'translateY(80%) rotate(7deg) scale(1.1)',
         }}
       >
-        <TranslateWrapper reverse>
-          <LogoItemsTop />
-        </TranslateWrapper>
-        <TranslateWrapper reverse>
-          <LogoItemsTop />
-        </TranslateWrapper>
-        <TranslateWrapper reverse>
-          <LogoItemsTop />
-        </TranslateWrapper>
+        <Translate reverse>
+          <ItemsTop />
+        </Translate>
+        <Translate reverse>
+          <ItemsTop />
+        </Translate>
+        <Translate reverse>
+          <ItemsTop />
+        </Translate>
       </RibbonFlex>
       <RibbonFlex
         style={{
           transform: 'translateY(-20%) rotate(-7deg) scale(1.1)',
         }}
       >
-        <TranslateWrapper>
-          <LogoItemsMiddle />
-        </TranslateWrapper>
-        <TranslateWrapper>
-          <LogoItemsMiddle />
-        </TranslateWrapper>
-        <TranslateWrapper>
-          <LogoItemsMiddle />
-        </TranslateWrapper>
+        <Translate>
+          <ItemsMiddle />
+        </Translate>
+        <Translate>
+          <ItemsMiddle />
+        </Translate>
+        <Translate>
+          <ItemsMiddle />
+        </Translate>
       </RibbonFlex>
       <RibbonFlex
         style={{
           transform: 'translateY(70%) rotate(0deg) scale(1.1)',
         }}
       >
-        <TranslateWrapper reverse>
-          <LogoItemsBottom />
-        </TranslateWrapper>
-        <TranslateWrapper reverse>
-          <LogoItemsBottom />
-        </TranslateWrapper>
-        <TranslateWrapper reverse>
-          <LogoItemsBottom />
-        </TranslateWrapper>
+        <Translate reverse>
+          <ItemsBottom />
+        </Translate>
+        <Translate reverse>
+          <ItemsBottom />
+        </Translate>
+        <Translate reverse>
+          <ItemsBottom />
+        </Translate>
       </RibbonFlex>
     </RibbonContainer>
   );
 }
 
-const StyledTranslateWrapper = styled(motion.div)`
+const TranslateContainer = styled(motion.div)`
   display: flex;
 
   padding-right: 2px;
   padding-left: 2px;
 `;
 
-const TranslateWrapper = ({
+const Translate = ({
   children,
   reverse,
 }: {
@@ -98,101 +97,83 @@ const TranslateWrapper = ({
   reverse?: boolean;
 }) => {
   return (
-    <StyledTranslateWrapper
+    <TranslateContainer
       initial={{ translateX: reverse ? '-100%' : '0%' }}
       animate={{ translateX: reverse ? '0%' : '-100%' }}
       transition={{ duration: 50, repeat: Infinity, ease: 'linear' }}
     >
       {children}
-    </StyledTranslateWrapper>
+    </TranslateContainer>
   );
 };
 
-const StyledLogoItem = styled.a`
+const ItemContainer = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
 
-  padding: 1rem;
+  padding: 16px;
 
   color: black;
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  font-size: ${({ theme }) => theme.fontSizes.xxl};
+  white-space: nowrap;
 
-  gap: 1rem;
   text-decoration: none;
+
+  text-transform: uppercase;
   transition: background-color 0.3s;
 
   &:hover {
     background-color: #e5e7eb;
   }
-
-  & > span {
-    font-weight: 600;
-    font-size: 1.5rem;
-    white-space: nowrap;
-
-    text-transform: uppercase;
-  }
 `;
 
-const LogoItem = ({ Icon, name }: { Icon: ReactNode; name: string }) => {
-  return (
-    <StyledLogoItem>
-      {Icon}
-      <span
-        style={{
-          whiteSpace: 'nowrap',
-          fontSize: '1.5rem',
-          fontWeight: '600',
-          textTransform: 'uppercase',
-        }}
-      >
-        {name}
-      </span>
-    </StyledLogoItem>
-  );
+const Item = ({ name }: { name: string }) => {
+  return <ItemContainer>{name}</ItemContainer>;
 };
 
-const LogoItemsTop = () => (
+const ItemsTop = () => (
   <>
-    <LogoItem Icon={null} name="구석기시대" />
-    <LogoItem Icon={null} name="청동기 시대" />
-    <LogoItem Icon={null} name="고구려" />
-    <LogoItem Icon={null} name="백제" />
-    <LogoItem Icon={null} name="발해" />
-    <LogoItem Icon={null} name="후삼국 시대" />
-    <LogoItem Icon={null} name="고려" />
-    <LogoItem Icon={null} name="조선" />
-    <LogoItem Icon={null} name="개항기" />
-    <LogoItem Icon={null} name="일제강점기" />
+    <Item name="구석기시대" />
+    <Item name="청동기 시대" />
+    <Item name="고구려" />
+    <Item name="백제" />
+    <Item name="발해" />
+    <Item name="후삼국 시대" />
+    <Item name="고려" />
+    <Item name="조선" />
+    <Item name="개항기" />
+    <Item name="일제강점기" />
   </>
 );
 
-const LogoItemsMiddle = () => (
+const ItemsMiddle = () => (
   <>
-    <LogoItem Icon={null} name="서경 천도 운동" />
-    <LogoItem Icon={null} name="무신 정권" />
-    <LogoItem Icon={null} name="중서문하성" />
-    <LogoItem Icon={null} name="몽골의 침입" />
-    <LogoItem Icon={null} name="향도" />
-    <LogoItem Icon={null} name="임술 농민 봉기" />
-    <LogoItem Icon={null} name="성균관" />
-    <LogoItem Icon={null} name="병인박해" />
-    <LogoItem Icon={null} name="조선 의용군" />
-    <LogoItem Icon={null} name="3선 개헌" />
+    <Item name="서경 천도 운동" />
+    <Item name="무신 정권" />
+    <Item name="중서문하성" />
+    <Item name="몽골의 침입" />
+    <Item name="향도" />
+    <Item name="임술 농민 봉기" />
+    <Item name="성균관" />
+    <Item name="병인박해" />
+    <Item name="조선 의용군" />
+    <Item name="3선 개헌" />
   </>
 );
 
-const LogoItemsBottom = () => (
+const ItemsBottom = () => (
   <>
-    <LogoItem Icon={null} name="침류왕" />
-    <LogoItem Icon={null} name="신문왕" />
-    <LogoItem Icon={null} name="무왕" />
-    <LogoItem Icon={null} name="태조 왕건" />
-    <LogoItem Icon={null} name="이자겸" />
-    <LogoItem Icon={null} name="공민왕" />
-    <LogoItem Icon={null} name="세종대왕" />
-    <LogoItem Icon={null} name="흥선대원군" />
-    <LogoItem Icon={null} name="신채호" />
-    <LogoItem Icon={null} name="이승만" />
+    <Item name="침류왕" />
+    <Item name="신문왕" />
+    <Item name="무왕" />
+    <Item name="태조 왕건" />
+    <Item name="이자겸" />
+    <Item name="공민왕" />
+    <Item name="세종대왕" />
+    <Item name="흥선대원군" />
+    <Item name="신채호" />
+    <Item name="이승만" />
   </>
 );
