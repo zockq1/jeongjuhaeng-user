@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 import { media } from '@/theme/theme';
 
-import { Expanded } from '../layout/Responsive';
-
 interface TimelineBoardProps {
   nextDate: string;
   total: number;
@@ -19,9 +17,7 @@ export default function TimelineBoard({
 }: TimelineBoardProps) {
   return (
     <>
-      <Expanded>
-        <BoardBlock />
-      </Expanded>
+      <BoardBlock />
       <Board>
         <div className="next">{nextDate}</div>
         <div className="count">{`배치: ${played}/${total}`}</div>
@@ -38,14 +34,19 @@ const BoardBlock = styled.div`
   z-index: 99;
 
   width: 100%;
-  height: 20px;
+  height: 30px;
 
   background-color: ${({ theme }) => theme.colors.bg};
+
+  @media ${media.mobile} {
+    top: 60px;
+    height: 50px;
+  }
 `;
 
 const Board = styled.div`
   display: grid;
-  z-index: 98;
+  z-index: 100;
 
   border: 2px solid ${({ theme }) => theme.colors.textBlue};
   border-radius: 10px;
@@ -57,17 +58,12 @@ const Board = styled.div`
     'next wrong' 1fr / 80% 20%;
 
   @media ${media.mobile} {
-    position: fixed;
-    top: 60px;
-    left: 0;
+    position: sticky;
+    top: 100px;
 
-    width: 100%;
-    height: 60px;
-    border-top: 0;
-    border-right: 0;
-    border-bottom: 2px solid ${({ theme }) => theme.colors.textBlue};
-    border-left: 0;
-    border-radius: 0;
+    height: 70px;
+    margin: 5px;
+    margin-bottom: 20px;
   }
 
   @media ${media.expanded} {
@@ -75,8 +71,7 @@ const Board = styled.div`
     top: 100px;
 
     height: 70px;
-    margin: 5px;
-    margin-bottom: 20px;
+    margin: 0 5px 20px;
   }
 
   & > div.next {

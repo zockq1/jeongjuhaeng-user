@@ -11,6 +11,8 @@ const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 100;
 
   margin: 10px 5px 20px;
   padding: 10px;

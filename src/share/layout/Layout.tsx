@@ -48,7 +48,7 @@ const LayoutContainer = styled.div`
   @media ${media.mobile} {
     width: 100%;
     grid-template:
-      'header' 65px
+      'header' 61px
       '   .  ' minmax(calc(100vh - 65px), auto)
       'footer' 0/100%;
   }

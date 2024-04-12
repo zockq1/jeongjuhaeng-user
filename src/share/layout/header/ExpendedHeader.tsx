@@ -13,7 +13,7 @@ const HeaderContainer = styled.header`
   top: 0;
   right: 0;
   left: 0;
-  z-index: 99;
+  z-index: 101;
 
   width: 100%;
   height: 80px;

@@ -7,7 +7,6 @@ import Timeline from '@/share/timeline/Timeline';
 import Icon from '@/share/ui/icon/Icon';
 import { useUpdateTimelineWrongCounterMutation } from '@/store/api/timelineApi';
 import { RootState } from '@/store/store';
-import { media } from '@/theme/theme';
 import { TimeLineItemModel } from '@/types/timelinetypes';
 
 import TimelineBoard from './TimelineBoard';

@@ -22,7 +22,7 @@ const MobileHeaderContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 101;
 
   width: 100%;
   padding: 15px 24px;
