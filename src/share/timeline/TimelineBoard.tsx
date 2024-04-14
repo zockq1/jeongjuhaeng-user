@@ -55,7 +55,7 @@ const Board = styled.div`
 
   grid-template:
     'next count' 1fr
-    'next wrong' 1fr / 80% 20%;
+    'next wrong' 1fr / 70% 30%;
 
   @media ${media.mobile} {
     position: sticky;
@@ -63,15 +63,14 @@ const Board = styled.div`
 
     height: 70px;
     margin: 5px;
-    margin-bottom: 20px;
   }
 
   @media ${media.expanded} {
     position: sticky;
     top: 100px;
 
-    height: 70px;
-    margin: 0 5px 20px;
+    height: 60px;
+    margin: 0 5px 15px;
   }
 
   & > div.next {
@@ -85,8 +84,10 @@ const Board = styled.div`
 
     font-weight: ${({ theme }) => theme.fontWeight.medium};
     font-size: ${({ theme }) => theme.fontSizes.large};
+    text-align: center;
 
     grid-area: next;
+    word-break: keep-all;
   }
 
   & > div.count {
@@ -98,6 +99,7 @@ const Board = styled.div`
     height: 100%;
 
     color: ${({ theme }) => theme.colors.blue};
+    text-align: center;
 
     grid-area: count;
   }

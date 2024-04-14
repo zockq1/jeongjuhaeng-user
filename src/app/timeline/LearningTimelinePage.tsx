@@ -2,6 +2,7 @@ import useQuesryString from '@/share/hook/useQueryString';
 import Header from '@/share/layout/header';
 import Layout from '@/share/layout/Layout';
 import Title from '@/share/layout/Title';
+import ToggleButton from '@/share/ui/button/ToggleButton';
 
 import TimelineList from './_component/TimelineList';
 import TimelineSideMenu from './_component/TimelineSideMenu';
@@ -16,6 +17,7 @@ export default function LearningTimelinePage() {
       </Layout.Left>
       <Layout.Main>
         <Title>연표 - {title}</Title>
+        <ToggleButton />
         <TimelineList />
       </Layout.Main>
       <Layout.Right></Layout.Right>

@@ -4,6 +4,7 @@ import { Content } from '@/types/jjhTypes';
 import { TopicCategory } from '@/types/topicTypes';
 
 import AngleDown from './svg/angle-down.svg?react';
+import AngleLeft from './svg/angle-left.svg?react';
 import AngleRight from './svg/angle-right.svg?react';
 import Fail from './svg/ban.svg?react';
 import Office from './svg/bank.svg?react';
@@ -60,6 +61,7 @@ import Organization from './svg/users-alt.svg?react';
 export type IconType =
   | ''
   | 'angleRight'
+  | 'angleLeft'
   | 'angleDown'
   | 'run'
   | 'home'
@@ -141,6 +143,7 @@ function Icon({ icon, size = 'inherit', color = 'inherit' }: Iconprops) {
     //아이콘
     angleDown: AngleDown,
     angleRight: AngleRight,
+    angleLeft: AngleLeft,
     run: Run,
     home: Home,
     questionSquare: QuestionSquare,

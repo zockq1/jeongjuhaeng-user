@@ -2,6 +2,7 @@ import useQuesryString from '@/share/hook/useQueryString';
 import Header from '@/share/layout/header';
 import Layout from '@/share/layout/Layout';
 import Title from '@/share/layout/Title';
+import ToggleButton from '@/share/ui/button/ToggleButton';
 
 import ChapterSideMenu from './_component/ChapterSideMenu';
 import TopicAnchor from './_component/TopicAnchor';
@@ -17,6 +18,7 @@ export default function LearningTopicPage() {
       </Layout.Left>
       <Layout.Main>
         <Title>단원 - {title}</Title>
+        <ToggleButton />
         <TopicList />
       </Layout.Main>
       <Layout.Right>

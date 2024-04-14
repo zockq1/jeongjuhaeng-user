@@ -52,7 +52,7 @@ export default function MenuGroup({
       </MenuGroupTitle>
       <MenuItemList
         className={isOpen ? 'selected' : ''}
-        $maxHeight={42 * length}
+        $maxHeight={45 * length}
       >
         {children}
       </MenuItemList>

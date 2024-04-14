@@ -2,6 +2,7 @@ import useQuesryString from '@/share/hook/useQueryString';
 import Header from '@/share/layout/header';
 import Layout from '@/share/layout/Layout';
 import Title from '@/share/layout/Title';
+import ToggleButton from '@/share/ui/button/ToggleButton';
 
 import TopicAnchor from '../topic/_component/TopicAnchor';
 import JJHSideMenu from './_component/JJHSideMenu';
@@ -17,6 +18,7 @@ export default function JJHTopicPage() {
       </Layout.Left>
       <Layout.Main>
         <Title>정주행 - {title}</Title>
+        <ToggleButton />
         <JJHTopicList />
       </Layout.Main>
       <Layout.Right>

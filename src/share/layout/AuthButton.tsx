@@ -46,9 +46,9 @@ export default function AuthButton() {
             </Content>
           }
         >
-          <button>
+          <IconButton>
             <Icon icon="user" size={25} color={theme?.colors.textBlue} />
-          </button>
+          </IconButton>
         </Popover>
       ) : (
         <>
@@ -130,4 +130,10 @@ const LogginImageBackground = styled.div<{
 const LogginImage = styled.img`
   width: 25px;
   height: 25px;
+`;
+
+const IconButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

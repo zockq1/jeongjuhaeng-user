@@ -15,9 +15,9 @@ export default function SlideMenu() {
 
   return (
     <>
-      <button onClick={toggleMenu}>
+      <IconButton onClick={toggleMenu}>
         <Icon icon="menu" size={25} />
-      </button>
+      </IconButton>
       <DarkOverlay $isVisible={isMenuOpen} onClick={closeMenu} />
       <SlidingMenu className={isMenuOpen ? '' : 'closed'}>
         <MenuItem to="/jeong-ju-haeng">
@@ -107,4 +107,10 @@ const MenuItem = styled(Link)`
 
   font-weight: ${({ theme }) => theme.fontWeight.light};
   font-size: ${({ theme }) => theme.fontSizes.base};
+`;
+
+const IconButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
