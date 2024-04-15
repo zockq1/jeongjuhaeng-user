@@ -72,11 +72,8 @@ const DescriptionContainer = styled.ul`
 
   min-height: 240px;
   padding: ${({ theme }) => theme.padding.small};
-  border: ${({ theme }) => theme.border.default};
-  border-radius: ${({ theme }) => theme.borderRadius.xxs};
-  box-shadow: ${({ theme }) => theme.shadow.defaultShadow};
 
-  background-color: ${({ theme }) => theme.colors.keywordBg};
+  background-color: ${({ theme }) => theme.colors.bg};
 `;
 
 const Image = styled.img`
@@ -96,7 +93,7 @@ const DescriptionItem = styled.div`
   margin: 10px;
   padding: 10px;
   border: 2px solid ${({ theme }) => theme.colors.textBlue};
-  border-radius: ${({ theme }) => theme.borderRadius.small};
+  border-radius: 10px;
 
   background-color: ${({ theme }) => theme.colors.white};
 

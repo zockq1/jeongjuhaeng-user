@@ -102,11 +102,12 @@ const ResultContainer = styled.ul`
   justify-content: center;
 
   width: 70px;
-  border: ${({ theme }) => theme.border.default};
-  border-radius: ${({ theme }) => theme.borderRadius.xxs};
-  box-shadow: ${({ theme }) => theme.shadow.defaultShadow};
+  border: 2px solid ${({ theme }) => theme.colors.textBlue};
+  border-radius: 10px;
 
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.keywordBg};
+
+  font-weight: ${({ theme }) => theme.fontWeight.medium};
 `;
 
 const ExamNavigation = styled.ul`
@@ -117,11 +118,10 @@ const ExamNavigation = styled.ul`
   width: auto;
   margin-right: 10px;
   padding: 5px 15px;
-  border: ${({ theme }) => theme.border.default};
-  border-radius: ${({ theme }) => theme.borderRadius.xxs};
-  box-shadow: ${({ theme }) => theme.shadow.defaultShadow};
+  border: 2px solid ${({ theme }) => theme.colors.textBlue};
+  border-radius: 10px;
 
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.keywordBg};
 
   -ms-overflow-style: none;
   scrollbar-width: none;

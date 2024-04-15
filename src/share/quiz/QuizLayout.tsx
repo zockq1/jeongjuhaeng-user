@@ -31,7 +31,7 @@ const LayoutContainer = styled.div`
   display: grid;
   position: relative;
 
-  width: 100%;
+  background-color: ${({ theme }) => theme.colors.bg};
 
   @media ${media.mobile} {
     grid-template:

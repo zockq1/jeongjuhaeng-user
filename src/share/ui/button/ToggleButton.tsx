@@ -53,6 +53,7 @@ const Button = styled.button`
   width: 50%;
   height: 100%;
 
+  color: ${({ theme }) => theme.colors.textBlue};
   font-size: ${({ theme }) => theme.fontSizes.base};
 
   font-family: Giants-Regular;

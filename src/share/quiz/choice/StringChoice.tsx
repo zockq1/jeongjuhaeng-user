@@ -60,11 +60,10 @@ const StringChoiceContainer = styled.div<AnswerCheckProps>`
     ${({ theme, $isFinish, $isCorrect }) =>
       $isFinish
         ? $isCorrect
-          ? theme.colors.blue
-          : theme.colors.red
+          ? theme.colors.semiLightBlue
+          : theme.colors.lightRed
         : theme.colors.lightGrey};
-  border-radius: ${({ theme }) => theme.borderRadius.xxs};
-  box-shadow: ${({ theme }) => theme.shadow.defaultShadow};
+  border-radius: 10px;
 
   background-color: ${({ theme }) => theme.colors.keywordBg};
 

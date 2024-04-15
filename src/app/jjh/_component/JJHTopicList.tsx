@@ -12,7 +12,7 @@ import {
   useGetContentListQuery,
 } from '@/store/api/jjhApi';
 
-import QuizButton from '../../quiz/_component/QuizButton';
+import QuizButton from '../../../share/ui/button/QuizButton';
 
 export default function JJHTopicList() {
   const navigate = useNavigate();

@@ -8,7 +8,7 @@ import ContentBox from '@/share/ui/content-box/ContentBox';
 import ContentBoxSkeleton from '@/share/ui/content-box/ContentBoxSkeleton';
 import { useGetTimelineQuery } from '@/store/api/timelineApi';
 
-import QuizButton from '../../quiz/_component/QuizButton';
+import QuizButton from '../../../share/ui/button/QuizButton';
 
 export default function JJHTimelineList() {
   const navigate = useNavigate();

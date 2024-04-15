@@ -6,9 +6,8 @@ const ButtonContainer = styled.div`
 
   width: 100%;
   height: 40px;
-  border: ${({ theme }) => theme.border.default};
-  border-radius: ${({ theme }) => theme.borderRadius.xxs};
-  box-shadow: ${({ theme }) => theme.shadow.defaultShadow};
+  border: 2px solid ${({ theme }) => theme.colors.textBlue};
+  border-radius: 10px;
 
   background-color: ${({ theme }) => theme.colors.keywordBg};
 

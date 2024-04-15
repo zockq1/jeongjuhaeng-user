@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import CheckBox from '@/share/ui/checkbox/Checkbox';
 
 interface AnswerCheckProps {
-  isFinish?: boolean;
-  isCorrect?: boolean;
+  $isFinish?: boolean;
+  $isCorrect?: boolean;
 }
 
 interface ChoiceProps {
@@ -27,14 +27,14 @@ export default function ImageChoice({
   return (
     <ImageChoiceContainer
       onClick={() => handleChoiceClick(choiceKey)}
-      isFinish={isFinish}
-      isCorrect={isCorrect}
+      $isFinish={isFinish}
+      $isCorrect={isCorrect}
     >
       <ImageComment
         src={choice}
         alt="choice"
-        isFinish={isFinish}
-        isCorrect={isCorrect}
+        $isFinish={isFinish}
+        $isCorrect={isCorrect}
       />
       <CheckBox
         id={choiceKey}
@@ -58,11 +58,11 @@ const ImageChoiceContainer = styled.div<AnswerCheckProps>`
   margin-top: 10px;
   padding: 12px;
   border: 1px solid
-    ${({ theme, isFinish, isCorrect }) =>
-      isFinish
-        ? isCorrect
-          ? theme.colors.blue
-          : theme.colors.red
+    ${({ theme, $isFinish, $isCorrect }) =>
+      $isFinish
+        ? $isCorrect
+          ? theme.colors.semiLightBlue
+          : theme.colors.lightRed
         : theme.colors.lightGrey};
   border-radius: 10px;
   box-shadow: ${({ theme }) => theme.shadow.defaultShadow};

@@ -91,7 +91,7 @@ const Date = styled.div`
   padding-left: 8px;
 
   color: ${({ theme }) => theme.colors.textBlue};
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  font-weight: ${({ theme }) => theme.fontWeight.medium};
   font-size: ${({ theme }) => theme.fontSizes.base};
 
   overflow-y: hidden;
