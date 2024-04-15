@@ -1,5 +1,6 @@
 import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
+import ErrorUI from '@/share/state/Error';
 import Timeline from '@/share/timeline/Timeline';
 import ContentBox from '@/share/ui/content-box/ContentBox';
 import ContentBoxSkeleton from '@/share/ui/content-box/ContentBoxSkeleton';
@@ -11,6 +12,7 @@ export default function TimelineList() {
     data: dateList,
     isLoading,
     isError,
+    error,
   } = useGetTimelineQuery(timelineId);
 
   return (
@@ -19,6 +21,9 @@ export default function TimelineList() {
       isLoading={isLoading}
       isError={isError}
       loadingComponent={<ContentBoxSkeleton />}
+      errorComponent={
+        <ErrorUI error={error} message="연표 불러오기에 실패하였습니다." />
+      }
     >
       {(dateList) => (
         <>

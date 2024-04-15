@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
+import ErrorUI from '@/share/state/Error';
 import Icon from '@/share/ui/icon/Icon';
 import Menu from '@/share/ui/menu/Menu';
 import MenuSkeleton from '@/share/ui/menu/MenuSkeleton';
@@ -29,7 +30,7 @@ interface FinalGroup {
 export default function JJHSideMenu() {
   const { jjh: currentJJH } = useQuesryString();
   const navigate = useNavigate();
-  const { data: jjhList, isLoading, isError } = useGetJJHListQuery();
+  const { data: jjhList, isLoading, isError, error } = useGetJJHListQuery();
   const [currentGroup, setCurrentGroup] = useState('');
 
   const groupedByDateComment = useMemo(() => {
@@ -139,6 +140,12 @@ export default function JJHSideMenu() {
       isLoading={isLoading}
       isError={isError}
       loadingComponent={<MenuSkeleton count={8} />}
+      errorComponent={
+        <ErrorUI
+          error={error}
+          message="정주행 목록 불러오기에 실패하였습니다."
+        />
+      }
     >
       {(groupedByDateComment) => (
         <Menu>

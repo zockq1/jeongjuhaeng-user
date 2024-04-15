@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import useQuesryString from '@/share/hook/useQueryString';
 import Quiz from '@/share/quiz/Quiz';
 import Async from '@/share/state/Async';
+import ErrorUI from '@/share/state/Error';
 import { useUpdateProgressMutation } from '@/store/api/jjhApi';
 import { useGetTtoKQuestionQuery } from '@/store/api/questionApi';
 import { RootState } from '@/store/store';
@@ -21,13 +22,24 @@ export default function JJHTopicQuiz() {
     data: TtoKQuestionList,
     isLoading,
     isError,
+    error,
   } = useGetTtoKQuestionQuery(topicTitle, {
     refetchOnMountOrArgChange: true,
   });
   const [updateProgres] = useUpdateProgressMutation();
 
   return (
-    <Async data={TtoKQuestionList} isLoading={isLoading} isError={isError}>
+    <Async
+      data={TtoKQuestionList}
+      isLoading={isLoading}
+      isError={isError}
+      errorComponent={
+        <ErrorUI
+          error={error}
+          message="정주행 문제 불러오기에 실패하였습니다."
+        />
+      }
+    >
       {(quizList) => {
         return (
           <Quiz

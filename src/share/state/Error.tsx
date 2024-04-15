@@ -28,18 +28,18 @@ const Conainer = styled.div`
 `;
 
 interface ErrorProps {
-  error: FetchBaseQueryError | SerializedError;
+  error: FetchBaseQueryError | SerializedError | undefined;
   message: string;
 }
 
 function ErrorUI({ message, error }: ErrorProps) {
   let errorMessage: string = '';
 
-  if ('originalStatus' in error) {
+  if (error === undefined) {
+    errorMessage = message;
+  } else if ('originalStatus' in error) {
     errorMessage = `${error.originalStatus}: ${message}`;
-  }
-
-  if ('status' in error) {
+  } else if ('status' in error) {
     errorMessage = `${error.status}: ${message}`;
   }
 

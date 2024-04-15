@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
+import ErrorUI from '@/share/state/Error';
 import Menu from '@/share/ui/menu/Menu';
 import MenuSkeleton from '@/share/ui/menu/MenuSkeleton';
 import { useGetChapterListQuery } from '@/store/api/chapterApi';
@@ -11,7 +12,12 @@ import { ChapterModel } from '@/types/chapterTypes';
 export default function ChapterSideMenu() {
   const { chapter: currentChapter } = useQuesryString();
   const navigate = useNavigate();
-  const { data: chapterList, isLoading, isError } = useGetChapterListQuery();
+  const {
+    data: chapterList,
+    isLoading,
+    isError,
+    error,
+  } = useGetChapterListQuery();
 
   const groupedByDateComment = useMemo(() => {
     return chapterList?.reduce<{
@@ -37,6 +43,9 @@ export default function ChapterSideMenu() {
       isLoading={isLoading}
       isError={isError}
       loadingComponent={<MenuSkeleton count={8} />}
+      errorComponent={
+        <ErrorUI error={error} message="단원 목록 불러오기에 실패하였습니다." />
+      }
     >
       {(groupedByDateComment) => (
         <Menu>
