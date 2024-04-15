@@ -15,7 +15,6 @@ export default function MobileHeader() {
         {location.pathname !== '/' && <BackButton />}
         <SlideMenu />
       </ButtonList>
-
       <Logo size={18} />
       <AuthButton />
     </MobileHeaderContainer>
@@ -40,6 +39,13 @@ const MobileHeaderContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
 
   grid-template-columns: 1fr 1fr 1fr;
+
+  & > :nth-child(2) {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+  }
 
   & > :nth-child(3) {
     display: flex;

@@ -52,7 +52,7 @@ const LayoutContainer = styled.div`
 const NavigationContainer = styled.nav`
   width: 100%;
   height: 100%;
-  padding: 5px;
+  padding: 0 5px 10px;
 
   grid-area: navigation;
 `;
