@@ -4,6 +4,7 @@ import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
 import Timeline from '@/share/timeline/Timeline';
 import ContentBox from '@/share/ui/content-box/ContentBox';
+import ContentBoxSkeleton from '@/share/ui/content-box/ContentBoxSkeleton';
 import Keyword from '@/share/ui/keyword/Keyword';
 import {
   useGetChapterTopicListQuery,
@@ -23,7 +24,12 @@ export default function JJHTopicList() {
   } = useGetContentListQuery(jjhNumber);
 
   return (
-    <Async data={contentList} isLoading={isLoading} isError={isError}>
+    <Async
+      data={contentList}
+      isLoading={isLoading}
+      isError={isError}
+      loadingComponent={<ContentBoxSkeleton />}
+    >
       {(data) => (
         <>
           {[...data]

@@ -2,6 +2,7 @@ import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
 import Timeline from '@/share/timeline/Timeline';
 import ContentBox from '@/share/ui/content-box/ContentBox';
+import ContentBoxSkeleton from '@/share/ui/content-box/ContentBoxSkeleton';
 import { useGetTimelineQuery } from '@/store/api/timelineApi';
 
 export default function TimelineList() {
@@ -13,7 +14,12 @@ export default function TimelineList() {
   } = useGetTimelineQuery(timelineId);
 
   return (
-    <Async data={dateList} isLoading={isLoading} isError={isError}>
+    <Async
+      data={dateList}
+      isLoading={isLoading}
+      isError={isError}
+      loadingComponent={<ContentBoxSkeleton />}
+    >
       {(dateList) => (
         <>
           <ContentBox

@@ -2,6 +2,7 @@ import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
 import Timeline from '@/share/timeline/Timeline';
 import ContentBox from '@/share/ui/content-box/ContentBox';
+import ContentBoxSkeleton from '@/share/ui/content-box/ContentBoxSkeleton';
 import Keyword from '@/share/ui/keyword/Keyword';
 import { useGetChapterTopicListQuery } from '@/store/api/jjhApi';
 
@@ -14,7 +15,12 @@ export default function TopicList() {
   } = useGetChapterTopicListQuery(chapterNumber);
 
   return (
-    <Async data={topicList} isLoading={isLoading} isError={isError}>
+    <Async
+      data={topicList}
+      isLoading={isLoading}
+      isError={isError}
+      loadingComponent={<ContentBoxSkeleton />}
+    >
       {(data) => (
         <>
           {data.map((topic) => {

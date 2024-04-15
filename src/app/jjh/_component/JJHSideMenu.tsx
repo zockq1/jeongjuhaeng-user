@@ -5,6 +5,7 @@ import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
 import Icon from '@/share/ui/icon/Icon';
 import Menu from '@/share/ui/menu/Menu';
+import MenuSkeleton from '@/share/ui/menu/MenuSkeleton';
 import getColorAndIcon from '@/share/util/getColorAndIcon';
 import getDate from '@/share/util/getDate';
 import { useGetJJHListQuery } from '@/store/api/jjhApi';
@@ -133,7 +134,12 @@ export default function JJHSideMenu() {
   }, [jjhList, navigate, currentJJH]);
 
   return (
-    <Async data={groupedByDateComment} isLoading={isLoading} isError={isError}>
+    <Async
+      data={groupedByDateComment}
+      isLoading={isLoading}
+      isError={isError}
+      loadingComponent={<MenuSkeleton count={8} />}
+    >
       {(groupedByDateComment) => (
         <Menu>
           {Object.entries(groupedByDateComment).map(

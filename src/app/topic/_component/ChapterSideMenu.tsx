@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
 import Menu from '@/share/ui/menu/Menu';
+import MenuSkeleton from '@/share/ui/menu/MenuSkeleton';
 import { useGetChapterListQuery } from '@/store/api/chapterApi';
 import { ChapterModel } from '@/types/chapterTypes';
 
@@ -31,7 +32,12 @@ export default function ChapterSideMenu() {
   }, [chapterList, currentChapter]);
 
   return (
-    <Async data={groupedByDateComment} isLoading={isLoading} isError={isError}>
+    <Async
+      data={groupedByDateComment}
+      isLoading={isLoading}
+      isError={isError}
+      loadingComponent={<MenuSkeleton count={8} />}
+    >
       {(groupedByDateComment) => (
         <Menu>
           {Object.entries(groupedByDateComment).map(
