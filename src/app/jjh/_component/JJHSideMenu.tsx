@@ -61,7 +61,7 @@ export default function JJHSideMenu() {
       }, {});
 
     for (const key in initialGroup) {
-      jjhList.timelineList.forEach((timeline) => {
+      jjhList.timelineList.forEach((timeline: JJHTimelineModel) => {
         function setJJH(timeline: JJHTimelineModel) {
           const { title, id, state, jjhNumber, endDate, startDate } = timeline;
           if (jjhNumber === currentJJH) setCurrentGroup(key);

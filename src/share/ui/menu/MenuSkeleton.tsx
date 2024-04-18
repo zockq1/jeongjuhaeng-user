@@ -3,6 +3,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import Skeleton from 'react-loading-skeleton';
 import styled from 'styled-components';
 
+import getRandomNumber from '@/share/util/getRandomNumber';
 import { media } from '@/theme/theme';
 
 interface MenuProps {
@@ -12,13 +13,15 @@ interface MenuProps {
 export default function MenuSkeleton({ count = 5 }: MenuProps) {
   return (
     <SkeletonContainer>
-      <Skeleton
-        width="calc(100% - 32px)"
-        height="19px"
-        borderRadius="5px"
-        count={count}
-        style={{ margin: '15px' }}
-      />
+      {Array.from({ length: count }, (_, index) => (
+        <Skeleton
+          key={index}
+          width={`${getRandomNumber(20, 60)}%`}
+          height="19px"
+          borderRadius="5px"
+          style={{ margin: '15px' }}
+        />
+      ))}
     </SkeletonContainer>
   );
 }
