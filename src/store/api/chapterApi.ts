@@ -10,6 +10,7 @@ import baseQueryWithJWT from './baseApi';
 export const chapterApi = createApi({
   reducerPath: 'chapterApi',
   baseQuery: baseQueryWithJWT,
+  keepUnusedDataFor: 86400000,
   endpoints: (builder) => ({
     getChapterList: builder.query<ChapterModel[], void>({
       query: () => '/chapters',

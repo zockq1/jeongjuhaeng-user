@@ -17,6 +17,7 @@ export const jjhApi = createApi({
   reducerPath: 'jjhApi',
   baseQuery: baseQueryWithJWT,
   tagTypes: ['jjhUpdate', 'Bookmark'],
+  keepUnusedDataFor: 86400000,
   endpoints: (builder) => ({
     getJJHList: builder.query<JJHModel, void>({
       query: () => '/jjh',

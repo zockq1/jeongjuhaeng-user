@@ -17,6 +17,7 @@ export const questionApi = createApi({
   reducerPath: 'questionApi',
   baseQuery: baseQueryWithJWT,
 
+  keepUnusedDataFor: 86400000,
   tagTypes: ['Score', 'Exam', 'WrongNote'],
   endpoints: (builder) => ({
     getRoundList: builder.query<RoundModel[], void>({

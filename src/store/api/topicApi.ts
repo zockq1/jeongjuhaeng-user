@@ -6,6 +6,7 @@ import baseQueryWithJWT from './baseApi';
 export const topicApi = createApi({
   reducerPath: 'topicApi',
   baseQuery: baseQueryWithJWT,
+  keepUnusedDataFor: 86400000,
   endpoints: (builder) => ({
     getTopic: builder.query<TopicModel, string>({
       query: (title) => `/topics/${title}`,

@@ -13,6 +13,7 @@ import baseQueryWithReauth from './baseApi';
 export const timelineApi = createApi({
   reducerPath: 'timelineApi',
   tagTypes: ['TimelineList'],
+  keepUnusedDataFor: 86400000,
   baseQuery: baseQueryWithReauth,
   endpoints: (builder) => ({
     getTimelineList: builder.query<TimelineListModel[], void>({
