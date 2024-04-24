@@ -61,8 +61,8 @@ const ImageChoiceContainer = styled.div<AnswerCheckProps>`
     ${({ theme, $isFinish, $isCorrect }) =>
       $isFinish
         ? $isCorrect
-          ? theme.colors.semiLightBlue
-          : theme.colors.lightRed
+          ? theme.colors.blue
+          : theme.colors.red
         : theme.colors.lightGrey};
   border-radius: 10px;
   box-shadow: ${({ theme }) => theme.shadow.defaultShadow};
