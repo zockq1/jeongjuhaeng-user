@@ -38,8 +38,10 @@ export default function Keyword({
 
   return (
     <KeywordContainer onClick={toggle}>
-      <div>{children}</div>
-      {file && <Image src={file} />}
+      <Content>
+        <div>{children}</div>
+        {file && <Image src={file} />}
+      </Content>
       {isCommentOn && (
         <CommentList>
           {comment ? (
@@ -88,6 +90,15 @@ const KeywordContainer = styled.div`
   cursor: pointer;
 
   word-break: keep-all;
+`;
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: max-content;
 `;
 
 const Image = styled.img`
