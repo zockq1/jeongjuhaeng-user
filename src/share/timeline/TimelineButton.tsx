@@ -46,6 +46,7 @@ const TimelineItemContainer = styled.li`
 `;
 
 const InnerCircle = styled.div`
+  visibility: hidden;
   position: relative;
   z-index: 9;
 
