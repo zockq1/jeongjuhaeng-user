@@ -32,19 +32,31 @@ export default function TopicList() {
             const { title, keywordList, dateComment } = topic;
             return (
               <ContentBox key={title} title={title} subTitle={dateComment}>
-                {keywordList
-                  .filter((keyword) => !keyword.dateComment)
-                  .sort((a, b) => a.number - b.number)
-                  .map((keyword, index) => (
-                    <Keyword
-                      key={index}
-                      comment={keyword.comment}
-                      file={keyword.file}
-                    >
-                      {keyword.name}
-                    </Keyword>
-                  ))}
                 <Timeline>
+                  {keywordList
+                    .filter((keyword) => !keyword.dateComment)
+                    .sort((a, b) => a.number - b.number)
+                    .map((keyword, index) => (
+                      // <Keyword
+                      //   key={index}
+                      //   comment={keyword.comment}
+                      //   file={keyword.file}
+                      // >
+                      //   {keyword.name}
+                      // </Keyword>
+                      <Timeline.Item
+                        dateItem={{
+                          date: '',
+                          title: keyword.name,
+                          comment: keyword.comment
+                            .trim()
+                            .split('.')
+                            .filter(Boolean),
+                          file: keyword.file,
+                        }}
+                        key={index}
+                      />
+                    ))}
                   {keywordList
                     .filter((keyword) => !!keyword.dateComment)
                     .sort((a, b) => a.number - b.number)
