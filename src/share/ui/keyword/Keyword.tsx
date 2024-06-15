@@ -98,7 +98,7 @@ const Content = styled.div`
   align-items: center;
   justify-content: center;
 
-  width: max-content;
+  width: fit-content;
 `;
 
 const Image = styled.img`
