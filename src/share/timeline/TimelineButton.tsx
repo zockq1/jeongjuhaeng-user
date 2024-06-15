@@ -60,6 +60,7 @@ const InnerCircle = styled.div`
 `;
 
 const Button = styled.button<{ $color: Color }>`
+  width: 100px;
   height: 40px;
   padding: ${({ theme }) => theme.padding.small};
   border: 1px solid
