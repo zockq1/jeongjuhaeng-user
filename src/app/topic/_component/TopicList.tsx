@@ -4,7 +4,6 @@ import ErrorUI from '@/share/state/Error';
 import Timeline from '@/share/timeline/Timeline';
 import ContentBox from '@/share/ui/content-box/ContentBox';
 import ContentBoxSkeleton from '@/share/ui/content-box/ContentBoxSkeleton';
-import Keyword from '@/share/ui/keyword/Keyword';
 import { useGetChapterTopicListQuery } from '@/store/api/jjhApi';
 
 export default function TopicList() {
