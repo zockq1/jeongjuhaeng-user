@@ -6,7 +6,6 @@ import ErrorUI from '@/share/state/Error';
 import Timeline from '@/share/timeline/Timeline';
 import ContentBox from '@/share/ui/content-box/ContentBox';
 import ContentBoxSkeleton from '@/share/ui/content-box/ContentBoxSkeleton';
-import Keyword from '@/share/ui/keyword/Keyword';
 import {
   useGetChapterTopicListQuery,
   useGetContentListQuery,
@@ -87,19 +86,24 @@ export default function JJHTopicList() {
                     />
                   }
                 >
-                  {keywordList
-                    .filter((keyword) => !keyword.dateComment)
-                    .sort((a, b) => a.number - b.number)
-                    .map((keyword, index) => (
-                      <Keyword
-                        key={index}
-                        comment={keyword.comment}
-                        file={keyword.file}
-                      >
-                        {keyword.name}
-                      </Keyword>
-                    ))}
                   <Timeline>
+                    {keywordList
+                      .filter((keyword) => !keyword.dateComment)
+                      .sort((a, b) => a.number - b.number)
+                      .map((keyword, index) => (
+                        <Timeline.Item
+                          dateItem={{
+                            date: '',
+                            title: keyword.name,
+                            comment: keyword.comment
+                              .trim()
+                              .split('.')
+                              .filter(Boolean),
+                            file: keyword.file,
+                          }}
+                          key={index}
+                        />
+                      ))}
                     {keywordList
                       .filter((keyword) => !!keyword.dateComment)
                       .sort((a, b) => a.number - b.number)

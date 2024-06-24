@@ -36,13 +36,6 @@ export default function TopicList() {
                     .filter((keyword) => !keyword.dateComment)
                     .sort((a, b) => a.number - b.number)
                     .map((keyword, index) => (
-                      // <Keyword
-                      //   key={index}
-                      //   comment={keyword.comment}
-                      //   file={keyword.file}
-                      // >
-                      //   {keyword.name}
-                      // </Keyword>
                       <Timeline.Item
                         dateItem={{
                           date: '',
