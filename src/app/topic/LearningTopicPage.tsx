@@ -7,6 +7,7 @@ import ToggleButton from '@/share/ui/button/ToggleButton';
 import ChapterSideMenu from './_component/ChapterSideMenu';
 import TopicAnchor from './_component/TopicAnchor';
 import TopicList from './_component/TopicList';
+import TopicPrevNext from './_component/TopicPrevNext';
 
 export default function LearningTopicPage() {
   const { title } = useQuesryString();
@@ -20,6 +21,7 @@ export default function LearningTopicPage() {
         <Title>단원 - {title}</Title>
         <ToggleButton />
         <TopicList />
+        <TopicPrevNext />
       </Layout.Main>
       <Layout.Right>
         <TopicAnchor />
