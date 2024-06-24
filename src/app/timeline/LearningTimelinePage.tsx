@@ -5,6 +5,7 @@ import Title from '@/share/layout/Title';
 import ToggleButton from '@/share/ui/button/ToggleButton';
 
 import TimelineList from './_component/TimelineList';
+import TimelinePrevNext from './_component/TimelinePrevNext';
 import TimelineSideMenu from './_component/TimelineSideMenu';
 
 export default function LearningTimelinePage() {
@@ -19,6 +20,7 @@ export default function LearningTimelinePage() {
         <Title>연표 - {title}</Title>
         <ToggleButton />
         <TimelineList />
+        <TimelinePrevNext />
       </Layout.Main>
       <Layout.Right></Layout.Right>
     </Layout>
