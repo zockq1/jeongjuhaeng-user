@@ -62,7 +62,7 @@ export default function TimelinePrevNext() {
             }
           : undefined
       }
-      onClickMenu={() => navigate('/timeline')}
+      onClickMenu={() => navigate('/timeline-list')}
     />
   );
 }
