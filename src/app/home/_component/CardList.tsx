@@ -1,30 +1,44 @@
 import { motion } from 'framer-motion';
 import { useMemo, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Books from '@/assets/images/books.svg';
 import Timeline from '@/assets/images/date.svg';
+import Quiz from '@/assets/images/quiz.svg';
 import Run from '@/assets/images/run.svg';
+import Search from '@/assets/images/search.svg';
+import { RootState } from '@/store/store';
 interface MenuModel {
   id: string;
   title: string;
   description: string;
   button: string;
   imgSrc: string;
-  to: string;
+  to: () => void;
 }
 
 export default function CardList() {
+  const navigate = useNavigate();
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   const cardList = useRef<MenuModel[]>([
+    {
+      id: '0',
+      imgSrc: Search,
+      title: '설정',
+      description: ' ',
+      button: '설정 바로가기',
+      to: () => navigate('/option'),
+    },
     {
       id: '1',
       imgSrc: Books,
       title: '단원 학습',
       description: '단원별로 정리된 한국사 정보',
       button: '자료 보러가기',
-      to: '/learning',
+      to: () => navigate('/learning'),
     },
     {
       id: '2',
@@ -32,7 +46,7 @@ export default function CardList() {
       title: '정주행',
       description: '순서대로 한능검 시험 공부',
       button: '정주행 하러가기',
-      to: '/jeong-ju-haeng',
+      to: () => navigate('/jeong-ju-haeng'),
     },
     {
       id: '3',
@@ -40,7 +54,16 @@ export default function CardList() {
       title: '연표 학습',
       description: '연도별로 정리된 한국사 정보',
       button: '연표 보러가기',
-      to: 'timeline-list',
+      to: () => navigate('/timeline-list'),
+    },
+    {
+      id: '4',
+      imgSrc: Quiz,
+      title: '문제 분류',
+      description: '문제 분류별 한국사 정보',
+      button: '문제 분류 보러가기',
+      to: () =>
+        isLoggedIn ? navigate('/quiz') : alert('로그인 후 이용 가능합니다.'),
     },
   ]);
   const [menuList, setMenuList] = useState(cardList.current);
@@ -100,7 +123,6 @@ interface TestimonialProps {
 }
 
 function MenuCard({ position, menu, handleMove }: TestimonialProps) {
-  const navigate = useNavigate();
   const isMobile = useMediaQuery({ maxWidth: 640 });
   const isActive = position === 0;
   const cardSize = useMemo(() => {
@@ -119,6 +141,7 @@ function MenuCard({ position, menu, handleMove }: TestimonialProps) {
         x: `calc(-50% + ${position * (cardSize / 1.5)}px)`,
         y: `calc(-40% + ${isActive ? -65 : position % 2 ? 15 : -15}px)`,
         rotate: isActive ? 0 : position % 2 ? 3 : -3,
+        zIndex: [1, 2, 3, 2, 1][position + 2],
       }}
       transition={{
         type: 'spring',
@@ -130,11 +153,7 @@ function MenuCard({ position, menu, handleMove }: TestimonialProps) {
       <img src={imgSrc} alt={title} />
       <h1>{title}</h1>
       <p>{description}</p>
-      <Button
-        $isMobile={isMobile}
-        $isActive={isActive}
-        onClick={() => navigate(to)}
-      >
+      <Button $isMobile={isMobile} $isActive={isActive} onClick={to}>
         {button} {'>'}
       </Button>
     </Card>
@@ -217,7 +236,7 @@ const Button = styled.button<{ $isMobile: boolean; $isActive: boolean }>`
   color: inherit;
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   font-size: ${({ theme, $isMobile }) =>
-    $isMobile ? theme.fontSizes.xl : theme.fontSizes.xxxxxl};
+    $isMobile ? theme.fontSizes.large : theme.fontSizes.xxxxxl};
 
   font-family: Giants-Regular;
 

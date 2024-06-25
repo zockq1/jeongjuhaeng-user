@@ -45,7 +45,6 @@ export default function TimelineSideMenu() {
                 }
               >
                 {`${timeline.title}`}
-                <br />
                 {`(${getDate(timeline.startDate).year} ~ ${getDate(timeline.endDate).year})`}
               </Menu.Item>
             ))}

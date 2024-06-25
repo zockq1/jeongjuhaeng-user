@@ -107,6 +107,8 @@ const Title = styled.h1<{ $color?: string }>`
   color: ${({ $color, theme }) => ($color ? $color : theme.colors.textBlue)};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   font-size: ${({ theme }) => theme.fontSizes.xxl};
+
+  word-break: keep-all;
 `;
 
 const SubTitle = styled.h2<{ $color?: string }>`

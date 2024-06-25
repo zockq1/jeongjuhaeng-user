@@ -24,6 +24,8 @@ import JJHTimelinePage from './app/jjh/JJHTimelinePage';
 import JJHTimelineQuizPage from './app/jjh/JJHTimelineQuizPage';
 import JJHTopicPage from './app/jjh/JJHTopicPage';
 import JJHTopicQuizPage from './app/jjh/JJHTopicQuizPage';
+import QuizCategoryListPage from './app/quiz/QuizCategoryListPage';
+import QuizCategoryTopicPage from './app/quiz/QuizCategoryTopicPage';
 import LearningTimelinePage from './app/timeline/LearningTimelinePage';
 import TimelineListPage from './app/timeline/TimelineListPage';
 import TimelineQuizPage from './app/timeline/TimelineQuizPage';
@@ -88,6 +90,14 @@ const router = createBrowserRouter([
       {
         path: 'jeong-ju-haeng/timeline/quiz',
         element: <JJHTimelineQuizPage />,
+      },
+      {
+        path: '/quiz',
+        element: <QuizCategoryListPage />,
+      },
+      {
+        path: '/quiz/topic',
+        element: <QuizCategoryTopicPage />,
       },
     ],
   },

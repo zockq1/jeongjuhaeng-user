@@ -1,10 +1,14 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Icon from '@/share/ui/icon/Icon';
+import { RootState } from '@/store/store';
 
 export default function SlideMenu() {
+  const navigate = useNavigate();
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   const [isMenuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -20,17 +24,29 @@ export default function SlideMenu() {
       </IconButton>
       <DarkOverlay $isVisible={isMenuOpen} onClick={closeMenu} />
       <SlidingMenu className={isMenuOpen ? '' : 'closed'}>
-        <MenuItem to="/jeong-ju-haeng">
+        <MenuItem onClick={() => navigate('/jeong-ju-haeng')}>
           <Icon icon="run" size={14} />
           &nbsp; 정주행
         </MenuItem>
-        <MenuItem to="/learning">
+        <MenuItem onClick={() => navigate('/learning')}>
           <Icon icon="description" size={14} />
-          &nbsp; 자료
+          &nbsp; 단원별 정보
         </MenuItem>
-        <MenuItem to="/timeline-list">
+        <MenuItem
+          onClick={() =>
+            isLoggedIn ? navigate('/quiz') : alert('로그인 후 이용 가능합니다.')
+          }
+        >
+          <Icon icon="question" size={14} />
+          &nbsp; 분류별 정보
+        </MenuItem>
+        <MenuItem onClick={() => navigate('/timeline-list')}>
           <Icon icon="TIMELINE_STUDY" size={14} />
           &nbsp; 연표
+        </MenuItem>
+        <MenuItem onClick={() => navigate('/option')}>
+          <Icon icon="setting" size={14} />
+          &nbsp; 설정
         </MenuItem>
         {/* <MenuItem to="/question/quiz-list">
           <Icon icon="question" size={14} />
@@ -100,7 +116,7 @@ const DarkOverlay = styled.div<{ $isVisible: boolean }>`
   background-color: rgb(0 0 0 / 50%);
 `;
 
-const MenuItem = styled(Link)`
+const MenuItem = styled.button`
   display: flex;
 
   margin: 10px;
