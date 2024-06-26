@@ -22,8 +22,30 @@ export default function OptionList() {
 
   return (
     <OptionListContainer>
-      {/* <OptionItem>문의 메일</OptionItem>
-      <Bar /> */}
+      <OptionItem
+        onClick={() =>
+          window.open(
+            'https://docs.google.com/forms/d/e/1FAIpQLSfuW5DObzr9YmH5m96Y7sO_ksTEd27uo4HSDO3ytdW8DTJohg/viewform?usp=sf_link',
+            '_blank',
+            'noopener,noreferrer',
+          )
+        }
+      >
+        웹 사이트 오류 제보
+      </OptionItem>
+      <Bar />
+      <OptionItem
+        onClick={() =>
+          window.open(
+            'https://docs.google.com/forms/d/e/1FAIpQLSfdRFZz0PSsicwWkMoAcOTioDJI9cN3Ijdy3w6iSP6sHr0N3Q/viewform?usp=sf_link',
+            '_blank',
+            'noopener,noreferrer',
+          )
+        }
+      >
+        한국사 정보 관련 제보
+      </OptionItem>
+      <Bar />
       <OptionItem onClick={() => navigate('/option/privacy')}>
         개인정보 처리방침
       </OptionItem>
