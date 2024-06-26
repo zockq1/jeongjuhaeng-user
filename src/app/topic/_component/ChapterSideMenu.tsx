@@ -63,7 +63,7 @@ export default function ChapterSideMenu() {
                     selected={currentChapter === chapter.number}
                     onClick={() =>
                       navigate(
-                        `/learning/chapter?chapter=${chapter.number}&title=${chapter.title}`,
+                        `/learning/chapter?chapter=${chapter.number}&title=${chapter.title}(${dateComment})`,
                       )
                     }
                   >

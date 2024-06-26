@@ -50,7 +50,7 @@ export default function useGetJJHCategory() {
           state: state,
           onClick: () =>
             navigate(
-              `/jeong-ju-haeng/chapter?jjh=${jjhNumber}&chapter=${number}&title=${title}`,
+              `/jeong-ju-haeng/chapter?jjh=${jjhNumber}&chapter=${number}&title=${title}(${dateComment})`,
             ),
         });
         return acc;

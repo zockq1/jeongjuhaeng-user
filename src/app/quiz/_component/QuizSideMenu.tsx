@@ -63,7 +63,7 @@ export default function QuizSideMenu() {
                   selected={currentChapter === chapter.id}
                   onClick={() =>
                     navigate(
-                      `/quiz/topic?chapter=${chapter.id}&title=${chapter.title}`,
+                      `/quiz/topic?chapter=${chapter.id}&title=${chapter.title.split('/')[1]}(${chapter.title.split('/')[0]})`,
                     )
                   }
                 >

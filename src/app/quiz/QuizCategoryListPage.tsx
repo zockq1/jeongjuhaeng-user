@@ -9,7 +9,7 @@ import QuizSideMenu from './_component/QuizSideMenu';
 
 export default function QuizCategoryListPage() {
   useExpendedNavigate(
-    '/quiz/topic?chapter=532&title=선사시대%20~%20남북국%20시대/선사시대',
+    '/quiz/topic?chapter=532&title=선사시대(선사시대%20~%20남북국%20시대)',
   );
   return (
     <Layout>

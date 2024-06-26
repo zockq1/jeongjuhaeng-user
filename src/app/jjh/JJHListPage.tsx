@@ -8,7 +8,9 @@ import Title from '@/share/layout/Title';
 import JJHSideMenu from './_component/JJHSideMenu';
 
 export default function JJHListPage() {
-  useExpendedNavigate('/jeong-ju-haeng/chapter?jjh=1&chapter=1&title=선사시대');
+  useExpendedNavigate(
+    '/jeong-ju-haeng/chapter?jjh=1&chapter=1&title=선사시대(선사%20시대%20~%20삼국%20시대)',
+  );
 
   return (
     <Layout>

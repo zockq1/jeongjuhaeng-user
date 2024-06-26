@@ -56,7 +56,7 @@ function useNextContent() {
       //다음 컨텐츠가 다음 단원일 경우
       nextJJHChapter &&
         navigate(
-          `/jeong-ju-haeng/chapter?jjh=${nextJJHChapter.jjhNumber}&chapter=${nextJJHChapter.number}&title=${nextJJHChapter.title}`,
+          `/jeong-ju-haeng/chapter?jjh=${nextJJHChapter.jjhNumber}&chapter=${nextJJHChapter.number}&title=${nextJJHChapter.title}(${nextJJHChapter.dateComment})`,
           { replace: true },
         );
       nextJJHTimeline &&
@@ -78,7 +78,7 @@ function useNextContent() {
         (jjh) => jjh.jjhNumber === jjhNumber,
       ));
       navigate(
-        `/jeong-ju-haeng/chapter?jjh=${currentContent?.jjhNumber}&chapter=${currentContent?.number}&title=${currentContent?.title}`,
+        `/jeong-ju-haeng/chapter?jjh=${currentContent?.jjhNumber}&chapter=${currentContent?.number}&title=${currentContent?.title}(${currentContent?.dateComment})`,
         { replace: true },
       );
       return;
@@ -87,7 +87,7 @@ function useNextContent() {
     //다음 컨텐츠가 complete 상태인 경우
     if (nextContent.content === 'TOPIC_STUDY') {
       navigate(
-        `/jeong-ju-haeng/topic/quiz?jjh=${jjhNumber}&chapter=${chapterNumber}&topic=${nextContent.title}&content=${nextContent.contentNumber}&title=${nextContent.title}`,
+        `/jeong-ju-haeng/topic/quiz?jjh=${jjhNumber}&chapter=${chapterNumber}&topic=${nextContent.title}&content=${nextContent.contentNumber}&title=${nextContent.title}(${nextContent.dateComment})`,
         { replace: true },
       );
       return;

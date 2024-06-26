@@ -8,7 +8,9 @@ import Title from '@/share/layout/Title';
 import ChapterSideMenu from './_component/ChapterSideMenu';
 
 export default function ChapterListPage() {
-  useExpendedNavigate('/learning/chapter?chapter=1&title=선사시대');
+  useExpendedNavigate(
+    '/learning/chapter?chapter=1&title=선사시대(선사%20시대%20~%20삼국%20시대)',
+  );
   return (
     <Layout>
       <Header />
