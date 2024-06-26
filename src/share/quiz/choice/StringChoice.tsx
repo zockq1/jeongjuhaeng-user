@@ -48,7 +48,7 @@ interface AnswerCheckProps {
   $isCorrect?: boolean;
 }
 
-const StringChoiceContainer = styled.div<AnswerCheckProps>`
+export const StringChoiceContainer = styled.div<AnswerCheckProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;

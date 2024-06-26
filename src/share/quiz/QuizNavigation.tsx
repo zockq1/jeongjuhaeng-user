@@ -91,12 +91,12 @@ export default function QuizNavigation({
   );
 }
 
-const Container = styled.div`
+export const Container = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 
-const ResultContainer = styled.ul`
+export const ResultContainer = styled.ul`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -110,12 +110,13 @@ const ResultContainer = styled.ul`
   font-weight: ${({ theme }) => theme.fontWeight.medium};
 `;
 
-const ExamNavigation = styled.ul`
+export const ExamNavigation = styled.ul`
   display: flex;
   flex-direction: row;
   overflow: scroll hidden;
+  position: relative;
 
-  width: auto;
+  width: 100%;
   margin-right: 10px;
   padding: 5px 15px;
   border: 2px solid ${({ theme }) => theme.colors.textBlue};

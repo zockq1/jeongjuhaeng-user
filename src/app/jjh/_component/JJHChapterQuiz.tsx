@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 
 import useQuesryString from '@/share/hook/useQueryString';
 import Quiz from '@/share/quiz/Quiz';
+import QuizSkeleton from '@/share/quiz/QuizSkeleton';
 import Async from '@/share/state/Async';
 import ErrorUI from '@/share/state/Error';
 import { useUpdateProgressMutation } from '@/store/api/jjhApi';
@@ -32,6 +33,7 @@ export default function JJHChapterQuiz() {
     <Async
       data={KtoTQuestionList}
       isLoading={isLoading}
+      loadingComponent={<QuizSkeleton />}
       isError={isError}
       errorComponent={
         <ErrorUI

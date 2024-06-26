@@ -62,7 +62,7 @@ export default function Description({ quetion, image }: QuestionProps) {
   );
 }
 
-const DescriptionContainer = styled.ul`
+export const DescriptionContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -86,7 +86,7 @@ const Image = styled.img`
   opacity: 0.05;
 `;
 
-const DescriptionItem = styled.div`
+export const DescriptionItem = styled.div`
   z-index: 1;
 
   width: fit-content;
