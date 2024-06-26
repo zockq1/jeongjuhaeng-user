@@ -76,14 +76,32 @@ const AnchorContainer = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: start;
-  justify-content: center;
-  top: 100px;
+  position: relative;
 
   width: 100%;
+  height: 80vh;
+  padding-top: 10px;
+
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 18px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 7px solid ${({ theme }) => theme.colors.bg};
+    border-radius: 100px;
+
+    background: ${({ theme }) => theme.colors.lightGrey};
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
 `;
 
 const AnchorLink = styled.a<{ $isActive: boolean }>`
-  width: max-content;
+  width: 200px;
   margin-left: 20px;
   padding: 4px;
   border-left: 2px solid ${({ theme }) => theme.colors.lightGrey};
@@ -107,7 +125,7 @@ const AnchorLink = styled.a<{ $isActive: boolean }>`
 const VerticalLine = styled.div<{ $top: number }>`
   position: absolute;
   top: ${({ $top }) => `${$top}px`};
-  left: 30px;
+  left: 20px;
 
   width: 2px;
   height: 20px;
