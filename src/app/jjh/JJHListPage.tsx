@@ -1,3 +1,4 @@
+import useExpendedNavigate from '@/share/hook/useExpendedNavigate';
 import Footer from '@/share/layout/Footer';
 import Header from '@/share/layout/header';
 import Layout from '@/share/layout/Layout';
@@ -7,6 +8,8 @@ import Title from '@/share/layout/Title';
 import JJHSideMenu from './_component/JJHSideMenu';
 
 export default function JJHListPage() {
+  useExpendedNavigate('/jeong-ju-haeng/chapter?jjh=1&chapter=1&title=선사시대');
+
   return (
     <Layout>
       <Header />

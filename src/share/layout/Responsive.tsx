@@ -30,4 +30,25 @@ function Mobile({ children }: ResponsiveProps) {
   return isMobile ? <>{children}</> : null;
 }
 
+function useIsDesktop() {
+  return useMediaQuery({ minWidth: 1280 });
+}
+
+function useIsExpanded() {
+  return useMediaQuery({ minWidth: 768 });
+}
+
+function useIsTablet() {
+  return useMediaQuery({ minWidth: 768, maxWidth: 1279 });
+}
+
+function useIsPortable() {
+  return useMediaQuery({ maxWidth: 1279 });
+}
+
+function useIsMobile() {
+  return useMediaQuery({ maxWidth: 767 });
+}
+
 export { Desktop, Expanded, Mobile, Portable, Tablet };
+export { useIsDesktop, useIsExpanded, useIsMobile, useIsPortable, useIsTablet };
