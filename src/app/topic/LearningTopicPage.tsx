@@ -1,4 +1,5 @@
 import useQuesryString from '@/share/hook/useQueryString';
+import Footer from '@/share/layout/Footer';
 import Header from '@/share/layout/header';
 import Layout from '@/share/layout/Layout';
 import Title from '@/share/layout/Title';
@@ -26,6 +27,7 @@ export default function LearningTopicPage() {
       <Layout.Right>
         <TopicAnchor />
       </Layout.Right>
+      <Footer />
     </Layout>
   );
 }

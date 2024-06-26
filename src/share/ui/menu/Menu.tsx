@@ -37,7 +37,7 @@ const MenuContainer = styled.ul`
   }
 
   @media ${media.expanded} {
-    height: calc(100vh - 150px);
+    height: calc(100vh - 245px);
   }
 
   @media ${media.mobile} {

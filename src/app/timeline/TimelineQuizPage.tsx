@@ -1,4 +1,5 @@
 import useQuesryString from '@/share/hook/useQueryString';
+import Footer from '@/share/layout/Footer';
 import Header from '@/share/layout/header';
 import Layout from '@/share/layout/Layout';
 import Async from '@/share/state/Async';
@@ -31,6 +32,7 @@ export default function TimelineQuizPage() {
         </Async>
       </Layout.Main>
       <Layout.Right></Layout.Right>
+      <Footer />
     </Layout>
   );
 }

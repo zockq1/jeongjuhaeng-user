@@ -41,7 +41,7 @@ export default function JJHSideMenu() {
                   open={currentJJH?.category === dateComment}
                   length={chapters.items.length}
                   color={color}
-                  //lock={chapters.state === 'Locked'}
+                  lock={chapters.state === 'Locked'}
                 >
                   {[...chapters.items]
                     .sort((a, b) => a.jjhNumber - b.jjhNumber)
@@ -54,7 +54,7 @@ export default function JJHSideMenu() {
                           selected={currentJJH?.jjhNumber === jjhNumber}
                           onClick={onClick}
                           color={color}
-                          //lock={state === 'Locked'}
+                          lock={state === 'Locked'}
                         >
                           <Icon icon={icon} size={10} />
                           &nbsp;{title}&nbsp;

@@ -1,3 +1,4 @@
+import Footer from '@/share/layout/Footer';
 import Header from '@/share/layout/header';
 import Layout from '@/share/layout/Layout';
 import { Mobile } from '@/share/layout/Responsive';
@@ -19,6 +20,7 @@ export default function QuizCategoryListPage() {
         </Mobile>
       </Layout.Main>
       <Layout.Right></Layout.Right>
+      <Footer />
     </Layout>
   );
 }

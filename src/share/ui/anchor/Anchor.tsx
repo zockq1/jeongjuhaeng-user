@@ -79,7 +79,7 @@ const AnchorContainer = styled.ul`
   position: relative;
 
   width: 100%;
-  height: 80vh;
+  height: calc(100vh - 245px);
   padding-top: 10px;
 
   overflow-y: scroll;

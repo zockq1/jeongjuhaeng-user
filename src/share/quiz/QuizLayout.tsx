@@ -37,8 +37,8 @@ const LayoutContainer = styled.div`
     grid-template:
       'navigation ' auto
       'description' auto
-      'choice     ' auto
-      'button     ' auto / 100%;
+      'button     ' auto
+      'choice     ' auto / 100%;
   }
 
   @media ${media.expanded} {

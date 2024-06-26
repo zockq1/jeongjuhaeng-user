@@ -50,21 +50,21 @@ const LayoutContainer = styled.div`
     grid-template:
       'header' 61px
       '   .  ' minmax(calc(100vh - 65px), auto)
-      'footer' 0/100%;
+      'footer' 120px / 100%;
   }
 
   @media ${media.tablet} {
     grid-template:
       'header header' 90px
       '   .     .   ' minmax(calc(100vh - 90px), auto)
-      'footer footer' 0 / 280px minmax(400px, 700px);
+      'footer footer' 120px / 280px minmax(400px, 700px);
   }
 
   @media ${media.desktop} {
     grid-template:
       'header header header' 90px
       '   .     .      .   ' minmax(calc(100vh - 90px), auto)
-      'footer footer footer' 0 / 280px minmax(400px, 700px) 280px;
+      'footer footer footer' 120px / 280px minmax(400px, 700px) 280px;
   }
 `;
 
