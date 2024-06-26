@@ -89,6 +89,7 @@ const PrevNextButtonContainer = styled.div`
   display: flex;
 
   height: max-content;
+  min-height: 40px;
   margin: 15px 5px;
 
   & > button:not(:last-child) {
