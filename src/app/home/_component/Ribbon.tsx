@@ -8,8 +8,8 @@ const RibbonContainer = styled.div`
   position: absolute;
 
   width: calc(100%);
-  height: 300px;
-  padding-top: 50px;
+  height: 350px;
+  padding-top: 80px;
 
   @media ${media.tablet} {
     padding-top: 30px;
