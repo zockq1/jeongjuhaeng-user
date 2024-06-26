@@ -73,6 +73,7 @@ const CancelButton = styled.button`
 const SettingItem = styled.button`
   margin: ${({ theme }) => theme.margin.base};
 
+  color: ${({ theme }) => theme.colors.textBlue};
   font-weight: ${({ theme }) => theme.fontWeight.regular};
   font-size: ${({ theme }) => theme.fontSizes.small};
 `;

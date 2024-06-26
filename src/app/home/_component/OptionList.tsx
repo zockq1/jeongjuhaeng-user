@@ -80,6 +80,7 @@ const OptionListContainer = styled.div`
 const OptionItem = styled.button`
   margin: ${({ theme }) => theme.margin.base};
 
+  color: ${({ theme }) => theme.colors.textBlue};
   font-weight: ${({ theme }) => theme.fontWeight.regular};
   font-size: ${({ theme }) => theme.fontSizes.small};
 `;
