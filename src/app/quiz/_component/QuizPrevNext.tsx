@@ -31,6 +31,7 @@ export default function QuizPrevNext() {
         prev
           ? {
               title: prev.title.split('/')[1],
+              category: prev.title.split('/')[0],
               onClick: () =>
                 navigate(`/quiz/topic?chapter=${prev.id}&title=${prev.title}`),
               lock: false,
@@ -42,6 +43,7 @@ export default function QuizPrevNext() {
         next
           ? {
               title: next.title.split('/')[1],
+              category: next.title.split('/')[0],
               onClick: () =>
                 navigate(`/quiz/topic?chapter=${next.id}&title=${next.title}`),
               lock: false,

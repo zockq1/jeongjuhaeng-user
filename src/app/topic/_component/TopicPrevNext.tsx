@@ -28,6 +28,7 @@ export default function TopicPrevNext() {
         prev
           ? {
               title: prev.title,
+              category: prev.dateComment,
               onClick: () =>
                 navigate(
                   `/learning/chapter?chapter=${prev.number}&title=${prev.title}`,
@@ -41,6 +42,7 @@ export default function TopicPrevNext() {
         next
           ? {
               title: next.title,
+              category: next.dateComment,
               onClick: () =>
                 navigate(
                   `/learning/chapter?chapter=${next.number}&title=${next.title}`,

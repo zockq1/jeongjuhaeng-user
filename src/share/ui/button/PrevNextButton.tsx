@@ -28,12 +28,14 @@ interface PrevNextButtonProps {
   prev?: {
     onClick: () => void;
     title: string;
+    category?: string;
     color: Color;
     lock: boolean;
   };
   next?: {
     onClick: () => void;
     title: string;
+    category?: string;
     color: Color;
     lock: boolean;
   };
@@ -54,11 +56,11 @@ export default function PrevNextButton({
           $isLock={prev.lock}
           onClick={prev.lock ? () => {} : prev.onClick}
         >
-          <span>
-            <Icon icon="angleLeft" size={12} />
-            &nbsp; &nbsp;
+          <Icon icon="angleLeft" size={12} />
+          <TextContainer>
+            <div className="title">{prev.category}</div>
             {prev.title}
-          </span>
+          </TextContainer>
         </Button>
       )}
       {isMobile && (
@@ -72,11 +74,11 @@ export default function PrevNextButton({
           $isLock={next.lock}
           onClick={next.lock ? () => {} : next.onClick}
         >
-          <span>
+          <TextContainer>
+            <div className="title">{next.category}</div>
             {next.title}
-            &nbsp; &nbsp;
-            <Icon icon="angleRight" size={12} />
-          </span>
+          </TextContainer>
+          <Icon icon="angleRight" size={12} />
         </Button>
       )}
     </PrevNextButtonContainer>
@@ -86,7 +88,7 @@ export default function PrevNextButton({
 const PrevNextButtonContainer = styled.div`
   display: flex;
 
-  height: 50px;
+  height: max-content;
   margin: 15px 5px;
 
   & > button:not(:last-child) {
@@ -109,16 +111,12 @@ const Button = styled.button<{
   justify-content: center;
 
   width: 100%;
-  height: 100%;
+  padding: 5px;
   border-radius: 10px;
 
   background-color: ${({ theme }) => theme.colors.white};
 
-  font-size: ${({ theme }) => theme.fontSizes.small};
-
   cursor: ${({ $isLock }) => ($isLock ? 'not-allowed' : 'pointer')};
-
-  font-family: Giants-Regular;
 `;
 
 const MenuButton = styled.button`
@@ -126,14 +124,24 @@ const MenuButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  width: 140px;
-  height: 100%;
+  width: 120px;
   border: 2px solid ${({ theme }) => theme.colors.textBlue};
   border-radius: 10px;
 
   background-color: ${({ theme }) => theme.colors.white};
 
   font-size: ${({ theme }) => theme.fontSizes.base};
+`;
 
-  font-family: Giants-Regular;
+const TextContainer = styled.div`
+  width: 100%;
+
+  font-weight: ${({ theme }) => theme.fontWeight.regular};
+  font-size: ${({ theme }) => theme.fontSizes.small};
+
+  word-break: keep-all;
+
+  & > .title {
+    font-weight: ${({ theme }) => theme.fontWeight.bold};
+  }
 `;

@@ -15,6 +15,7 @@ export default function JJHPrevNext() {
         prevJJH
           ? {
               title: prevJJH.title,
+              category: prevJJH.category,
               onClick: prevJJH.onClick,
               lock: prevJJH.state === 'Locked',
               color: getColorAndIcon(prevJJH.state).color,
@@ -25,6 +26,7 @@ export default function JJHPrevNext() {
         nextJJH
           ? {
               title: nextJJH.title,
+              category: nextJJH.category,
               onClick: nextJJH.onClick,
               lock: nextJJH.state === 'Locked',
               color: getColorAndIcon(nextJJH.state).color,
