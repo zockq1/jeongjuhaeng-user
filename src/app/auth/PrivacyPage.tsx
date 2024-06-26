@@ -1,3 +1,4 @@
+import Footer from '@/share/layout/Footer';
 import Header from '@/share/layout/header';
 import Layout from '@/share/layout/Layout';
 
@@ -10,6 +11,7 @@ export default function PrivacyPage() {
       <Layout.Center>
         <PrivacyPolicy />
       </Layout.Center>
+      <Footer />
     </Layout>
   );
 }
