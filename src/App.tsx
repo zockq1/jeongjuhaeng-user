@@ -3,11 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useLocation } from 'react-router-dom';
 import { StyleSheetManager } from 'styled-components';
 
-import { chapterApi } from './store/api/chapterApi';
 import { jjhApi } from './store/api/jjhApi';
-import { questionApi } from './store/api/questionApi';
-import { timelineApi } from './store/api/timelineApi';
-import { topicApi } from './store/api/topicApi';
 import { RootState } from './store/store';
 
 export default function App() {
@@ -22,11 +18,7 @@ export default function App() {
 
   useEffect(() => {
     if (isMounted.current) {
-      dispatch(topicApi.util.resetApiState());
-      dispatch(chapterApi.util.resetApiState());
-      dispatch(timelineApi.util.resetApiState());
-      dispatch(jjhApi.util.resetApiState());
-      dispatch(questionApi.util.resetApiState());
+      dispatch(jjhApi.util.invalidateTags(['jjhUpdate']));
     } else {
       isMounted.current = true;
     }
