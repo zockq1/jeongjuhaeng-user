@@ -60,7 +60,7 @@ export default function QuizSideMenu() {
               {chapters.map((chapter) => (
                 <Menu.Item
                   key={chapter.number}
-                  selected={currentChapter === chapter.number}
+                  selected={currentChapter === chapter.id}
                   onClick={() =>
                     navigate(
                       `/quiz/topic?chapter=${chapter.id}&title=${chapter.title}`,
