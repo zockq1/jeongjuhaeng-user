@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useLocation } from 'react-router-dom';
 import { StyleSheetManager } from 'styled-components';
 
-import { jjhApi } from './store/api/jjhApi';
+import { jjhApi, useLazyGetTotalProgressQuery } from './store/api/jjhApi';
 import { RootState } from './store/store';
 
 export default function App() {
+  const [triger] = useLazyGetTotalProgressQuery();
   const location = useLocation();
   const dispatch = useDispatch();
   const isMounted = useRef(false);
@@ -14,15 +15,16 @@ export default function App() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [location.pathname, location.search]);
+  }, [location.pathname, location.search, triger]);
 
   useEffect(() => {
     if (isMounted.current) {
+      triger();
       dispatch(jjhApi.util.invalidateTags(['jjhUpdate']));
     } else {
       isMounted.current = true;
     }
-  }, [isLoggedIn, dispatch]);
+  }, [isLoggedIn, dispatch, triger]);
 
   return (
     <main>
