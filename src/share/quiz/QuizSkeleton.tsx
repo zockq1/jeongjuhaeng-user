@@ -40,8 +40,8 @@ export default function QuizSkeleton() {
       </QuizLayout.Description>
       <QuizLayout.Choice>
         {Array.from({ length: 4 }, (_, index) => (
-          <>
-            <StringChoiceContainer key={index}>
+          <div key={index}>
+            <StringChoiceContainer>
               <Skeleton
                 width={`${getRandomNumber(90, 180)}px`}
                 height="19px"
@@ -50,7 +50,7 @@ export default function QuizSkeleton() {
               />
             </StringChoiceContainer>
             <div style={{ margin: '10px' }} />
-          </>
+          </div>
         ))}
       </QuizLayout.Choice>
       <QuizLayout.Button>
