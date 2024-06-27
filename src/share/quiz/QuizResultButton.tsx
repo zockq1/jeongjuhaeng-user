@@ -1,8 +1,10 @@
+import { useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import useQuesryString from '@/share/hook/useQueryString';
 import ButtonGroup from '@/share/ui/button/ButtonGroup';
 import Icon from '@/share/ui/icon/Icon';
+import { RootState } from '@/store/store';
 
 interface ResultButtonUIProps {
   isSuccess: boolean;
@@ -13,6 +15,7 @@ export default function QuizResultButton({
   isSuccess,
   onNextContent,
 }: ResultButtonUIProps) {
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   const navigate = useNavigate();
   const location = useLocation();
   const { refresh } = useQuesryString();
@@ -29,7 +32,7 @@ export default function QuizResultButton({
     navigate(`${location.pathname}?${newSearch}`, { replace: true });
   };
 
-  return isSuccess ? (
+  return isSuccess && isLoggedIn ? (
     <ButtonGroup>
       <ButtonGroup.Item onClick={handleBack}>
         목록 &nbsp;
