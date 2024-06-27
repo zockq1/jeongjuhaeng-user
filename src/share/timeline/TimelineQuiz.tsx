@@ -271,6 +271,7 @@ const TimelineQuizContainer = styled.div`
   overflow: hidden;
 
   margin: 5px;
+  margin-top: 15px;
   padding: 10px;
   border: 2px solid ${({ theme }) => theme.colors.textBlue};
   border-radius: 10px;
