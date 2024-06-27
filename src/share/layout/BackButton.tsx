@@ -8,7 +8,7 @@ export default function BackButton() {
   const theme = useContext(ThemeContext);
   const navigate = useNavigate();
   return (
-    <BackButtonContainer onClick={() => navigate(-1)}>
+    <BackButtonContainer onClick={() => navigate(-1)} aria-label="back button">
       <Icon icon="angleLeft" size={18} color={theme?.colors.textBlue} />
     </BackButtonContainer>
   );

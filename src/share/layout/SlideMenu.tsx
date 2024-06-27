@@ -19,7 +19,7 @@ export default function SlideMenu() {
 
   return (
     <>
-      <IconButton onClick={toggleMenu}>
+      <IconButton onClick={toggleMenu} aria-label="Slide menu button">
         <Icon icon="menu" size={25} />
       </IconButton>
       <DarkOverlay $isVisible={isMenuOpen} onClick={closeMenu} />

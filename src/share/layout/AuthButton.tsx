@@ -46,13 +46,13 @@ export default function AuthButton() {
             </Content>
           }
         >
-          <IconButton>
+          <IconButton aria-label="user Info">
             <Icon icon="user" size={25} color={theme?.colors.textBlue} />
           </IconButton>
         </Popover>
       ) : (
         <>
-          <button onClick={openModal}>
+          <button onClick={openModal} aria-label="login">
             <Icon icon="login" size={25} />
           </button>
           <Modal isVisible={isModalOpen} onClose={closeModal}>
