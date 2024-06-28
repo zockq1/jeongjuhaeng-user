@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useLocation } from 'react-router-dom';
 import { StyleSheetManager } from 'styled-components';
 
+import InspectionModal from './app/home/_component/InspectionModal';
 import { jjhApi, useLazyGetTotalProgressQuery } from './store/api/jjhApi';
 import { RootState } from './store/store';
 
@@ -30,6 +31,7 @@ export default function App() {
     <main>
       <StyleSheetManager enableVendorPrefixes>
         <Outlet />
+        <InspectionModal />
       </StyleSheetManager>
     </main>
   );
