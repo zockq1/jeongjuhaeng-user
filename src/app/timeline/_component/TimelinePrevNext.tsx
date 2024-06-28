@@ -35,7 +35,8 @@ export default function TimelinePrevNext() {
       prev={
         prev
           ? {
-              title: prev.title,
+              title: `${getDate(prev.startDate).year} ~ ${getDate(prev.endDate).year}`,
+              category: prev.title,
               onClick: () =>
                 navigate(
                   `/timeline?timeline=${prev.id}&title=${
@@ -50,7 +51,8 @@ export default function TimelinePrevNext() {
       next={
         next
           ? {
-              title: next.title,
+              title: `${getDate(next.startDate).year} ~ ${getDate(next.endDate).year}`,
+              category: next.title,
               onClick: () =>
                 navigate(
                   `/timeline?timeline=${next.id}&title=${
