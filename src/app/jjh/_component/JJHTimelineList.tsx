@@ -21,7 +21,7 @@ export default function JJHTimelineList() {
   } = useQuesryString();
   const {
     data: dateList,
-    isLoading,
+    isFetching,
     isError,
     error,
   } = useGetTimelineQuery(timelineId);
@@ -29,7 +29,7 @@ export default function JJHTimelineList() {
   return (
     <Async
       data={dateList}
-      isLoading={isLoading}
+      isLoading={isFetching}
       isError={isError}
       loadingComponent={<ContentBoxSkeleton />}
       errorComponent={

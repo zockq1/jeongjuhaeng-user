@@ -10,7 +10,7 @@ export default function TopicList() {
   const { chapter: chapterNumber } = useQuesryString();
   const {
     data: topicList,
-    isLoading,
+    isFetching,
     isError,
     error,
   } = useGetChapterTopicListQuery(chapterNumber);
@@ -18,7 +18,7 @@ export default function TopicList() {
   return (
     <Async
       data={topicList}
-      isLoading={isLoading}
+      isLoading={isFetching}
       isError={isError}
       loadingComponent={<ContentBoxSkeleton />}
       errorComponent={

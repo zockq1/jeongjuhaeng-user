@@ -11,14 +11,14 @@ export default function QuizTopicList() {
   const {
     data: topicList,
     isError,
-    isLoading,
+    isFetching,
     error,
   } = useGetQuestionCategoryTopicListQuery(chapterNumber);
 
   return (
     <Async
       data={topicList}
-      isLoading={isLoading}
+      isLoading={isFetching}
       isError={isError}
       loadingComponent={<ContentBoxSkeleton />}
       errorComponent={
