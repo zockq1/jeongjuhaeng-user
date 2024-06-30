@@ -1,30 +1,34 @@
-# React + TypeScript + Vite
+# 정주행 한국사
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![home](/docs/home.png)
 
-Currently, two official plugins are available:
+**정주행 한국사는 한국사 능력 검정시험 학습 서비스입니다.**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+한능검 시험에 나오는 모든 키워드를 단원별/문제 분류별/연도별로 정리하여 사용자에게 제공하고,<br/>
+정주행 메뉴에서 순서대로 문제 풀이/연도 맞추기 등의 서비스를 제공해 사용자의 효율적인 학습이 가능합니다.
 
-## Expanding the ESLint configuration
+## 서비스 설명
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 단원별, 문제 분류별, 연표 정보 제공
 
-- Configure the top-level `parserOptions` property like this:
+![studt](/docs/study.gif)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### 정주행
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+![jjh](/docs/jjh.png)
+
+### 정주행 - 문제 풀이
+
+![studt](/docs/quiz.gif)
+
+### 정주행 - 연표 순서 맞추기
+
+![studt](/docs/time.gif)
+
+## 사용 기술
+
+React, Redux-Toolkit, Styled-Components, Framer-Motion
+
+**—dev**: Vite, TypeScript, Eslint, Prettier, Stylelint
+
+**Deploy**: Github Action, AWS S3/Cloudfront/Route53
