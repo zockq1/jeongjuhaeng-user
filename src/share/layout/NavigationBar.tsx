@@ -40,7 +40,7 @@ function NavigationBar() {
         onClick={() =>
           isLoggedIn ? navigate('/quiz') : alert('로그인 후 이용 가능합니다.')
         }
-        active={location.pathname.includes('/quiz')}
+        active={location.pathname.startsWith('/quiz')}
         variant="textHover"
         size="large"
       >
