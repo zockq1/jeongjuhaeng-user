@@ -4,7 +4,7 @@ import ErrorUI from '@/share/state/Error';
 import Timeline from '@/share/timeline/Timeline';
 import ContentBox from '@/share/ui/content-box/ContentBox';
 import ContentBoxSkeleton from '@/share/ui/content-box/ContentBoxSkeleton';
-import { useGetChapterTopicListQuery } from '@/store/api/jjhApi';
+import { useGetChapterTopicListQuery } from '@/store/api/topicApi';
 
 export default function TopicList() {
   const { chapter: chapterNumber } = useQuesryString();

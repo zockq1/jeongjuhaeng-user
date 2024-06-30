@@ -1,7 +1,7 @@
 import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
 import Anchor from '@/share/ui/anchor/Anchor';
-import { useGetQuestionCategoryTopicListQuery } from '@/store/api/jjhApi';
+import { useGetQuestionCategoryTopicListQuery } from '@/store/api/topicApi';
 
 export default function QuizAnchor() {
   const { chapter: chapterNumber } = useQuesryString();

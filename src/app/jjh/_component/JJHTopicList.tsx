@@ -6,10 +6,8 @@ import ErrorUI from '@/share/state/Error';
 import Timeline from '@/share/timeline/Timeline';
 import ContentBox from '@/share/ui/content-box/ContentBox';
 import ContentBoxSkeleton from '@/share/ui/content-box/ContentBoxSkeleton';
-import {
-  useGetChapterTopicListQuery,
-  useGetContentListQuery,
-} from '@/store/api/jjhApi';
+import { useGetContentListQuery } from '@/store/api/jjhApi';
+import { useGetChapterTopicListQuery } from '@/store/api/topicApi';
 
 import QuizButton from '../../../share/ui/button/QuizButton';
 

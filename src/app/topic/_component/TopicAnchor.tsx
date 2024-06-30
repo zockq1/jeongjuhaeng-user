@@ -1,7 +1,7 @@
 import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
 import Anchor from '@/share/ui/anchor/Anchor';
-import { useGetChapterTopicListQuery } from '@/store/api/jjhApi';
+import { useGetChapterTopicListQuery } from '@/store/api/topicApi';
 
 export default function TopicAnchor() {
   const { chapter: chapterNumber } = useQuesryString();

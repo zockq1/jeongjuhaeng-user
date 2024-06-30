@@ -7,16 +7,12 @@ import {
   ProgressModel,
   UpdateProgressModel,
 } from '../../types/jjhTypes';
-import {
-  BookmarkedTopicListModel,
-  TopicListModel,
-} from '../../types/topicTypes';
 import baseQueryWithJWT from './baseApi';
 
 export const jjhApi = createApi({
   reducerPath: 'jjhApi',
   baseQuery: baseQueryWithJWT,
-  tagTypes: ['jjhUpdate', 'Bookmark'],
+  tagTypes: ['jjhUpdate'],
   keepUnusedDataFor: 86400000,
   endpoints: (builder) => ({
     getJJHList: builder.query<JJHModel, void>({
@@ -25,7 +21,7 @@ export const jjhApi = createApi({
     }),
     getContentList: builder.query<ContentModel[], number>({
       query: (jjhNumber) => `/jjh/${jjhNumber}/contents-table`,
-      providesTags: ['jjhUpdate', 'Bookmark'],
+      providesTags: ['jjhUpdate'],
     }),
     getTotalProgress: builder.query<ProgressModel, void>({
       query: () => `/total-progress`,
@@ -45,49 +41,6 @@ export const jjhApi = createApi({
     getSearch: builder.query<SearchModel, string>({
       query: (search) => `/search?searchKey=${search}`,
     }),
-
-    getChapterTopicList: builder.query<TopicListModel[], number>({
-      query: (chapter) => `/chapters/${chapter}/topics`,
-      providesTags: ['Bookmark'],
-    }),
-    getQuestionCategoryTopicList: builder.query<
-      BookmarkedTopicListModel[],
-      number
-    >({
-      query: (id) => `/question-categories/${id}/topics`,
-      providesTags: ['Bookmark'],
-    }),
-
-    getBookmarkedTopic: builder.query<BookmarkedTopicListModel[], void>({
-      query: () => `/topics/bookmarked`,
-      providesTags: ['Bookmark'],
-    }),
-
-    updateBookmark: builder.mutation<void, string>({
-      query: (topicTitle: string) => {
-        return {
-          url: `/bookmarks`,
-          method: 'PATCH',
-          body: {
-            topicTitle,
-          },
-        };
-      },
-      invalidatesTags: ['Bookmark'],
-    }),
-
-    deleteBookmark: builder.mutation<void, string>({
-      query: (topicTitle: string) => {
-        return {
-          url: `/bookmarks`,
-          method: 'DELETE',
-          body: {
-            topicTitle,
-          },
-        };
-      },
-      invalidatesTags: ['Bookmark'],
-    }),
   }),
 });
 
@@ -98,11 +51,6 @@ export const {
   useLazyGetTotalProgressQuery,
   useLazyGetContentListQuery,
   useUpdateProgressMutation,
-  useDeleteBookmarkMutation,
-  useGetBookmarkedTopicQuery,
-  useGetChapterTopicListQuery,
-  useGetQuestionCategoryTopicListQuery,
-  useUpdateBookmarkMutation,
   useGetSearchQuery,
   useLazyGetSearchQuery,
 } = jjhApi;
