@@ -2,7 +2,7 @@
 
 ![home](/docs/home.png)
 
-바로가기https://www.jeongjuhaeng.com/
+바로가기: https://www.jeongjuhaeng.com/
 
 **정주행 한국사는 한국사 능력 검정시험 학습 서비스입니다.**
 
