@@ -16,7 +16,9 @@ function Layout({ children }: LayoutProps) {
 function Left({ children }: LayoutProps) {
   return (
     <Expanded>
-      <LeftContainer>{children}</LeftContainer>
+      <RelativeLeft>
+        <LeftContainer>{children}</LeftContainer>
+      </RelativeLeft>
     </Expanded>
   );
 }
@@ -24,7 +26,9 @@ function Left({ children }: LayoutProps) {
 function Right({ children }: LayoutProps) {
   return (
     <Desktop>
-      <RightContainer>{children}</RightContainer>
+      <RelativeRight>
+        <RightContainer>{children}</RightContainer>
+      </RelativeRight>
     </Desktop>
   );
 }
@@ -73,37 +77,11 @@ const LeftContainer = styled.aside`
 
   width: 280px;
   padding: 10px;
-
-  @media ${media.expanded} {
-    grid-column: 1/2;
-    grid-row: 2/3;
-  }
-
-  @supports (-moz-appearance: none) {
-    /* Firefox 전용 스타일 */
-    position: sticky;
-    top: 90px;
-
-    height: calc(100vh - 90px);
-  }
 `;
 
 const RightContainer = styled.aside`
   position: fixed;
   padding: 10px;
-
-  @media ${media.desktop} {
-    grid-column: 3/4;
-    grid-row: 2/3;
-  }
-
-  @supports (-moz-appearance: none) {
-    /* Firefox 전용 스타일 */
-    position: sticky;
-    top: 90px;
-
-    height: calc(100vh - 90px);
-  }
 `;
 
 const MainContainer = styled.div`
@@ -130,6 +108,30 @@ const CenterContainer = styled.div`
   grid-column: 1/4;
 
   grid-row: 2/3;
+`;
+
+const RelativeLeft = styled.div`
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  @media ${media.expanded} {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+`;
+
+const RelativeRight = styled.div`
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  @media ${media.desktop} {
+    grid-column: 3/4;
+    grid-row: 2/3;
+  }
 `;
 
 Layout.Left = Left;
