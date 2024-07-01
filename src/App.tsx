@@ -15,11 +15,11 @@ export default function App() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [location.pathname, location.search, triger]);
+  }, [location]);
 
   useEffect(() => {
-    if (isMounted.current) {
-      triger();
+    if (!isMounted.current && isLoggedIn) {
+      triger().then();
       dispatch(jjhApi.util.invalidateTags(['jjhUpdate']));
     } else {
       isMounted.current = true;
