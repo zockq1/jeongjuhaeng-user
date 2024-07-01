@@ -83,7 +83,12 @@ const AnchorContainer = styled.ul`
   padding-top: 10px;
 
   overflow-y: scroll;
+  scrollbar-color: ${({ theme }) => theme.colors.lightGrey} transparent;
 
+  /* Firefox */
+  scrollbar-width: thin;
+
+  /* WebKit 기반 브라우저 (Chrome, Safari) */
   &::-webkit-scrollbar {
     width: 18px;
   }
@@ -97,6 +102,12 @@ const AnchorContainer = styled.ul`
 
   &::-webkit-scrollbar-track {
     background: transparent;
+  }
+
+  /* Edge 및 기타 브라우저를 위한 추가적인 사용자 정의 스크롤바 */
+  & {
+    scrollbar-color: ${({ theme }) => theme.colors.lightGrey} transparent;
+    scrollbar-width: thin;
   }
 `;
 
