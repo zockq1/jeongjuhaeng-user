@@ -78,6 +78,14 @@ const LeftContainer = styled.aside`
     grid-column: 1/2;
     grid-row: 2/3;
   }
+
+  @supports (-moz-appearance: none) {
+    /* Firefox 전용 스타일 */
+    position: sticky;
+    top: 90px;
+
+    height: calc(100vh - 90px);
+  }
 `;
 
 const RightContainer = styled.aside`
@@ -87,6 +95,14 @@ const RightContainer = styled.aside`
   @media ${media.desktop} {
     grid-column: 3/4;
     grid-row: 2/3;
+  }
+
+  @supports (-moz-appearance: none) {
+    /* Firefox 전용 스타일 */
+    position: sticky;
+    top: 90px;
+
+    height: calc(100vh - 90px);
   }
 `;
 
