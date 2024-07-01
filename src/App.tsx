@@ -18,8 +18,8 @@ export default function App() {
   }, [location]);
 
   useEffect(() => {
-    if (!isMounted.current && isLoggedIn) {
-      triger().then();
+    if (!isMounted.current) {
+      isLoggedIn && triger().then();
       dispatch(jjhApi.util.invalidateTags(['jjhUpdate']));
     } else {
       isMounted.current = true;
