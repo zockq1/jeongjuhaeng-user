@@ -53,6 +53,7 @@ export default function JJHTopicList() {
                     key={title}
                     title="단원 마무리 문제"
                     lock={state === 'Locked'}
+                    run={state === 'InProgress'}
                     extraButton={
                       <QuizButton
                         onClick={() =>

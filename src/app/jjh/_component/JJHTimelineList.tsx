@@ -47,6 +47,8 @@ export default function JJHTimelineList() {
             key={title}
             title={title}
             subTitle={date}
+            run={isSuccess && contentList[0].state === 'InProgress'}
+            lock={isSuccess && contentList[0].state === 'Locked'}
             extraButton={
               <QuizButton
                 onClick={() =>

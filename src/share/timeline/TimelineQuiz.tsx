@@ -150,14 +150,16 @@ export default function TimelineQuiz({
   const { playedDateList, nextDateList, wrongCount, isFinish } = state;
 
   const fetchResult = () => {
-    isLoggedIn &&
+    if (isLoggedIn) {
       updateTimelineWrongCounter({
         id: id,
         wrongCount: wrongCount,
         correctCount: 10,
       });
-    if (wrongCount <= 2) {
-      onFinish && onFinish();
+
+      if (wrongCount <= 2) {
+        onFinish && onFinish();
+      }
     }
   };
 
