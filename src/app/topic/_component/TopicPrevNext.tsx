@@ -4,10 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import useQuesryString from '@/share/hook/useQueryString';
 import PrevNextButton from '@/share/ui/button/PrevNextButton';
 import { useGetChapterListQuery } from '@/store/api/chapterApi';
+import { usePrefetch } from '@/store/api/topicApi';
 import { ChapterModel } from '@/types/chapterTypes';
 
 export default function TopicPrevNext() {
   const navigate = useNavigate();
+  const prefetchTopic = usePrefetch('getChapterTopicList');
   const { chapter: currentChapter } = useQuesryString();
   const { data: chapterList } = useGetChapterListQuery();
   const { prev, next } = useMemo(() => {
@@ -19,8 +21,9 @@ export default function TopicPrevNext() {
         if (chapter.number === currentChapter + 1) next = chapter;
       });
     }
+    next && prefetchTopic(next.number);
     return { prev, next };
-  }, [chapterList, currentChapter]);
+  }, [chapterList, currentChapter, prefetchTopic]);
 
   return (
     <PrevNextButton

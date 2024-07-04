@@ -4,10 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import useQuesryString from '@/share/hook/useQueryString';
 import PrevNextButton from '@/share/ui/button/PrevNextButton';
 import { useGetQuestionCategoryListQuery } from '@/store/api/questionApi';
+import { usePrefetch } from '@/store/api/topicApi';
 import { QuestionCategoryModel } from '@/types/questionTypes';
 
 export default function QuizPrevNext() {
   const navigate = useNavigate();
+  const prefetchQuiz = usePrefetch('getQuestionCategoryTopicList');
   const { chapter: currentChapter } = useQuesryString();
   const { data: questionCategoryList } = useGetQuestionCategoryListQuery();
   const { prev, next } = useMemo(() => {
@@ -22,8 +24,9 @@ export default function QuizPrevNext() {
         if (category.number === current.number + 1) next = category;
       });
     }
+    next && prefetchQuiz(next.id);
     return { prev, next };
-  }, [questionCategoryList, currentChapter]);
+  }, [questionCategoryList, currentChapter, prefetchQuiz]);
 
   return (
     <PrevNextButton
