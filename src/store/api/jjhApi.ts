@@ -15,7 +15,7 @@ export const jjhApi = createApi({
   tagTypes: ['jjhUpdate'],
   keepUnusedDataFor: 86400000,
   endpoints: (builder) => ({
-    getJJHList: builder.query<JJHModel, void>({
+    getJJHList: builder.query<JJHModel, boolean>({
       query: () => '/jjh',
       providesTags: ['jjhUpdate'],
     }),

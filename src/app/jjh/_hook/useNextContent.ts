@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import useQuesryString from '@/share/hook/useQueryString';
 import getDate from '@/share/util/getDate';
 import { useGetContentListQuery, useGetJJHListQuery } from '@/store/api/jjhApi';
+import { RootState } from '@/store/store';
 import {
   ContentModel,
   JJHChapterModel,
@@ -11,13 +13,14 @@ import {
 } from '@/types/jjhTypes';
 
 function useNextContent() {
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   const {
     chapter: chapterNumber,
     jjh: jjhNumber,
     content: contentNumber,
   } = useQuesryString();
   const navigate = useNavigate();
-  const { data: jjhList } = useGetJJHListQuery();
+  const { data: jjhList } = useGetJJHListQuery(isLoggedIn);
   const { data: contentList } = useGetContentListQuery(jjhNumber);
   const [nextContentTitle, setNextContentTitle] = useState<string>('');
 

@@ -1,9 +1,11 @@
 import { useMemo, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import useQuesryString from '@/share/hook/useQueryString';
 import getDate from '@/share/util/getDate';
 import { useGetJJHListQuery } from '@/store/api/jjhApi';
+import { RootState } from '@/store/store';
 import { ContentState, JJHTimelineModel } from '@/types/jjhTypes';
 
 interface JJHModel {
@@ -23,9 +25,15 @@ interface FinalGroup {
 }
 
 export default function useGetJJHCategory() {
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   const { jjh: currentJJH } = useQuesryString();
   const navigate = useNavigate();
-  const { data: jjhList, isLoading, isError, error } = useGetJJHListQuery();
+  const {
+    data: jjhList,
+    isLoading,
+    isError,
+    error,
+  } = useGetJJHListQuery(isLoggedIn);
   const [currentGroup, setCurrentGroup] = useState('');
 
   const groupedByDateComment = useMemo(() => {
