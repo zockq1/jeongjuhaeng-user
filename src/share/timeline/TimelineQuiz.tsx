@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { useReducer } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
@@ -37,7 +37,6 @@ const SELECT_FIRST = 'SELECT_FIRST';
 const SELECT_MIDDLE = 'SELECT_MIDDLE';
 const SELECT_LAST = 'SELECT_LAST';
 const WRONG_SELECT = 'WRONG_SELECT';
-const FINISH = 'FINISH';
 
 type Action =
   | { type: 'SELECT_FIRST' }
@@ -124,8 +123,6 @@ const reducer = (state: State, action: Action): State => {
         wrongCount: wrongCount + 1,
       };
     }
-    case FINISH:
-      return { ...state, isFinish: true };
     default:
       return state;
   }
@@ -152,32 +149,17 @@ export default function TimelineQuiz({
   });
   const { playedDateList, nextDateList, wrongCount, isFinish } = state;
 
-  useEffect(() => {
-    if (nextDateList.length === 0) {
-      dispatch({ type: FINISH });
+  const fetchResult = () => {
+    isLoggedIn &&
+      updateTimelineWrongCounter({
+        id: id,
+        wrongCount: wrongCount,
+        correctCount: 10,
+      });
+    if (wrongCount <= 2) {
+      onFinish && onFinish();
     }
-  }, [nextDateList]);
-
-  useEffect(() => {
-    if (isFinish) {
-      isLoggedIn &&
-        updateTimelineWrongCounter({
-          id: id,
-          wrongCount: wrongCount,
-          correctCount: 10,
-        });
-      if (wrongCount <= 2) {
-        onFinish && onFinish();
-      }
-    }
-  }, [
-    isFinish,
-    updateTimelineWrongCounter,
-    wrongCount,
-    id,
-    isLoggedIn,
-    onFinish,
-  ]);
+  };
 
   const handleSelect = (select: Select, index: number) => {
     if (select.isWrong) return;
@@ -186,6 +168,7 @@ export default function TimelineQuiz({
       const isCorrect = nextDateList[0].date <= playedDateList[1].date;
       if (isCorrect) {
         dispatch({ type: SELECT_FIRST });
+        nextDateList.length === 1 && fetchResult();
         return;
       }
     }
@@ -195,6 +178,7 @@ export default function TimelineQuiz({
         nextDateList[0].date >= playedDateList[playedDateList.length - 2].date;
       if (isCorrect) {
         dispatch({ type: SELECT_LAST });
+        nextDateList.length === 1 && fetchResult();
         return;
       }
     }
@@ -205,6 +189,7 @@ export default function TimelineQuiz({
         nextDateList[0].date <= playedDateList[index + 1].date;
       if (isCorrect) {
         dispatch({ type: SELECT_MIDDLE, index });
+        nextDateList.length === 1 && fetchResult();
         return;
       }
     }

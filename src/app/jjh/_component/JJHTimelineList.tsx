@@ -6,6 +6,7 @@ import ErrorUI from '@/share/state/Error';
 import Timeline from '@/share/timeline/Timeline';
 import ContentBox from '@/share/ui/content-box/ContentBox';
 import ContentBoxSkeleton from '@/share/ui/content-box/ContentBoxSkeleton';
+import { useGetContentListQuery } from '@/store/api/jjhApi';
 import { useGetTimelineQuery } from '@/store/api/timelineApi';
 
 import QuizButton from '../../../share/ui/button/QuizButton';
@@ -17,7 +18,6 @@ export default function JJHTimelineList() {
     title,
     date,
     jjh: jjhNumber,
-    content: contentNumber,
   } = useQuesryString();
   const {
     data: dateList,
@@ -25,6 +25,8 @@ export default function JJHTimelineList() {
     isError,
     error,
   } = useGetTimelineQuery(timelineId);
+  const { data: contentList, isSuccess } = useGetContentListQuery(jjhNumber);
+  console.log(contentList);
 
   return (
     <Async
@@ -49,7 +51,7 @@ export default function JJHTimelineList() {
               <QuizButton
                 onClick={() =>
                   navigate(
-                    `/jeong-ju-haeng/timeline/quiz?jjh=${jjhNumber}&timeline=${timelineId}&content=${contentNumber}&title=${title}&date=${date}`,
+                    `/jeong-ju-haeng/timeline/quiz?jjh=${jjhNumber}&timeline=${timelineId}&content=${isSuccess && contentList[0].contentNumber}&title=${title}&date=${date}`,
                   )
                 }
               />

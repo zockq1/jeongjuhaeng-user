@@ -37,7 +37,7 @@ export default function JJHTimelineQuiz() {
             dateList={[...dateList].sort(() => Math.random() - 0.5)}
             key={timelineId + refresh}
             id={timelineId}
-            onNextContent={() => handleNextContent}
+            onNextContent={handleNextContent}
             onFinish={() =>
               isLoggedIn && updateProgres({ contentNumber: contentNumber + 1 })
             }

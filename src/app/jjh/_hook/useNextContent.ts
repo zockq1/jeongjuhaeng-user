@@ -11,13 +11,17 @@ import {
 } from '@/types/jjhTypes';
 
 function useNextContent() {
-  const { chapter: chapterNumber, jjh: jjhNumber } = useQuesryString();
+  const {
+    chapter: chapterNumber,
+    jjh: jjhNumber,
+    content: contentNumber,
+  } = useQuesryString();
   const navigate = useNavigate();
   const { data: jjhList } = useGetJJHListQuery();
   const { data: contentList } = useGetContentListQuery(jjhNumber);
   const [nextContentTitle, setNextContentTitle] = useState<string>('');
 
-  const handleNextContent = (jjhNumber: number, contentNumber: number) => {
+  const handleNextContent = () => {
     if (!contentList || !jjhList) return;
     //다음 콘텐츠 찾기
     let nextContent: ContentModel | null;

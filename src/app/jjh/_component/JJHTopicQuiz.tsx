@@ -12,11 +12,7 @@ import { RootState } from '@/store/store';
 import useNextContent from '../_hook/useNextContent';
 
 export default function JJHTopicQuiz() {
-  const {
-    topic: topicTitle,
-    jjh: jjhNumber,
-    content: contentNumber,
-  } = useQuesryString();
+  const { topic: topicTitle, content: contentNumber } = useQuesryString();
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   const { handleNextContent } = useNextContent();
   const {
@@ -46,7 +42,7 @@ export default function JJHTopicQuiz() {
         return (
           <Quiz
             quizList={quizList}
-            onNextContent={() => handleNextContent(jjhNumber, contentNumber)}
+            onNextContent={handleNextContent}
             onFinish={() =>
               isLoggedIn && updateProgres({ contentNumber: contentNumber + 1 })
             }

@@ -13,11 +13,7 @@ import useNextContent from '../_hook/useNextContent';
 
 export default function JJHChapterQuiz() {
   const { handleNextContent } = useNextContent();
-  const {
-    chapter: chapterNumber,
-    jjh: jjhNumber,
-    content: contentNumber,
-  } = useQuesryString();
+  const { chapter: chapterNumber, content: contentNumber } = useQuesryString();
   const {
     data: KtoTQuestionList,
     isError,
@@ -28,6 +24,9 @@ export default function JJHChapterQuiz() {
   });
   const [updateProgres] = useUpdateProgressMutation();
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
+
+  const handleFinish = () =>
+    isLoggedIn && updateProgres({ contentNumber: contentNumber + 1 });
 
   return (
     <Async
@@ -46,10 +45,8 @@ export default function JJHChapterQuiz() {
         return (
           <Quiz
             quizList={quizList}
-            onNextContent={() => handleNextContent(jjhNumber, contentNumber)}
-            onFinish={() =>
-              isLoggedIn && updateProgres({ contentNumber: contentNumber + 1 })
-            }
+            onNextContent={handleNextContent}
+            onFinish={handleFinish}
             isJJH
           />
         );
