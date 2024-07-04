@@ -10,7 +10,7 @@ export default function TimelineList() {
   const { timeline: timelineId, title, date } = useQuesryString();
   const {
     data: dateList,
-    isFetching,
+    isLoading,
     isError,
     error,
   } = useGetTimelineQuery(timelineId);
@@ -18,7 +18,7 @@ export default function TimelineList() {
   return (
     <Async
       data={dateList}
-      isLoading={isFetching}
+      isLoading={isLoading}
       isError={isError}
       loadingComponent={<ContentBoxSkeleton />}
       errorComponent={

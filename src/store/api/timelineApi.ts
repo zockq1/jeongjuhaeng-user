@@ -45,4 +45,5 @@ export const {
   useGetTimelineListQuery,
   useLazyGetTimelineListQuery,
   useUpdateTimelineWrongCounterMutation,
+  usePrefetch,
 } = timelineApi;

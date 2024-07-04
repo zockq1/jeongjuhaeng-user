@@ -53,4 +53,5 @@ export const {
   useUpdateProgressMutation,
   useGetSearchQuery,
   useLazyGetSearchQuery,
+  usePrefetch,
 } = jjhApi;

@@ -112,4 +112,5 @@ export const {
   useUpdateExamWrongCounterMutation,
   useUpdateExamClearMutation,
   useDeleteWrongNoteMutation,
+  usePrefetch,
 } = questionApi;

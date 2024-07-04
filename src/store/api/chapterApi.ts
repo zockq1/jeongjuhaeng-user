@@ -28,4 +28,5 @@ export const {
   useGetChapterListQuery,
   useGetChapterTitleQuery,
   useGetChapterInfoQuery,
+  usePrefetch,
 } = chapterApi;

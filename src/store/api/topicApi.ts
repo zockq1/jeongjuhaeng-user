@@ -35,4 +35,5 @@ export const {
   useGetKeywordListQuery,
   useGetChapterTopicListQuery,
   useGetQuestionCategoryTopicListQuery,
+  usePrefetch,
 } = topicApi;

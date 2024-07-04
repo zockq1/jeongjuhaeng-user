@@ -14,8 +14,7 @@ import QuizButton from '../../../share/ui/button/QuizButton';
 export default function JJHTopicList() {
   const navigate = useNavigate();
   const { chapter: chapterNumber, jjh: jjhNumber } = useQuesryString();
-  const { data: topicList, isFetching } =
-    useGetChapterTopicListQuery(chapterNumber);
+  const { data: topicList } = useGetChapterTopicListQuery(chapterNumber);
   const {
     data: contentList,
     isLoading,
@@ -26,7 +25,7 @@ export default function JJHTopicList() {
   return (
     <Async
       data={contentList}
-      isLoading={isLoading && isFetching}
+      isLoading={isLoading}
       isError={isError}
       loadingComponent={<ContentBoxSkeleton />}
       errorComponent={
