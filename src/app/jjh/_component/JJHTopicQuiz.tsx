@@ -20,9 +20,7 @@ export default function JJHTopicQuiz() {
     isLoading,
     isError,
     error,
-  } = useGetTtoKQuestionQuery(topicTitle, {
-    refetchOnMountOrArgChange: true,
-  });
+  } = useGetTtoKQuestionQuery(topicTitle);
   const [updateProgres] = useUpdateProgressMutation();
 
   return (

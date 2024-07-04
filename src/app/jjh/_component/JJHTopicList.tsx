@@ -7,12 +7,15 @@ import Timeline from '@/share/timeline/Timeline';
 import ContentBox from '@/share/ui/content-box/ContentBox';
 import ContentBoxSkeleton from '@/share/ui/content-box/ContentBoxSkeleton';
 import { useGetContentListQuery } from '@/store/api/jjhApi';
+import { usePrefetch } from '@/store/api/questionApi';
 import { useGetChapterTopicListQuery } from '@/store/api/topicApi';
 
 import QuizButton from '../../../share/ui/button/QuizButton';
 
 export default function JJHTopicList() {
   const navigate = useNavigate();
+  const prefetchTtoK = usePrefetch('getTtoKQuestion');
+  const prefetchKtoT = usePrefetch('getKtoTQuestion');
   const { chapter: chapterNumber, jjh: jjhNumber } = useQuesryString();
   const { data: topicList } = useGetChapterTopicListQuery(chapterNumber);
   const {
@@ -55,6 +58,7 @@ export default function JJHTopicList() {
                     run={state === 'InProgress'}
                     extraButton={
                       <QuizButton
+                        onMouseOver={() => prefetchKtoT(chapterNumber)}
                         onClick={() =>
                           navigate(
                             `/jeong-ju-haeng/chapter/quiz?jjh=${jjhNumber}&chapter=${chapterNumber}&content=${contentNumber}&title=${title}`,
@@ -77,6 +81,7 @@ export default function JJHTopicList() {
                   run={state === 'InProgress'}
                   extraButton={
                     <QuizButton
+                      onMouseOver={() => prefetchTtoK(title)}
                       onClick={() =>
                         navigate(
                           `/jeong-ju-haeng/topic/quiz?jjh=${jjhNumber}&chapter=${chapterNumber}&topic=${title}&content=${contentNumber}&title=${title}`,

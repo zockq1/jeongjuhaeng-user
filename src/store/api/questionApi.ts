@@ -18,7 +18,7 @@ export const questionApi = createApi({
   baseQuery: baseQueryWithJWT,
 
   keepUnusedDataFor: 86400000,
-  tagTypes: ['Score', 'Exam', 'WrongNote'],
+  tagTypes: ['Score', 'Exam', 'WrongNote', 'Quiz'],
   endpoints: (builder) => ({
     getRoundList: builder.query<RoundModel[], void>({
       query: () => '/rounds',
@@ -27,10 +27,12 @@ export const questionApi = createApi({
     getTtoKQuestion: builder.query<QuizModel[], string>({
       query: (topicTitle: string) =>
         `/questions/get-keywords/?title=${topicTitle}`,
+      providesTags: ['Quiz'],
     }),
     getKtoTQuestion: builder.query<QuizModel[], number>({
       query: (chapterNumber: number) =>
         `/questions/get-topics-keywords/?num=${chapterNumber}`,
+      providesTags: ['Quiz'],
     }),
     getRandomQuestion: builder.query<QuizModel[], GetQuizModel>({
       query: (getQuestion) =>
@@ -42,7 +44,6 @@ export const questionApi = createApi({
     }),
     getQuestionCategoryList: builder.query<QuestionCategoryModel[], void>({
       query: () => `/question-categories`,
-      providesTags: ['Score'],
     }),
 
     getWrongExamList: builder.query<WrongQuestionListModel[], void>({
