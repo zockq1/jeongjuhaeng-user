@@ -157,7 +157,7 @@ export default function TimelineQuiz({
         correctCount: 10,
       });
 
-      if (wrongCount <= 2) {
+      if (wrongCount <= 4) {
         onFinish && onFinish();
       }
     }

@@ -10,10 +10,12 @@ interface TimelineTopicProps {
     file?: string;
   };
   isQuestion?: boolean;
+  disableComment?: boolean;
 }
 
 export default function TimelineItem({
   dateItem,
+  disableComment,
   isQuestion = false,
 }: TimelineTopicProps) {
   const { title, date, comment, file } = dateItem;
@@ -35,7 +37,7 @@ export default function TimelineItem({
           <Keyword
             comment={comment?.join('.') || ''}
             file={file}
-            commentOff={isQuestion}
+            commentOff={isQuestion || disableComment}
           >
             {title}
           </Keyword>
