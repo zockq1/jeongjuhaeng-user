@@ -13,6 +13,7 @@ import useNextContent from '../_hook/useNextContent';
 
 export default function JJHChapterQuiz() {
   const { handleNextContent } = useNextContent();
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   const { chapter: chapterNumber, content: contentNumber } = useQuesryString();
   const {
     data: KtoTQuestionList,
@@ -23,7 +24,6 @@ export default function JJHChapterQuiz() {
     refetchOnMountOrArgChange: true,
   });
   const [updateProgres] = useUpdateProgressMutation();
-  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
 
   const handleFinish = () =>
     isLoggedIn && updateProgres({ contentNumber: contentNumber + 1 });

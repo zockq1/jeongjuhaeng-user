@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import useQuesryString from '@/share/hook/useQueryString';
 import getDate from '@/share/util/getDate';
 import { useGetContentListQuery, useGetJJHListQuery } from '@/store/api/jjhApi';
+import { usePrefetch } from '@/store/api/questionApi';
 import { RootState } from '@/store/store';
 import {
   ContentModel,
@@ -20,9 +21,30 @@ function useNextContent() {
     content: contentNumber,
   } = useQuesryString();
   const navigate = useNavigate();
+  const prefetchTtoK = usePrefetch('getTtoKQuestion');
+  const prefetchKtoT = usePrefetch('getKtoTQuestion');
   const { data: jjhList } = useGetJJHListQuery(isLoggedIn);
   const { data: contentList } = useGetContentListQuery(jjhNumber);
-  const [nextContentTitle, setNextContentTitle] = useState<string>('');
+
+  const nextContent = useMemo(() => {
+    if (contentList && jjhList) {
+      return contentList[
+        contentList.findIndex(
+          (content) => content.contentNumber === contentNumber,
+        ) + 1
+      ];
+    }
+  }, [contentList, contentNumber, jjhList]);
+
+  useEffect(() => {
+    if (nextContent && nextContent.content === 'TOPIC_STUDY') {
+      prefetchTtoK(nextContent.title);
+    }
+
+    if (nextContent && nextContent.content === 'CHAPTER_COMPLETE_QUESTION') {
+      prefetchKtoT(chapterNumber);
+    }
+  }, [nextContent, prefetchKtoT, prefetchTtoK, chapterNumber]);
 
   const handleNextContent = () => {
     if (!contentList || !jjhList) return;
@@ -51,7 +73,6 @@ function useNextContent() {
             (content) => content.contentNumber === contentNumber,
           ) + 1
         ];
-      setNextContentTitle(nextContent.title);
     }
 
     if (!nextContent && !nextJJHChapter && !nextJJHTimeline) {
@@ -109,7 +130,7 @@ function useNextContent() {
     }
   };
 
-  return { handleNextContent, nextContentTitle };
+  return { handleNextContent, nextContent };
 }
 
 export default useNextContent;

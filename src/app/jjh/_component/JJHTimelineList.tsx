@@ -26,7 +26,6 @@ export default function JJHTimelineList() {
     error,
   } = useGetTimelineQuery(timelineId);
   const { data: contentList, isSuccess } = useGetContentListQuery(jjhNumber);
-  console.log(contentList);
 
   return (
     <Async

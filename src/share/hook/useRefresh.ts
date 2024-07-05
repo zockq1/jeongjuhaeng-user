@@ -1,12 +1,15 @@
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { setAccessToken, setRefreshToken } from '@/store/slices/authSlice';
 import { RootState } from '@/store/store';
 
 export default function useRefresh() {
+  const dispatch = useDispatch();
   const { refreshToken, accessToken } = useSelector(
     (state: RootState) => state.auth,
   );
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}refresh-token`, {
       method: 'GET',
@@ -16,7 +19,10 @@ export default function useRefresh() {
         Authorization: accessToken,
         'Refresh-Token': refreshToken,
       },
+    }).then((response) => {
+      dispatch(setRefreshToken(response.headers.get('Refresh-Token')));
+      dispatch(setAccessToken(response.headers.get('Authorization')));
     });
-  }, [accessToken, refreshToken]);
+  }, [accessToken, refreshToken, dispatch]);
   return;
 }

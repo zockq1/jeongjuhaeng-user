@@ -17,16 +17,21 @@ export default function JJHPrevNext() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    nextJJH?.state !== 'Locked' && nextJJH && prefetchJJH(nextJJH.jjhNumber);
-    nextJJH?.state !== 'Locked' &&
-      nextJJH?.type === 'topic' &&
-      nextJJH &&
-      prefetchTopic(nextJJH.number);
+    if (nextJJH?.state !== 'Locked' && nextJJH) {
+      prefetchJJH(nextJJH.jjhNumber);
+    }
 
-    nextJJH?.state !== 'Locked' &&
+    if (nextJJH?.state !== 'Locked' && nextJJH?.type === 'topic' && nextJJH) {
+      prefetchTopic(nextJJH.number);
+    }
+
+    if (
+      nextJJH?.state !== 'Locked' &&
       nextJJH?.type === 'timeline' &&
-      nextJJH &&
+      nextJJH
+    ) {
       prefetchTimeline(nextJJH.number);
+    }
   }, [nextJJH, prefetchJJH, prefetchTopic, prefetchTimeline]);
 
   return (
