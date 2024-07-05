@@ -29,7 +29,7 @@ export default function Description({ quetion, image }: QuestionProps) {
           />
         ) : questionType === 'KtoT' && choiceType === 'Image' ? (
           <>
-            <Image src={image} />
+            <Image src={image} alt="background" />
             {descriptionList.map((item) => {
               return (
                 <DescriptionItem key={item}>

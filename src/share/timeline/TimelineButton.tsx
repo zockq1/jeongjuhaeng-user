@@ -17,7 +17,7 @@ export default function TimelineButton({
   return (
     <TimelineItemContainer>
       <InnerCircle />
-      <Button onClick={onClick} $color={color}>
+      <Button onClick={onClick} $color={color} aria-label="timeline-button">
         {children}
       </Button>
     </TimelineItemContainer>

@@ -24,7 +24,7 @@ export default function CheckBox({
         onChange={onChange}
         checked={checked}
       />
-      <StyledCheckbox htmlFor={id} color={color}>
+      <StyledCheckbox htmlFor={id} color={color} aria-label={id}>
         <div className="tick"></div>
       </StyledCheckbox>
     </CheckboxContainer>

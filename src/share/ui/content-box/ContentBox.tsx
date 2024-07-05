@@ -51,7 +51,10 @@ export default function ContentBox({
           {!isEmpty && isOpen && <Content>{children}</Content>}
           <Footer>
             {!isEmpty && (
-              <ToggleButton onClick={toggle}>
+              <ToggleButton
+                onClick={toggle}
+                aria-label={isOpen ? 'up' : 'down'}
+              >
                 {isOpen ? (
                   <Icon icon="up" size={40} color={color} />
                 ) : (
