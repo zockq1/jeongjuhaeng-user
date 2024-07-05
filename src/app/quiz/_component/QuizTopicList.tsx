@@ -4,6 +4,8 @@ import ErrorUI from '@/share/state/Error';
 import Timeline from '@/share/timeline/Timeline';
 import ContentBox from '@/share/ui/content-box/ContentBox';
 import ContentBoxSkeleton from '@/share/ui/content-box/ContentBoxSkeleton';
+import removeDuplicateDateComments from '@/share/util/removeDuplicateDateComments';
+import splitByDot from '@/share/util/splitByDot';
 import { useGetQuestionCategoryTopicListQuery } from '@/store/api/topicApi';
 
 export default function QuizTopicList() {
@@ -45,10 +47,7 @@ export default function QuizTopicList() {
                           dateItem={{
                             date: '',
                             title: keyword.name,
-                            comment: keyword.comment
-                              .trim()
-                              .split('.')
-                              .filter(Boolean),
+                            comment: splitByDot(keyword.comment),
                             file: keyword.file,
                           }}
                           key={index}
@@ -61,17 +60,13 @@ export default function QuizTopicList() {
                         return (
                           <Timeline.Item
                             dateItem={{
-                              date:
-                                arr[index - 1] &&
-                                arr[index - 1].dateComment ===
-                                  keyword.dateComment
-                                  ? ''
-                                  : keyword.dateComment,
+                              date: removeDuplicateDateComments(
+                                keyword,
+                                index,
+                                arr,
+                              ),
                               title: keyword.name,
-                              comment: keyword.comment
-                                .trim()
-                                .split('.')
-                                .filter(Boolean),
+                              comment: splitByDot(keyword.comment),
                               file: keyword.file,
                             }}
                             key={index}

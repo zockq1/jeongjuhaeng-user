@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import useQuesryString from '@/share/hook/useQueryString';
 import PrevNextButton from '@/share/ui/button/PrevNextButton';
-import getDate from '@/share/util/getDate';
+import { getFormattedDateRange } from '@/share/util/getDate';
 import { useGetTimelineListQuery, usePrefetch } from '@/store/api/timelineApi';
 import { TimelineListModel } from '@/types/timelinetypes';
 
@@ -37,13 +37,13 @@ export default function TimelinePrevNext() {
       prev={
         prev
           ? {
-              title: `${getDate(prev.startDate).year} ~ ${getDate(prev.endDate).year}`,
+              title: getFormattedDateRange(prev.startDate, prev.endDate),
               category: prev.title,
               onClick: () =>
                 navigate(
                   `/timeline?timeline=${prev.id}&title=${
                     prev.title
-                  }&date=${getDate(prev.startDate).year} ~ ${getDate(prev.endDate).year}`,
+                  }&date=${getFormattedDateRange(prev.startDate, prev.endDate)}`,
                 ),
               lock: false,
               color: 'black',
@@ -53,13 +53,13 @@ export default function TimelinePrevNext() {
       next={
         next
           ? {
-              title: `${getDate(next.startDate).year} ~ ${getDate(next.endDate).year}`,
+              title: getFormattedDateRange(next.startDate, next.endDate),
               category: next.title,
               onClick: () =>
                 navigate(
                   `/timeline?timeline=${next.id}&title=${
                     next.title
-                  }&date=${getDate(next.startDate).year} ~ ${getDate(next.endDate).year}`,
+                  }&date=${getFormattedDateRange(next.startDate, next.endDate)}`,
                 ),
               lock: false,
               color: 'black',

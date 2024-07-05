@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import useQuesryString from '@/share/hook/useQueryString';
-import getDate from '@/share/util/getDate';
+import { getFormattedDateRange } from '@/share/util/getDate';
 import { useGetJJHListQuery } from '@/store/api/jjhApi';
 import { RootState } from '@/store/store';
 import { ContentState, JJHTimelineModel } from '@/types/jjhTypes';
@@ -80,7 +80,7 @@ export default function useGetJJHCategory() {
             type: 'timeline',
             onClick: () =>
               navigate(
-                `/jeong-ju-haeng/timeline?jjh=${jjhNumber}&timeline=${id}&title=${title} 연표&date=${getDate(startDate).year} ~ ${getDate(endDate).year}`,
+                `/jeong-ju-haeng/timeline?jjh=${jjhNumber}&timeline=${id}&title=${title} 연표&date=${getFormattedDateRange(startDate, endDate)}`,
               ),
           });
         }

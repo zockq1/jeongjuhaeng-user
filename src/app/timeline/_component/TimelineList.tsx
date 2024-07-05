@@ -27,20 +27,7 @@ export default function TimelineList() {
     >
       {(dateList) => (
         <>
-          <ContentBox
-            key={title}
-            title={title}
-            subTitle={date}
-            // extraButton={
-            //   <QuizButton
-            //     onClick={() =>
-            //       navigate(
-            //         `/timeline/quiz?timeline=${timelineId}&title=${title}&date=${date}`,
-            //       )
-            //     }
-            //   />
-            // }
-          >
+          <ContentBox key={title} title={title} subTitle={date}>
             <Timeline>
               {dateList.map((keyword, index) => {
                 return (

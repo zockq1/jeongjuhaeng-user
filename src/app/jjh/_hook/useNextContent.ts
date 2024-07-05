@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import useQuesryString from '@/share/hook/useQueryString';
-import getDate from '@/share/util/getDate';
+import { getFormattedDateRange } from '@/share/util/getDate';
 import { useGetContentListQuery, useGetJJHListQuery } from '@/store/api/jjhApi';
 import { usePrefetch } from '@/store/api/questionApi';
 import { RootState } from '@/store/store';
@@ -92,9 +92,10 @@ function useNextContent() {
           `/jeong-ju-haeng/timeline?jjh=${nextJJHTimeline.jjhNumber}&timeline=${
             nextJJHTimeline.id
           }&title=${nextJJHTimeline.era}
-            &date=${
-              getDate(nextJJHTimeline.startDate / 10000).year
-            } ~ ${getDate(nextJJHTimeline.endDate / 10000).year}`,
+            &date=${getFormattedDateRange(
+              nextJJHTimeline.startDate / 10000,
+              nextJJHTimeline.endDate / 10000,
+            )}`,
           { replace: true },
         );
       return;
