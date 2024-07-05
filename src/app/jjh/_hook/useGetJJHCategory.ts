@@ -14,6 +14,7 @@ interface JJHModel {
   title: string;
   state: ContentState;
   category: string;
+  type: 'topic' | 'timeline';
   onClick: () => void;
 }
 
@@ -56,6 +57,7 @@ export default function useGetJJHCategory() {
           jjhNumber: jjhNumber,
           title: title,
           state: state,
+          type: 'topic',
           onClick: () =>
             navigate(
               `/jeong-ju-haeng/chapter?jjh=${jjhNumber}&chapter=${number}&title=${title}(${dateComment})`,
@@ -75,6 +77,7 @@ export default function useGetJJHCategory() {
             jjhNumber: jjhNumber,
             title: `${title} 연표`,
             state: state,
+            type: 'timeline',
             onClick: () =>
               navigate(
                 `/jeong-ju-haeng/timeline?jjh=${jjhNumber}&timeline=${id}&title=${title} 연표&date=${getDate(startDate).year} ~ ${getDate(endDate).year}`,

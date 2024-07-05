@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import PrevNextButton from '@/share/ui/button/PrevNextButton';
 import getColorAndIcon from '@/share/util/getColorAndIcon';
 import { usePrefetch as usePrefetchJJH } from '@/store/api/jjhApi';
+import { usePrefetch as usePrefetchTiemline } from '@/store/api/timelineApi';
 import { usePrefetch as usePrefetchTopic } from '@/store/api/topicApi';
 
 import useGetJJHCategory from '../_hook/useGetJJHCategory';
@@ -11,13 +12,22 @@ import useGetJJHCategory from '../_hook/useGetJJHCategory';
 export default function JJHPrevNext() {
   const prefetchJJH = usePrefetchJJH('getContentList');
   const prefetchTopic = usePrefetchTopic('getChapterTopicList');
+  const prefetchTimeline = usePrefetchTiemline('getTimeline');
   const { nextJJH, prevJJH } = useGetJJHCategory();
   const navigate = useNavigate();
 
   useEffect(() => {
     nextJJH?.state !== 'Locked' && nextJJH && prefetchJJH(nextJJH.jjhNumber);
-    nextJJH?.state !== 'Locked' && nextJJH && prefetchTopic(nextJJH.number);
-  }, [nextJJH, prefetchJJH, prefetchTopic]);
+    nextJJH?.state !== 'Locked' &&
+      nextJJH?.type === 'topic' &&
+      nextJJH &&
+      prefetchTopic(nextJJH.number);
+
+    nextJJH?.state !== 'Locked' &&
+      nextJJH?.type === 'timeline' &&
+      nextJJH &&
+      prefetchTimeline(nextJJH.number);
+  }, [nextJJH, prefetchJJH, prefetchTopic, prefetchTimeline]);
 
   return (
     <PrevNextButton
