@@ -4,8 +4,8 @@ import Footer from '@/share/layout/Footer';
 import Header from '@/share/layout/header';
 import { media } from '@/theme/theme';
 
-import StaggerTestimonials from './_component/CardList';
-import Ribbon from './_component/Ribbon';
+import StaggerTestimonials from './_component/HomeCarousel';
+import HomeMarquee from './_component/HomeMarquee';
 import Title from './_component/Title';
 
 export default function HomePage() {
@@ -14,7 +14,7 @@ export default function HomePage() {
       <Header />
       <Title />
       <StaggerTestimonials />
-      <Ribbon />
+      <HomeMarquee />
       <FooterStyle>
         <Footer />
       </FooterStyle>
