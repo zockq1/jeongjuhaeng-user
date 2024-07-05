@@ -33,6 +33,7 @@ jobs:
           echo "VITE_NAVER_KEY=${{ secrets.VITE_NAVER_KEY }}" >> .env
           echo "VITE_PROTOCOL=${{ secrets.VITE_PROTOCOL }}" >> .env
           echo "VITE_URL=${{ secrets.VITE_URL }}" >> .env
+          echo "VITE_URL=${{ secrets.VITE_GA4_ID }}" >> .env
 
       - name: 리액트 빌드
         run: |
