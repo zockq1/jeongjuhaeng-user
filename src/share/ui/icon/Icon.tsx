@@ -1,18 +1,11 @@
 /// <reference types="vite-plugin-svgr/client" />
 
-import { Content } from '@/types/jjhTypes';
-import { TopicCategory } from '@/types/topicTypes';
-
 import AngleDown from './svg/angle-down.svg?react';
 import AngleLeft from './svg/angle-left.svg?react';
 import AngleRight from './svg/angle-right.svg?react';
 import Fail from './svg/ban.svg?react';
-import Office from './svg/bank.svg?react';
-import Topic from './svg/blog-text.svg?react';
 import Culture from './svg/book-open-cover.svg?react';
 import MyInfo from './svg/book-open-reader.svg?react';
-import BookmarkOff from './svg/bookmark-off.svg?react';
-import BookmarkOn from './svg/bookmark-on.svg?react';
 import Timeline from './svg/calendar-clock.svg?react';
 import Check from './svg/check.svg?react';
 import CheckBox from './svg/checkbox.svg?react';
@@ -22,41 +15,27 @@ import Comment from './svg/comment.svg?react';
 import Dice from './svg/dice-alt.svg?react';
 import Dot from './svg/dot.svg?react';
 import Down from './svg/down.svg?react';
-import Drag from './svg/drag.svg?react';
 import Exam from './svg/exam.svg?react';
-import Exclamation from './svg/exclamation.svg?react';
-import Flag from './svg/flag.svg?react';
 import Hashtag from './svg/hastag.svg?react';
-import Era from './svg/hourglass-end.svg?react';
 import Home from './svg/house-chimney.svg?react';
-import Identity from './svg/id-card-clip-alt.svg?react';
 import Infinity from './svg/infinity.svg?react';
 import Key from './svg/key.svg?react';
 import Back from './svg/left.svg?react';
 import Lock from './svg/lock.svg?react';
 import Menu from './svg/menu.svg?react';
 import Pen from './svg/pen-clip.svg?react';
-import Policy from './svg/pen-field.svg?react';
 import Description from './svg/poll-h.svg?react';
 import Question from './svg/question.svg?react';
 import QuestionSquare from './svg/question-square.svg?react';
-import Chapter from './svg/rectangle-list.svg?react';
 import Next from './svg/right.svg?react';
 import Again from './svg/rotate-left.svg?react';
 import Run from './svg/running.svg?react';
 import Search from './svg/search.svg?react';
 import Setting from './svg/settings.svg?react';
-import Society from './svg/share.svg?react';
 import Login from './svg/sign-in-alt.svg?react';
-import One from './svg/square-1.svg?react';
-import Two from './svg/square-2.svg?react';
-import Three from './svg/square-3.svg?react';
 import O from './svg/square-o.svg?react';
 import X from './svg/square-x.svg?react';
 import Up from './svg/up.svg?react';
-import Person from './svg/user.svg?react';
-import King from './svg/user-crown.svg?react';
-import Organization from './svg/users-alt.svg?react';
 
 export type IconType =
   | ''
@@ -81,9 +60,6 @@ export type IconType =
   | 'back'
   | 'check'
   | 'checkBox'
-  | 'one'
-  | 'two'
-  | 'three'
   | 'fail'
   | 'back'
   | 'next'
@@ -92,18 +68,14 @@ export type IconType =
   | 'x'
   | 'key'
   | 'comment'
-  | 'bookmarkOn'
-  | 'bookmarkOff'
   | 'search'
   | 'culture'
   | 'dot'
   | 'up'
   | 'down'
   | 'exam'
-  | 'menu'
-  | 'drag'
-  | Content
-  | TopicCategory;
+  | 'timeline'
+  | 'menu';
 
 interface Iconprops {
   icon: IconType;
@@ -119,27 +91,6 @@ function Icon({ icon, size = 'inherit', color = 'inherit' }: Iconprops) {
       }
     >;
   } = {
-    //콘텐트
-    CHAPTER_INFO: Chapter,
-    TIMELINE_STUDY: Timeline,
-    TIMELINE_QUESTION: Timeline,
-    TOPIC_STUDY: Topic,
-    TOPIC_QUESTION: QuestionSquare,
-    CHAPTER_COMPLETE_QUESTION: QuestionSquare,
-
-    //주제
-    인물: Person,
-    국가: Flag,
-    왕: King,
-    시대: Era,
-    사건: Exclamation,
-    조직: Organization,
-    기구: Office,
-    문화: Culture,
-    사회: Society,
-    제도: Policy,
-    신분: Identity,
-
     //아이콘
     angleDown: AngleDown,
     angleRight: AngleRight,
@@ -165,15 +116,10 @@ function Icon({ icon, size = 'inherit', color = 'inherit' }: Iconprops) {
     next: Next,
     checkBox: CheckBox,
     check: Check,
-    one: One,
-    two: Two,
-    three: Three,
     o: O,
     x: X,
     key: Key,
     comment: Comment,
-    bookmarkOff: BookmarkOff,
-    bookmarkOn: BookmarkOn,
     search: Search,
     culture: Culture,
     dot: Dot,
@@ -181,7 +127,7 @@ function Icon({ icon, size = 'inherit', color = 'inherit' }: Iconprops) {
     down: Down,
     exam: Exam,
     menu: Menu,
-    drag: Drag,
+    timeline: Timeline,
   };
 
   if (!icons[icon]) return null;

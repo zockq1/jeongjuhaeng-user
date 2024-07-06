@@ -41,41 +41,13 @@ export default function SlideMenu() {
           &nbsp; 분류별 정보
         </MenuItem>
         <MenuItem onClick={() => navigate('/timeline-list')}>
-          <Icon icon="TIMELINE_STUDY" size={14} />
+          <Icon icon="timeline" size={14} />
           &nbsp; 연표
         </MenuItem>
         <MenuItem onClick={() => navigate('/option')}>
           <Icon icon="setting" size={14} />
           &nbsp; 설정
         </MenuItem>
-        {/* <MenuItem to="/question/quiz-list">
-          <Icon icon="question" size={14} />
-          &nbsp; 퀴즈
-        </MenuItem>
-        <MenuItem to="/question/timeline-list">
-          <Icon icon="questionSquare" size={14} />
-          &nbsp; 연표 문제
-        </MenuItem>
-        <MenuItem to="/question/mock-exam-list">
-          <Icon icon="pen" size={14} />
-          &nbsp; 기출 문제
-        </MenuItem>
-        <MenuItem to="/my-info/wrong-notes">
-          <Icon icon="fail" size={14} />
-          &nbsp; 오답 노트
-        </MenuItem>
-        <MenuItem to="/my-info/bookmark">
-          <Icon icon="bookmarkOff" size={14} />
-          &nbsp; 북마크
-        </MenuItem>
-        <MenuItem to="/my-info/search">
-          <Icon icon="search" size={14} />
-          &nbsp; 검색
-        </MenuItem>
-        <MenuItem to="/option">
-          <Icon icon="setting" size={14} />
-          &nbsp; 설정
-        </MenuItem> */}
       </SlidingMenu>
     </>
   );

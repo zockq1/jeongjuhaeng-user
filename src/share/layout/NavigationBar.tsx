@@ -62,36 +62,6 @@ function NavigationBar() {
       >
         설정
       </Navigation>
-      {/* <Navigation
-        onClick={() => navigate('/question/quiz-list')}
-        active={location.pathname.includes('/question/quiz')}
-      >
-        퀴즈
-      </Navigation>
-      <Navigation
-        onClick={() => navigate('/question/timeline-list')}
-        active={location.pathname.includes('/question/timeline')}
-      >
-        연표 문제
-      </Navigation>
-      <Navigation
-        onClick={() => navigate('/question/mock-exam-list')}
-        active={location.pathname.includes('/question/mock-exam')}
-      >
-        기출
-      </Navigation>
-      <Navigation
-        onClick={() => navigate('/my-info/wrong-notes')}
-        active={location.pathname.includes('wrong-notes')}
-      >
-        오답노트
-      </Navigation>
-      <Navigation
-        onClick={() => navigate('/my-info/bookmark')}
-        active={location.pathname.includes('bookmark')}
-      >
-        북마크
-      </Navigation> */}
     </NavigationBarContainer>
   );
 }

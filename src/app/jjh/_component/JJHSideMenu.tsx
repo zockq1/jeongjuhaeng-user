@@ -59,7 +59,7 @@ export default function JJHSideMenu() {
                           <Icon icon={icon} size={10} />
                           &nbsp;{title}&nbsp;
                           {title.includes('연표') && (
-                            <Icon icon="TIMELINE_QUESTION" size={12} />
+                            <Icon icon="timeline" size={12} />
                           )}
                         </Menu.Item>
                       );

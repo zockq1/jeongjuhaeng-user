@@ -2,11 +2,7 @@ import lottie from 'lottie-web/build/player/lottie_light';
 import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-import bookmarkLoading from '@/assets/animation/bookmark-loading.json';
-import questionLoading from '@/assets/animation/question-loading.json';
-import searchLoading from '@/assets/animation/search-loading.json';
 import loginLoading from '@/assets/animation/user-loading.json';
-import wrongLoading from '@/assets/animation/wrong-note-loading.json';
 
 const LoadingConainer = styled.div`
   display: flex;
@@ -23,10 +19,6 @@ const LoadingConainer = styled.div`
 `;
 
 const loadingImages = {
-  question: questionLoading,
-  search: searchLoading,
-  bookmark: bookmarkLoading,
-  wrong: wrongLoading,
   login: loginLoading,
 };
 
