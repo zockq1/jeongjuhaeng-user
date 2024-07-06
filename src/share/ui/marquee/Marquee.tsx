@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
@@ -19,7 +19,7 @@ export default function Marquee({ children, reverse }: MarqueeProps) {
   );
 }
 
-const MarqueeContainer = styled(motion.div)`
+const MarqueeContainer = styled(m.div)`
   display: flex;
 
   padding-right: 2px;

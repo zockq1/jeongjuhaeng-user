@@ -1,3 +1,4 @@
+import { domAnimation, LazyMotion } from 'framer-motion';
 import { Outlet } from 'react-router-dom';
 import { StyleSheetManager } from 'styled-components';
 
@@ -14,9 +15,11 @@ export default function App() {
 
   return (
     <main>
-      <StyleSheetManager enableVendorPrefixes>
-        <Outlet />
-      </StyleSheetManager>
+      <LazyMotion features={domAnimation}>
+        <StyleSheetManager enableVendorPrefixes>
+          <Outlet />
+        </StyleSheetManager>
+      </LazyMotion>
     </main>
   );
 }

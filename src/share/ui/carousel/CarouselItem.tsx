@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 
@@ -50,7 +50,7 @@ export default function CarouselItem({
   );
 }
 
-const Card = styled(motion.div)<{ $isActive: boolean }>`
+const Card = styled(m.div)<{ $isActive: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
