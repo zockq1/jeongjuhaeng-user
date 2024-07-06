@@ -24,8 +24,8 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          lottie: ['lottie-web/build/player/lottie_light'],
-          framerMotion: ['framer-motion'],
+          // lottie: ['lottie-web/build/player/lottie_light'],
+          // framerMotion: ['framer-motion'],
         },
       },
     },
