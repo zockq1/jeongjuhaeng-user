@@ -33,7 +33,7 @@ export default function QuizResultButton({
     <ButtonGroup>
       <ButtonGroup.Item onClick={handleBack}>
         목록 &nbsp;
-        <Icon icon="CHAPTER_INFO" size={22} />
+        <Icon icon="menu" size={22} />
       </ButtonGroup.Item>
       <ButtonGroup.Item onClick={handleRefresh}>
         다시 풀기 &nbsp;
@@ -47,7 +47,7 @@ export default function QuizResultButton({
   ) : (
     <ButtonGroup>
       <ButtonGroup.Item onClick={handleBack}>
-        <Icon icon="CHAPTER_INFO" size={22} />
+        <Icon icon="menu" size={22} />
         &nbsp;목록
       </ButtonGroup.Item>
       <ButtonGroup.Item onClick={handleRefresh}>
