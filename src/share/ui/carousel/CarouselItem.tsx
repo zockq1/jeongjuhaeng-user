@@ -84,7 +84,6 @@ const Card = styled(m.div)<{ $isActive: boolean }>`
   & > p {
     margin-bottom: 10px;
 
-    font-weight: ${({ theme }) => theme.fontWeight.light};
     font-size: ${({ theme }) => theme.fontSizes.base};
     line-height: 120%;
     text-align: center;

@@ -25,6 +25,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           lottie: ['lottie-web/build/player/lottie_light'],
+          framerMotion: ['framer-motion'],
         },
       },
     },
