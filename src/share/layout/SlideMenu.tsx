@@ -93,6 +93,7 @@ const MenuItem = styled.button`
 
   margin: 10px;
 
+  color: ${({ theme }) => theme.colors.textBlue};
   font-weight: ${({ theme }) => theme.fontWeight.light};
   font-size: ${({ theme }) => theme.fontSizes.base};
 `;

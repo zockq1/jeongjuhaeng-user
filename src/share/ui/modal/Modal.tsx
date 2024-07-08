@@ -68,6 +68,7 @@ const CloseButton = styled.button`
   top: 15px;
   right: 20px;
 
+  color: ${({ theme }) => theme.colors.textBlue};
   font-weight: ${({ theme }) => theme.fontWeight.regular};
   font-size: ${({ theme }) => theme.fontSizes.xxxl};
 `;
