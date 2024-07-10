@@ -55,7 +55,7 @@ function NavigationBar() {
         variant="textHover"
         size="large"
       >
-        <Link to="/timeline-list">연표</Link>
+        <Link to="/timeline">연표</Link>
       </Navigation>
       <Navigation
         active={location.pathname.includes('/option')}

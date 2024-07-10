@@ -1,6 +1,6 @@
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
 import ErrorUI from '@/share/state/Error';
 import Menu from '@/share/ui/menu/Menu';
@@ -9,7 +9,7 @@ import { getFormattedDateRange } from '@/share/util/getDate';
 import { useGetTimelineListQuery } from '@/store/api/timelineApi';
 
 export default function TimelineSideMenu() {
-  const { timeline: currentTimeline } = useQuesryString();
+  const { timelineId } = useParams();
   const {
     data: timelineList,
     isLoading,
@@ -34,10 +34,8 @@ export default function TimelineSideMenu() {
             .map((timeline) => (
               <Menu.Item
                 key={timeline.id}
-                selected={currentTimeline === timeline.id}
-                to={`/timeline?timeline=${timeline.id}&title=${
-                  timeline.title
-                }&date=${getFormattedDateRange(timeline.startDate, timeline.endDate)}`}
+                selected={Number(timelineId) === timeline.id}
+                to={`/timeline/${timeline.id}`}
               >
                 <div>
                   <Era>{timeline.title}</Era>

@@ -39,7 +39,7 @@ export default function CardList() {
       title: '연표 학습',
       description: '연도별로 정리된 한국사 정보',
       button: '연표 보러가기',
-      to: '/timeline-list',
+      to: '/timeline',
     },
     {
       id: '4',

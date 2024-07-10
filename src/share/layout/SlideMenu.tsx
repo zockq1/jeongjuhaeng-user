@@ -43,7 +43,7 @@ export default function SlideMenu() {
           <Icon icon="question" size={14} />
           &nbsp; 분류별 정보
         </MenuItem>
-        <MenuItem to="/timeline-list">
+        <MenuItem to="/timeline">
           <Icon icon="timeline" size={14} />
           &nbsp; 연표
         </MenuItem>

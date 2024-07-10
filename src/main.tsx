@@ -56,15 +56,15 @@ const router = createBrowserRouter([
         element: <LearningTopicPage />,
       },
       {
-        path: '/timeline-list',
+        path: '/timeline',
         element: <TimelineListPage />,
       },
       {
-        path: '/timeline',
+        path: '/timeline/:timelineId',
         element: <LearningTimelinePage />,
       },
       {
-        path: '/timeline/quiz',
+        path: '/timeline/:timelineId/quiz',
         element: <TimelineQuizPage />,
       },
       {

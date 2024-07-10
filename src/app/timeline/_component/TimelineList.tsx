@@ -1,4 +1,5 @@
-import useQuesryString from '@/share/hook/useQueryString';
+import { useParams } from 'react-router-dom';
+
 import Async from '@/share/state/Async';
 import ErrorUI from '@/share/state/Error';
 import Timeline from '@/share/timeline/Timeline';
@@ -6,14 +7,19 @@ import ContentBox from '@/share/ui/content-box/ContentBox';
 import ContentBoxSkeleton from '@/share/ui/content-box/ContentBoxSkeleton';
 import { useGetTimelineQuery } from '@/store/api/timelineApi';
 
-export default function TimelineList() {
-  const { timeline: timelineId, title, date } = useQuesryString();
+interface TimelineListProps {
+  title: string;
+  date: string;
+}
+
+export default function TimelineList({ title, date }: TimelineListProps) {
+  const { timelineId } = useParams();
   const {
     data: dateList,
     isLoading,
     isError,
     error,
-  } = useGetTimelineQuery(timelineId);
+  } = useGetTimelineQuery(Number(timelineId));
 
   return (
     <Async
