@@ -1,4 +1,5 @@
-import useQuesryString from '@/share/hook/useQueryString';
+import { useParams } from 'react-router-dom';
+
 import Async from '@/share/state/Async';
 import ErrorUI from '@/share/state/Error';
 import Timeline from '@/share/timeline/Timeline';
@@ -9,13 +10,13 @@ import splitByDot from '@/share/util/splitByDot';
 import { useGetQuestionCategoryTopicListQuery } from '@/store/api/topicApi';
 
 export default function QuizTopicList() {
-  const { chapter: chapterNumber } = useQuesryString();
+  const { quizId } = useParams();
   const {
     data: topicList,
     isError,
     isFetching,
     error,
-  } = useGetQuestionCategoryTopicListQuery(chapterNumber);
+  } = useGetQuestionCategoryTopicListQuery(Number(quizId));
 
   return (
     <Async

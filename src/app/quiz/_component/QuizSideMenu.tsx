@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
+import { useParams } from 'react-router-dom';
 
-import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
 import ErrorUI from '@/share/state/Error';
 import Menu from '@/share/ui/menu/Menu';
@@ -9,7 +9,7 @@ import { useGetQuestionCategoryListQuery } from '@/store/api/questionApi';
 import { QuestionCategoryModel } from '@/types/questionTypes';
 
 export default function QuizSideMenu() {
-  const { chapter: currentChapter } = useQuesryString();
+  const { quizId } = useParams();
   const {
     data: questionCategoryList,
     isError,
@@ -32,9 +32,9 @@ export default function QuizSideMenu() {
 
   const currentCategory = useMemo(() => {
     return questionCategoryList
-      ?.find((chapter) => chapter.id === currentChapter)
+      ?.find((chapter) => chapter.id === Number(quizId))
       ?.title.split('/')[0];
-  }, [questionCategoryList, currentChapter]);
+  }, [questionCategoryList, quizId]);
 
   return (
     <Async
@@ -58,8 +58,8 @@ export default function QuizSideMenu() {
               {chapters.map((chapter) => (
                 <Menu.Item
                   key={chapter.number}
-                  selected={currentChapter === chapter.id}
-                  to={`/quiz/topic?chapter=${chapter.id}&title=${chapter.title.split('/')[1]}(${chapter.title.split('/')[0]})`}
+                  selected={Number(quizId) === chapter.id}
+                  to={`/quiz/${chapter.id}`}
                 >
                   {`${chapter.title.split('/')[1]} (${chapter.topicCount})`}
                 </Menu.Item>

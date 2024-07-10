@@ -96,7 +96,7 @@ const router = createBrowserRouter([
         element: <QuizCategoryListPage />,
       },
       {
-        path: '/quiz/topic',
+        path: '/quiz/:quizId',
         element: <QuizCategoryTopicPage />,
       },
     ],
