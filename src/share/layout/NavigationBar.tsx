@@ -34,17 +34,21 @@ function NavigationBar() {
         <Link to="/chapter">단원별</Link>
       </Navigation>
       <Navigation
-        onClick={(e) => {
-          if (!isLoggedIn) {
-            e.preventDefault();
-            alert('로그인 후 이용 가능합니다.');
-          }
-        }}
         active={location.pathname.startsWith('/quiz')}
         variant="textHover"
         size="large"
       >
-        <Link to="/quiz">분류별</Link>
+        <Link
+          to="/quiz"
+          onClick={(e) => {
+            if (!isLoggedIn) {
+              e.preventDefault();
+              alert('로그인 후 이용 가능합니다.');
+            }
+          }}
+        >
+          분류별
+        </Link>
       </Navigation>
       <Navigation
         active={location.pathname === '/timeline'}
