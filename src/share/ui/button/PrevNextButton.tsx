@@ -95,11 +95,11 @@ const PrevNextButtonContainer = styled.div`
   min-height: 40px;
   margin: 15px 5px;
 
-  & > button:not(:last-child) {
+  & > a:not(:last-child) {
     margin-right: 5px;
   }
 
-  & > button:not(:first-child) {
+  & > a:not(:first-child) {
     margin-left: 5px;
   }
 `;
