@@ -25,21 +25,16 @@ const colorStyles = {
   `,
 };
 
+export interface PrevNext {
+  to: string;
+  title: string;
+  category?: string;
+  color: Color;
+  lock: boolean;
+}
 interface PrevNextButtonProps {
-  prev?: {
-    to: string;
-    title: string;
-    category?: string;
-    color: Color;
-    lock: boolean;
-  };
-  next?: {
-    to: string;
-    title: string;
-    category?: string;
-    color: Color;
-    lock: boolean;
-  };
+  prev?: PrevNext;
+  next?: PrevNext;
   toMenu: string;
 }
 
