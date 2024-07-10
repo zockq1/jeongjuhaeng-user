@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Icon from '@/share/ui/icon/Icon';
 import { RootState } from '@/store/store';
 
 export default function SlideMenu() {
-  const navigate = useNavigate();
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   const [isMenuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => {
@@ -24,27 +23,31 @@ export default function SlideMenu() {
       </IconButton>
       <DarkOverlay $isVisible={isMenuOpen} onClick={closeMenu} />
       <SlidingMenu className={isMenuOpen ? '' : 'closed'}>
-        <MenuItem onClick={() => navigate('/jeong-ju-haeng')}>
+        <MenuItem to="/jeong-ju-haeng">
           <Icon icon="run" size={14} />
           &nbsp; 정주행
         </MenuItem>
-        <MenuItem onClick={() => navigate('/learning')}>
+        <MenuItem to="/learning">
           <Icon icon="description" size={14} />
           &nbsp; 단원별 정보
         </MenuItem>
         <MenuItem
-          onClick={() =>
-            isLoggedIn ? navigate('/quiz') : alert('로그인 후 이용 가능합니다.')
-          }
+          to="/quiz"
+          onClick={(e) => {
+            if (!isLoggedIn) {
+              e.preventDefault();
+              alert('로그인 후 이용 가능합니다.');
+            }
+          }}
         >
           <Icon icon="question" size={14} />
           &nbsp; 분류별 정보
         </MenuItem>
-        <MenuItem onClick={() => navigate('/timeline-list')}>
+        <MenuItem to="/timeline-list">
           <Icon icon="timeline" size={14} />
           &nbsp; 연표
         </MenuItem>
-        <MenuItem onClick={() => navigate('/option')}>
+        <MenuItem to="/option">
           <Icon icon="setting" size={14} />
           &nbsp; 설정
         </MenuItem>
@@ -88,7 +91,7 @@ const DarkOverlay = styled.div<{ $isVisible: boolean }>`
   background-color: rgb(0 0 0 / 50%);
 `;
 
-const MenuItem = styled.button`
+const MenuItem = styled(Link)`
   display: flex;
 
   margin: 10px;

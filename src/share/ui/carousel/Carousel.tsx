@@ -9,7 +9,7 @@ export interface MenuModel {
   description: string;
   button: string;
   imgSrc: string;
-  to: () => void;
+  to: string;
 }
 
 interface CarouselProps {

@@ -1,6 +1,10 @@
 import { m } from 'framer-motion';
+import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
+import { RootState } from '@/store/store';
 
 import { MenuModel } from './Carousel';
 
@@ -15,6 +19,7 @@ export default function CarouselItem({
   menu,
   handleMove,
 }: CarouselItemProps) {
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   const isMobile = useMediaQuery({ maxWidth: 640 });
   const isActive = position === 0;
   const cardSize = isMobile ? 240 : 365;
@@ -43,7 +48,17 @@ export default function CarouselItem({
       <img src={imgSrc} alt={title} />
       <h1>{title}</h1>
       <p>{description}</p>
-      <Button $isMobile={isMobile} $isActive={isActive} onClick={to}>
+      <Button
+        $isMobile={isMobile}
+        $isActive={isActive}
+        to={to}
+        onClick={(e) => {
+          if (!isLoggedIn && to === '/quiz') {
+            e.preventDefault();
+            alert('로그인 후 이용 가능합니다.');
+          }
+        }}
+      >
         {button} {'>'}
       </Button>
     </Card>
@@ -98,7 +113,7 @@ const Card = styled(m.div)<{ $isActive: boolean }>`
   }
 `;
 
-const Button = styled.button<{ $isMobile: boolean; $isActive: boolean }>`
+const Button = styled(Link)<{ $isMobile: boolean; $isActive: boolean }>`
   margin: 20px 0;
   padding: ${({ theme }) => theme.padding.small};
   border: 3px solid
