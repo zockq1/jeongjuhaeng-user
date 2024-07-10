@@ -142,6 +142,7 @@ const TextContainer = styled.div`
 
   font-weight: ${({ theme }) => theme.fontWeight.regular};
   font-size: ${({ theme }) => theme.fontSizes.small};
+  text-align: center;
 
   word-break: keep-all;
 

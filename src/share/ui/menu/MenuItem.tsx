@@ -40,12 +40,17 @@ export default function MenuItem({
       $color={color}
       $isLock={lock}
     >
-      <Link to={to} onClick={(e) => lock && e.preventDefault()}>
+      <LinkContainer to={to} onClick={(e) => lock && e.preventDefault()}>
         {children}
-      </Link>
+      </LinkContainer>
     </MenuItemContainer>
   );
 }
+
+const LinkContainer = styled(Link)`
+  display: block;
+  width: 100%;
+`;
 
 const MenuItemContainer = styled.li<{
   $color: Color;
