@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 import useQuesryString from '@/share/hook/useQueryString';
 import { getFormattedDateRange } from '@/share/util/getDate';
@@ -15,7 +14,7 @@ interface JJHModel {
   state: ContentState;
   category: string;
   type: 'topic' | 'timeline';
-  onClick: () => void;
+  to: string;
 }
 
 interface FinalGroup {
@@ -28,7 +27,6 @@ interface FinalGroup {
 export default function useGetJJHCategory() {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   const { jjh: currentJJH } = useQuesryString();
-  const navigate = useNavigate();
   const {
     data: jjhList,
     isLoading,
@@ -58,10 +56,7 @@ export default function useGetJJHCategory() {
           title: title,
           state: state,
           type: 'topic',
-          onClick: () =>
-            navigate(
-              `/jeong-ju-haeng/chapter?jjh=${jjhNumber}&chapter=${number}&title=${title}(${dateComment})`,
-            ),
+          to: `/jeong-ju-haeng/chapter?jjh=${jjhNumber}&chapter=${number}&title=${title}(${dateComment})`,
         });
         return acc;
       }, {});
@@ -78,10 +73,7 @@ export default function useGetJJHCategory() {
             title: `${title} 연표`,
             state: state,
             type: 'timeline',
-            onClick: () =>
-              navigate(
-                `/jeong-ju-haeng/timeline?jjh=${jjhNumber}&timeline=${id}&title=${title} 연표&date=${getFormattedDateRange(startDate, endDate)}`,
-              ),
+            to: `/jeong-ju-haeng/timeline?jjh=${jjhNumber}&timeline=${id}&title=${title} 연표&date=${getFormattedDateRange(startDate, endDate)}`,
           });
         }
         if (
@@ -140,7 +132,7 @@ export default function useGetJJHCategory() {
     );
 
     return finalGroup;
-  }, [jjhList, navigate, currentJJH]);
+  }, [jjhList, currentJJH]);
 
   const { next, prev, current } = useMemo(() => {
     const nextJJHNumber = currentJJH + 1;

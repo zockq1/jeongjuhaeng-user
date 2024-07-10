@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import PrevNextButton from '@/share/ui/button/PrevNextButton';
 import getColorAndIcon from '@/share/util/getColorAndIcon';
@@ -14,7 +13,6 @@ export default function JJHPrevNext() {
   const prefetchTopic = usePrefetchTopic('getChapterTopicList');
   const prefetchTimeline = usePrefetchTiemline('getTimeline');
   const { nextJJH, prevJJH } = useGetJJHCategory();
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (nextJJH?.state !== 'Locked' && nextJJH) {
@@ -41,7 +39,7 @@ export default function JJHPrevNext() {
           ? {
               title: prevJJH.title,
               category: prevJJH.category,
-              onClick: prevJJH.onClick,
+              to: prevJJH.to,
               lock: prevJJH.state === 'Locked',
               color: getColorAndIcon(prevJJH.state).color,
             }
@@ -52,13 +50,13 @@ export default function JJHPrevNext() {
           ? {
               title: nextJJH.title,
               category: nextJJH.category,
-              onClick: nextJJH.onClick,
+              to: nextJJH.to,
               lock: nextJJH.state === 'Locked',
               color: getColorAndIcon(nextJJH.state).color,
             }
           : undefined
       }
-      onClickMenu={() => navigate('/jeong-ju-haeng')}
+      toMenu="/jeong-ju-haeng"
     />
   );
 }

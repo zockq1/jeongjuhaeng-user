@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import useQuesryString from '@/share/hook/useQueryString';
 import PrevNextButton from '@/share/ui/button/PrevNextButton';
@@ -8,7 +7,6 @@ import { usePrefetch } from '@/store/api/topicApi';
 import { ChapterModel } from '@/types/chapterTypes';
 
 export default function TopicPrevNext() {
-  const navigate = useNavigate();
   const prefetchTopic = usePrefetch('getChapterTopicList');
   const { chapter: currentChapter } = useQuesryString();
   const { data: chapterList } = useGetChapterListQuery();
@@ -32,10 +30,7 @@ export default function TopicPrevNext() {
           ? {
               title: prev.title,
               category: prev.dateComment,
-              onClick: () =>
-                navigate(
-                  `/learning/chapter?chapter=${prev.number}&title=${prev.title}`,
-                ),
+              to: `/learning/chapter?chapter=${prev.number}&title=${prev.title}`,
               lock: false,
               color: 'black',
             }
@@ -46,16 +41,13 @@ export default function TopicPrevNext() {
           ? {
               title: next.title,
               category: next.dateComment,
-              onClick: () =>
-                navigate(
-                  `/learning/chapter?chapter=${next.number}&title=${next.title}`,
-                ),
+              to: `/learning/chapter?chapter=${next.number}&title=${next.title}`,
               lock: false,
               color: 'black',
             }
           : undefined
       }
-      onClickMenu={() => navigate('/learning')}
+      toMenu="/learning"
     />
   );
 }

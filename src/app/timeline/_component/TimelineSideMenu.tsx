@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import useQuesryString from '@/share/hook/useQueryString';
@@ -10,7 +9,6 @@ import { getFormattedDateRange } from '@/share/util/getDate';
 import { useGetTimelineListQuery } from '@/store/api/timelineApi';
 
 export default function TimelineSideMenu() {
-  const navigate = useNavigate();
   const { timeline: currentTimeline } = useQuesryString();
   const {
     data: timelineList,
@@ -37,13 +35,9 @@ export default function TimelineSideMenu() {
               <Menu.Item
                 key={timeline.id}
                 selected={currentTimeline === timeline.id}
-                onClick={() =>
-                  navigate(
-                    `/timeline?timeline=${timeline.id}&title=${
-                      timeline.title
-                    }&date=${getFormattedDateRange(timeline.startDate, timeline.endDate)}`,
-                  )
-                }
+                to={`/timeline?timeline=${timeline.id}&title=${
+                  timeline.title
+                }&date=${getFormattedDateRange(timeline.startDate, timeline.endDate)}`}
               >
                 <div>
                   <Era>{timeline.title}</Era>

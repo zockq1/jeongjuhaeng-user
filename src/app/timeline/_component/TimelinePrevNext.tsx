@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import useQuesryString from '@/share/hook/useQueryString';
 import PrevNextButton from '@/share/ui/button/PrevNextButton';
@@ -8,7 +7,6 @@ import { useGetTimelineListQuery, usePrefetch } from '@/store/api/timelineApi';
 import { TimelineListModel } from '@/types/timelinetypes';
 
 export default function TimelinePrevNext() {
-  const navigate = useNavigate();
   const prefetchTimeline = usePrefetch('getTimeline');
   const { timeline: currentTimeline } = useQuesryString();
   const { data: timelineList } = useGetTimelineListQuery();
@@ -39,12 +37,9 @@ export default function TimelinePrevNext() {
           ? {
               title: getFormattedDateRange(prev.startDate, prev.endDate),
               category: prev.title,
-              onClick: () =>
-                navigate(
-                  `/timeline?timeline=${prev.id}&title=${
-                    prev.title
-                  }&date=${getFormattedDateRange(prev.startDate, prev.endDate)}`,
-                ),
+              to: `/timeline?timeline=${prev.id}&title=${
+                prev.title
+              }&date=${getFormattedDateRange(prev.startDate, prev.endDate)}`,
               lock: false,
               color: 'black',
             }
@@ -55,18 +50,15 @@ export default function TimelinePrevNext() {
           ? {
               title: getFormattedDateRange(next.startDate, next.endDate),
               category: next.title,
-              onClick: () =>
-                navigate(
-                  `/timeline?timeline=${next.id}&title=${
-                    next.title
-                  }&date=${getFormattedDateRange(next.startDate, next.endDate)}`,
-                ),
+              to: `/timeline?timeline=${next.id}&title=${
+                next.title
+              }&date=${getFormattedDateRange(next.startDate, next.endDate)}`,
               lock: false,
               color: 'black',
             }
           : undefined
       }
-      onClickMenu={() => navigate('/timeline-list')}
+      toMenu="/timeline-list"
     />
   );
 }

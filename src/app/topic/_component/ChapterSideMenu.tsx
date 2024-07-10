@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
@@ -11,7 +10,6 @@ import { ChapterModel } from '@/types/chapterTypes';
 
 export default function ChapterSideMenu() {
   const { chapter: currentChapter } = useQuesryString();
-  const navigate = useNavigate();
   const {
     data: chapterList,
     isLoading,
@@ -61,11 +59,7 @@ export default function ChapterSideMenu() {
                   <Menu.Item
                     key={chapter.number}
                     selected={currentChapter === chapter.number}
-                    onClick={() =>
-                      navigate(
-                        `/learning/chapter?chapter=${chapter.number}&title=${chapter.title}(${dateComment})`,
-                      )
-                    }
+                    to={`/learning/chapter?chapter=${chapter.number}&title=${chapter.title}(${dateComment})`}
                   >
                     {`${chapter.title} (${chapter.topicCount})`}
                   </Menu.Item>

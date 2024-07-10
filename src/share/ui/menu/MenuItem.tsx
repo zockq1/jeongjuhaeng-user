@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import { Color } from '@/types/commonTypes';
@@ -23,7 +24,7 @@ interface MenuItemProps {
   color?: Color;
   lock?: boolean;
   selected?: boolean;
-  onClick?: () => void;
+  to: string;
 }
 
 export default function MenuItem({
@@ -31,16 +32,17 @@ export default function MenuItem({
   color = 'black',
   lock = false,
   selected = false,
-  onClick,
+  to,
 }: MenuItemProps) {
   return (
     <MenuItemContainer
-      onClick={lock ? () => {} : onClick}
       className={selected ? 'selected' : ''}
       $color={color}
       $isLock={lock}
     >
-      {children}
+      <Link to={to} onClick={(e) => lock && e.preventDefault()}>
+        {children}
+      </Link>
     </MenuItemContainer>
   );
 }

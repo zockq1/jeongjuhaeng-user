@@ -1,4 +1,5 @@
 import { useMediaQuery } from 'react-responsive';
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import Icon from '../icon/Icon';
@@ -26,26 +27,26 @@ const colorStyles = {
 
 interface PrevNextButtonProps {
   prev?: {
-    onClick: () => void;
+    to: string;
     title: string;
     category?: string;
     color: Color;
     lock: boolean;
   };
   next?: {
-    onClick: () => void;
+    to: string;
     title: string;
     category?: string;
     color: Color;
     lock: boolean;
   };
-  onClickMenu: () => void;
+  toMenu: string;
 }
 
 export default function PrevNextButton({
   prev,
   next,
-  onClickMenu,
+  toMenu,
 }: PrevNextButtonProps) {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
@@ -54,7 +55,8 @@ export default function PrevNextButton({
         <Button
           $color={prev.color}
           $isLock={prev.lock}
-          onClick={prev.lock ? () => {} : prev.onClick}
+          onClick={(e) => prev.lock && e.preventDefault()}
+          to={prev.to}
         >
           <Icon icon="angleLeft" size={12} />
           <TextContainer>
@@ -64,7 +66,7 @@ export default function PrevNextButton({
         </Button>
       )}
       {isMobile && (
-        <MenuButton onClick={onClickMenu}>
+        <MenuButton to={toMenu}>
           <Icon icon="menu" size={20} />
         </MenuButton>
       )}
@@ -72,7 +74,8 @@ export default function PrevNextButton({
         <Button
           $color={next.color}
           $isLock={next.lock}
-          onClick={next.lock ? () => {} : next.onClick}
+          onClick={(e) => next.lock && e.preventDefault()}
+          to={next.to}
         >
           <TextContainer>
             <div className="title">{next.category}</div>
@@ -101,7 +104,7 @@ const PrevNextButtonContainer = styled.div`
   }
 `;
 
-const Button = styled.button<{
+const Button = styled(Link)<{
   $color: Color;
   $isLock: boolean;
 }>`
@@ -120,7 +123,7 @@ const Button = styled.button<{
   cursor: ${({ $isLock }) => ($isLock ? 'not-allowed' : 'pointer')};
 `;
 
-const MenuButton = styled.button`
+const MenuButton = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;

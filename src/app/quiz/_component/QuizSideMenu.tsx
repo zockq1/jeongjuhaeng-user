@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
@@ -10,7 +9,6 @@ import { useGetQuestionCategoryListQuery } from '@/store/api/questionApi';
 import { QuestionCategoryModel } from '@/types/questionTypes';
 
 export default function QuizSideMenu() {
-  const navigate = useNavigate();
   const { chapter: currentChapter } = useQuesryString();
   const {
     data: questionCategoryList,
@@ -61,11 +59,7 @@ export default function QuizSideMenu() {
                 <Menu.Item
                   key={chapter.number}
                   selected={currentChapter === chapter.id}
-                  onClick={() =>
-                    navigate(
-                      `/quiz/topic?chapter=${chapter.id}&title=${chapter.title.split('/')[1]}(${chapter.title.split('/')[0]})`,
-                    )
-                  }
+                  to={`/quiz/topic?chapter=${chapter.id}&title=${chapter.title.split('/')[1]}(${chapter.title.split('/')[0]})`}
                 >
                   {`${chapter.title.split('/')[1]} (${chapter.topicCount})`}
                 </Menu.Item>

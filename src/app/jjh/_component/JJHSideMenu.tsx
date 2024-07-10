@@ -46,13 +46,13 @@ export default function JJHSideMenu() {
                   {[...chapters.items]
                     .sort((a, b) => a.jjhNumber - b.jjhNumber)
                     .map((chapter) => {
-                      const { jjhNumber, title, state, onClick } = chapter;
+                      const { jjhNumber, title, state, to } = chapter;
                       const { color, icon } = getColorAndIcon(state);
                       return (
                         <Menu.Item
                           key={jjhNumber}
                           selected={currentJJH?.jjhNumber === jjhNumber}
-                          onClick={onClick}
+                          to={to}
                           color={color}
                           lock={state === 'Locked'}
                         >
