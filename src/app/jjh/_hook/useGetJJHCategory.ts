@@ -1,13 +1,13 @@
 import { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
-import useQuesryString from '@/share/hook/useQueryString';
 import { getFormattedDateRange } from '@/share/util/getDate';
 import { useGetJJHListQuery } from '@/store/api/jjhApi';
 import { RootState } from '@/store/store';
 import { ContentState, JJHTimelineModel } from '@/types/jjhTypes';
 
-interface JJHModel {
+export interface JJHModel {
   number: number;
   jjhNumber: number;
   title: string;
@@ -15,6 +15,7 @@ interface JJHModel {
   category: string;
   type: 'topic' | 'timeline';
   to: string;
+  date?: string;
 }
 
 interface FinalGroup {
@@ -26,7 +27,7 @@ interface FinalGroup {
 
 export default function useGetJJHCategory() {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
-  const { jjh: currentJJH } = useQuesryString();
+  const { jjhId } = useParams();
   const {
     data: jjhList,
     isLoading,
@@ -37,14 +38,13 @@ export default function useGetJJHCategory() {
 
   const groupedByDateComment = useMemo(() => {
     if (!jjhList) return;
-
     const initialGroup = [...jjhList.chapterList]
       .sort((a, b) => a.number - b.number)
       .reduce<{
         [key: string]: JJHModel[];
       }>((acc, current) => {
         const { dateComment, title, number, state, jjhNumber } = current;
-        if (jjhNumber === currentJJH) setCurrentGroup(dateComment);
+        if (jjhNumber === Number(jjhId)) setCurrentGroup(dateComment);
         const key = dateComment;
         if (!acc[key]) {
           acc[key] = [];
@@ -56,7 +56,7 @@ export default function useGetJJHCategory() {
           title: title,
           state: state,
           type: 'topic',
-          to: `/jeong-ju-haeng/chapter?jjh=${jjhNumber}&chapter=${number}&title=${title}(${dateComment})`,
+          to: `/jeong-ju-haeng/${jjhNumber}/chapter/${number}`,
         });
         return acc;
       }, {});
@@ -64,8 +64,8 @@ export default function useGetJJHCategory() {
     for (const key in initialGroup) {
       jjhList.timelineList.forEach((timeline: JJHTimelineModel) => {
         function setJJH(timeline: JJHTimelineModel) {
-          const { title, id, state, jjhNumber, endDate, startDate } = timeline;
-          if (jjhNumber === currentJJH) setCurrentGroup(key);
+          const { title, id, state, jjhNumber, startDate, endDate } = timeline;
+          if (jjhNumber === Number(jjhId)) setCurrentGroup(key);
           initialGroup[key].push({
             category: key,
             number: id,
@@ -73,7 +73,8 @@ export default function useGetJJHCategory() {
             title: `${title} 연표`,
             state: state,
             type: 'timeline',
-            to: `/jeong-ju-haeng/timeline?jjh=${jjhNumber}&timeline=${id}&title=${title} 연표&date=${getFormattedDateRange(startDate, endDate)}`,
+            to: `/jeong-ju-haeng/${jjhNumber}/timeline/${id}`,
+            date: getFormattedDateRange(startDate, endDate),
           });
         }
         if (
@@ -132,11 +133,11 @@ export default function useGetJJHCategory() {
     );
 
     return finalGroup;
-  }, [jjhList, currentJJH]);
+  }, [jjhList, jjhId]);
 
   const { next, prev, current } = useMemo(() => {
-    const nextJJHNumber = currentJJH + 1;
-    const prevJJHNumber = currentJJH - 1;
+    const nextJJHNumber = Number(jjhId) + 1;
+    const prevJJHNumber = Number(jjhId) - 1;
 
     let current: JJHModel | undefined;
     let next: JJHModel | undefined;
@@ -152,14 +153,14 @@ export default function useGetJJHCategory() {
         if (item.jjhNumber === prevJJHNumber) {
           prev = item;
         }
-        if (item.jjhNumber === currentJJH) {
+        if (item.jjhNumber === Number(jjhId)) {
           current = item;
         }
       });
     }
 
     return { next, prev, current };
-  }, [currentJJH, groupedByDateComment]);
+  }, [jjhId, groupedByDateComment]);
 
   return {
     groupedJJHList: groupedByDateComment,

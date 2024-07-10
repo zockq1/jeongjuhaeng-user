@@ -1,9 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import useQuesryString from '@/share/hook/useQueryString';
-import { getFormattedDateRange } from '@/share/util/getDate';
 import { useGetContentListQuery, useGetJJHListQuery } from '@/store/api/jjhApi';
 import { usePrefetch } from '@/store/api/questionApi';
 import { RootState } from '@/store/store';
@@ -15,26 +13,23 @@ import {
 
 function useNextContent() {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
-  const {
-    chapter: chapterNumber,
-    jjh: jjhNumber,
-    content: contentNumber,
-  } = useQuesryString();
+  const { jjhId, chapterId, contentId } = useParams();
+
   const navigate = useNavigate();
   const prefetchTtoK = usePrefetch('getTtoKQuestion');
   const prefetchKtoT = usePrefetch('getKtoTQuestion');
   const { data: jjhList } = useGetJJHListQuery(isLoggedIn);
-  const { data: contentList } = useGetContentListQuery(jjhNumber);
+  const { data: contentList } = useGetContentListQuery(Number(jjhId));
 
   const nextContent = useMemo(() => {
     if (contentList && jjhList) {
       return contentList[
         contentList.findIndex(
-          (content) => content.contentNumber === contentNumber,
+          (content) => content.contentNumber === Number(contentId),
         ) + 1
       ];
     }
-  }, [contentList, contentNumber, jjhList]);
+  }, [contentList, contentId, jjhList]);
 
   useEffect(() => {
     if (nextContent && nextContent.content === 'TOPIC_STUDY') {
@@ -42,9 +37,9 @@ function useNextContent() {
     }
 
     if (nextContent && nextContent.content === 'CHAPTER_COMPLETE_QUESTION') {
-      prefetchKtoT(chapterNumber);
+      prefetchKtoT(Number(chapterId));
     }
-  }, [nextContent, prefetchKtoT, prefetchTtoK, chapterNumber]);
+  }, [nextContent, prefetchKtoT, prefetchTtoK, chapterId]);
 
   const handleNextContent = () => {
     if (!contentList || !jjhList) return;
@@ -55,22 +50,24 @@ function useNextContent() {
     let isSameJJH = true;
 
     //다음 컨텐츠 찾기
-    if (contentList[contentList.length - 1].contentNumber === contentNumber) {
+    if (
+      contentList[contentList.length - 1].contentNumber === Number(contentId)
+    ) {
       //단원의 마지막
       isSameJJH = false;
       nextContent = null;
       nextJJHChapter = jjhList.chapterList.find(
-        (jjh) => jjh.jjhNumber === jjhNumber + 1,
+        (jjh) => jjh.jjhNumber === Number(jjhId) + 1,
       );
       nextJJHTimeline = jjhList.timelineList.find(
-        (jjh) => jjh.jjhNumber === jjhNumber + 1,
+        (jjh) => jjh.jjhNumber === Number(jjhId) + 1,
       );
     } else {
       //단원의 마지막 X
       nextContent =
         contentList[
           contentList.findIndex(
-            (content) => content.contentNumber === contentNumber,
+            (content) => content.contentNumber === Number(contentId),
           ) + 1
         ];
     }
@@ -84,18 +81,14 @@ function useNextContent() {
       //다음 컨텐츠가 다음 단원일 경우
       nextJJHChapter &&
         navigate(
-          `/jeong-ju-haeng/chapter?jjh=${nextJJHChapter.jjhNumber}&chapter=${nextJJHChapter.number}&title=${nextJJHChapter.title}(${nextJJHChapter.dateComment})`,
+          //'jeong-ju-haeng/:jjhId/chapter/:chapterId',
+          `/jeong-ju-haeng/${nextJJHChapter.jjhNumber}/chapter/${nextJJHChapter.number}`,
           { replace: true },
         );
       nextJJHTimeline &&
         navigate(
-          `/jeong-ju-haeng/timeline?jjh=${nextJJHTimeline.jjhNumber}&timeline=${
-            nextJJHTimeline.id
-          }&title=${nextJJHTimeline.era}
-            &date=${getFormattedDateRange(
-              nextJJHTimeline.startDate / 10000,
-              nextJJHTimeline.endDate / 10000,
-            )}`,
+          //'jeong-ju-haeng/:jjhId/timeline/:timelineId',
+          `/jeong-ju-haeng/${nextJJHTimeline.jjhNumber}/timeline/${nextJJHTimeline.id}`,
           { replace: true },
         );
       return;
@@ -104,10 +97,12 @@ function useNextContent() {
     //다음 컨텐츠가 complete 상태가 아닌 경우
     if (nextContent.state !== 'Complete' && isSameJJH) {
       const currentContent = (nextJJHChapter = jjhList.chapterList.find(
-        (jjh) => jjh.jjhNumber === jjhNumber,
+        (jjh) => jjh.jjhNumber === Number(jjhId),
       ));
       navigate(
-        `/jeong-ju-haeng/chapter?jjh=${currentContent?.jjhNumber}&chapter=${currentContent?.number}&title=${currentContent?.title}(${currentContent?.dateComment})`,
+        //
+        //'jeong-ju-haeng/:jjhId/chapter/:chapterId',
+        `/jeong-ju-haeng/${currentContent?.jjhNumber}/chapter/${currentContent?.number}`,
         { replace: true },
       );
       return;
@@ -116,7 +111,8 @@ function useNextContent() {
     //다음 컨텐츠가 complete 상태인 경우
     if (nextContent.content === 'TOPIC_STUDY') {
       navigate(
-        `/jeong-ju-haeng/topic/quiz?jjh=${jjhNumber}&chapter=${chapterNumber}&topic=${nextContent.title}&content=${nextContent.contentNumber}&title=${nextContent.title}(${nextContent.dateComment})`,
+        //'jeong-ju-haeng/:jjhId/chapter/:chapterId/:contentId/topicQuiz/:topic',
+        `/jeong-ju-haeng/${jjhId}/chapter/${chapterId}/${nextContent.contentNumber}/topicQuiz/${nextContent.title}`,
         { replace: true },
       );
       return;
@@ -124,7 +120,8 @@ function useNextContent() {
 
     if (nextContent.content === 'CHAPTER_COMPLETE_QUESTION') {
       navigate(
-        `/jeong-ju-haeng/chapter/quiz?jjh=${jjhNumber}&chapter=${chapterNumber}&content=${nextContent.contentNumber}`,
+        //'jeong-ju-haeng/:jjhId/chapter/:chapterId/:contentId/chapterQuiz',
+        `/jeong-ju-haeng/${jjhId}/chapter/${chapterId}/${nextContent.contentNumber}/chapterQuiz`,
         { replace: true },
       );
       return;

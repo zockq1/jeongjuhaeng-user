@@ -20,14 +20,14 @@ function NavigationBar() {
   return (
     <NavigationBarContainer>
       <Navigation
-        active={location.pathname.includes('/jeong-ju-haeng')}
+        active={location.pathname.startsWith('/jeong-ju-haeng')}
         variant="textHover"
         size="large"
       >
         <Link to="/jeong-ju-haeng">정주행</Link>
       </Navigation>
       <Navigation
-        active={location.pathname.includes('/chapter')}
+        active={location.pathname.startsWith('/chapter')}
         variant="textHover"
         size="large"
       >
@@ -51,7 +51,7 @@ function NavigationBar() {
         </Link>
       </Navigation>
       <Navigation
-        active={location.pathname === '/timeline'}
+        active={location.pathname.startsWith('/timeline')}
         variant="textHover"
         size="large"
       >

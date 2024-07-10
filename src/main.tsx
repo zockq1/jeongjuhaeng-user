@@ -72,23 +72,23 @@ const router = createBrowserRouter([
         element: <JJHListPage />,
       },
       {
-        path: 'jeong-ju-haeng/chapter',
+        path: 'jeong-ju-haeng/:jjhId/chapter/:chapterId',
         element: <JJHTopicPage />,
       },
       {
-        path: 'jeong-ju-haeng/timeline',
+        path: 'jeong-ju-haeng/:jjhId/timeline/:timelineId',
         element: <JJHTimelinePage />,
       },
       {
-        path: 'jeong-ju-haeng/chapter/quiz',
+        path: 'jeong-ju-haeng/:jjhId/chapter/:chapterId/:contentId/chapterQuiz',
         element: <JJHChapterQuizPage />,
       },
       {
-        path: 'jeong-ju-haeng/topic/quiz',
+        path: 'jeong-ju-haeng/:jjhId/chapter/:chapterId/:contentId/topicQuiz/:topic',
         element: <JJHTopicQuizPage />,
       },
       {
-        path: 'jeong-ju-haeng/timeline/quiz',
+        path: 'jeong-ju-haeng/:jjhId/timeline/:timelineId/quiz',
         element: <JJHTimelineQuizPage />,
       },
       {

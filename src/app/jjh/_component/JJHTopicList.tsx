@@ -1,6 +1,5 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
 import ErrorUI from '@/share/state/Error';
 import Timeline from '@/share/timeline/Timeline';
@@ -18,15 +17,15 @@ export default function JJHTopicList() {
   const navigate = useNavigate();
   const prefetchTtoK = usePrefetch('getTtoKQuestion');
   const prefetchKtoT = usePrefetch('getKtoTQuestion');
-  const { chapter: chapterNumber, jjh: jjhNumber } = useQuesryString();
+  const { jjhId, chapterId } = useParams();
   const { data: topicList, isLoading: topicLoading } =
-    useGetChapterTopicListQuery(chapterNumber);
+    useGetChapterTopicListQuery(Number(chapterId));
   const {
     data: contentList,
     isLoading,
     isError,
     error,
-  } = useGetContentListQuery(jjhNumber);
+  } = useGetContentListQuery(Number(jjhId));
 
   return (
     <Async
@@ -61,10 +60,10 @@ export default function JJHTopicList() {
                     run={state === 'InProgress'}
                     extraButton={
                       <QuizButton
-                        onMouseOver={() => prefetchKtoT(chapterNumber)}
+                        onMouseOver={() => prefetchKtoT(Number(chapterId))}
                         onClick={() =>
                           navigate(
-                            `/jeong-ju-haeng/chapter/quiz?jjh=${jjhNumber}&chapter=${chapterNumber}&content=${contentNumber}&title=${title}`,
+                            `/jeong-ju-haeng/${jjhId}/chapter/${chapterId}/${contentNumber}/chapterQuiz`,
                           )
                         }
                       />
@@ -87,7 +86,7 @@ export default function JJHTopicList() {
                       onMouseOver={() => prefetchTtoK(title)}
                       onClick={() =>
                         navigate(
-                          `/jeong-ju-haeng/topic/quiz?jjh=${jjhNumber}&chapter=${chapterNumber}&topic=${title}&content=${contentNumber}&title=${title}`,
+                          `/jeong-ju-haeng/${jjhId}/chapter/${chapterId}/${contentNumber}/topicQuiz/${title}`,
                         )
                       }
                     />

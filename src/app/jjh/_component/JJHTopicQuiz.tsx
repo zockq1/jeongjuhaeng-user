@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
-import useQuesryString from '@/share/hook/useQueryString';
 import Quiz from '@/share/quiz/Quiz';
 import QuizSkeleton from '@/share/quiz/QuizSkeleton';
 import Async from '@/share/state/Async';
@@ -12,7 +12,7 @@ import { RootState } from '@/store/store';
 import useNextContent from '../_hook/useNextContent';
 
 export default function JJHTopicQuiz() {
-  const { topic: topicTitle, content: contentNumber } = useQuesryString();
+  const { topic, contentId } = useParams();
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   const { handleNextContent } = useNextContent();
   const {
@@ -20,7 +20,7 @@ export default function JJHTopicQuiz() {
     isLoading,
     isError,
     error,
-  } = useGetTtoKQuestionQuery(topicTitle);
+  } = useGetTtoKQuestionQuery(String(topic));
   const [updateProgres] = useUpdateProgressMutation();
 
   return (
@@ -42,7 +42,8 @@ export default function JJHTopicQuiz() {
             quizList={quizList}
             onNextContent={handleNextContent}
             onFinish={() =>
-              isLoggedIn && updateProgres({ contentNumber: contentNumber + 1 })
+              isLoggedIn &&
+              updateProgres({ contentNumber: Number(contentId) + 1 })
             }
             isJJH
           />

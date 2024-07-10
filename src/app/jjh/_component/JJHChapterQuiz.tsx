@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
-import useQuesryString from '@/share/hook/useQueryString';
 import Quiz from '@/share/quiz/Quiz';
 import QuizSkeleton from '@/share/quiz/QuizSkeleton';
 import Async from '@/share/state/Async';
@@ -14,19 +14,19 @@ import useNextContent from '../_hook/useNextContent';
 export default function JJHChapterQuiz() {
   const { handleNextContent } = useNextContent();
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
-  const { chapter: chapterNumber, content: contentNumber } = useQuesryString();
+  const { chapterId, contentId } = useParams();
   const {
     data: KtoTQuestionList,
     isError,
     error,
     isLoading,
-  } = useGetKtoTQuestionQuery(chapterNumber, {
+  } = useGetKtoTQuestionQuery(Number(chapterId), {
     refetchOnMountOrArgChange: true,
   });
   const [updateProgres] = useUpdateProgressMutation();
 
   const handleFinish = () =>
-    isLoggedIn && updateProgres({ contentNumber: contentNumber + 1 });
+    isLoggedIn && updateProgres({ contentNumber: Number(contentId) + 1 });
 
   return (
     <Async

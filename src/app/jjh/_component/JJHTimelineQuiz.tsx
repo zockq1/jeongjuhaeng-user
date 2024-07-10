@@ -1,3 +1,5 @@
+import { useParams } from 'react-router-dom';
+
 import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
 import ErrorUI from '@/share/state/Error';
@@ -10,12 +12,14 @@ import useNextContent from '../_hook/useNextContent';
 export default function JJHTimelineQuiz() {
   const { handleNextContent } = useNextContent();
   const [updateProgres] = useUpdateProgressMutation();
+  const { refresh } = useQuesryString();
+
+  const { timelineId, contentId } = useParams();
   const {
-    timeline: timelineId,
-    refresh,
-    content: contentNumber,
-  } = useQuesryString();
-  const { data: dateList, isError, error } = useGetTimelineQuery(timelineId);
+    data: dateList,
+    isError,
+    error,
+  } = useGetTimelineQuery(Number(timelineId));
 
   return (
     <Async
@@ -32,10 +36,12 @@ export default function JJHTimelineQuiz() {
         return (
           <TimelineQuiz
             dateList={[...dateList].sort(() => Math.random() - 0.5)}
-            key={timelineId + refresh}
-            id={timelineId}
+            key={Number(timelineId) + refresh}
+            id={Number(timelineId)}
             onNextContent={handleNextContent}
-            onFinish={() => updateProgres({ contentNumber: contentNumber + 1 })}
+            onFinish={() =>
+              updateProgres({ contentNumber: Number(contentId) + 1 })
+            }
           />
         );
       }}

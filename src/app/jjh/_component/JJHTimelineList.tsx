@@ -1,6 +1,5 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
 import ErrorUI from '@/share/state/Error';
 import Timeline from '@/share/timeline/Timeline';
@@ -10,22 +9,22 @@ import { useGetContentListQuery } from '@/store/api/jjhApi';
 import { useGetTimelineQuery } from '@/store/api/timelineApi';
 
 import QuizButton from '../../../share/ui/button/QuizButton';
+import useGetJJHCategory from '../_hook/useGetJJHCategory';
 
 export default function JJHTimelineList() {
   const navigate = useNavigate();
-  const {
-    timeline: timelineId,
-    title,
-    date,
-    jjh: jjhNumber,
-  } = useQuesryString();
+  const { jjhId, timelineId } = useParams();
+  const { currentJJH } = useGetJJHCategory();
+
   const {
     data: dateList,
     isFetching,
     isError,
     error,
-  } = useGetTimelineQuery(timelineId);
-  const { data: contentList, isSuccess } = useGetContentListQuery(jjhNumber);
+  } = useGetTimelineQuery(Number(timelineId));
+  const { data: contentList, isSuccess } = useGetContentListQuery(
+    Number(jjhId),
+  );
 
   return (
     <Async
@@ -43,16 +42,16 @@ export default function JJHTimelineList() {
       {(dateList) => (
         <>
           <ContentBox
-            key={title}
-            title={title}
-            subTitle={date}
+            key={currentJJH?.title}
+            title={currentJJH?.title || ''}
+            subTitle={currentJJH?.date}
             run={isSuccess && contentList[0].state === 'InProgress'}
             lock={isSuccess && contentList[0].state === 'Locked'}
             extraButton={
               <QuizButton
                 onClick={() =>
                   navigate(
-                    `/jeong-ju-haeng/timeline/quiz?jjh=${jjhNumber}&timeline=${timelineId}&content=${isSuccess && contentList[0].contentNumber}&title=${title}&date=${date}`,
+                    `/jeong-ju-haeng/${jjhId}/timeline/${timelineId}/quiz`,
                   )
                 }
               />
