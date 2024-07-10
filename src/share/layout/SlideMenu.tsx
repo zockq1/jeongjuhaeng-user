@@ -27,7 +27,7 @@ export default function SlideMenu() {
           <Icon icon="run" size={14} />
           &nbsp; 정주행
         </MenuItem>
-        <MenuItem to="/learning">
+        <MenuItem to="/chapter">
           <Icon icon="description" size={14} />
           &nbsp; 단원별 정보
         </MenuItem>

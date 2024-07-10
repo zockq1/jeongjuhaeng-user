@@ -49,7 +49,10 @@ export default function MenuItem({
 
 const LinkContainer = styled(Link)`
   display: block;
+
   width: 100%;
+  height: 100%;
+  padding: 10px;
 `;
 
 const MenuItemContainer = styled.li<{
@@ -63,7 +66,6 @@ const MenuItemContainer = styled.li<{
 
   height: max-content;
   margin: 3px;
-  padding: 10px;
   border: 1px solid transparent;
   border-radius: 10px;
 

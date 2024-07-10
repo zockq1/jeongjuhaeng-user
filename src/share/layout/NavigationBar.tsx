@@ -27,11 +27,11 @@ function NavigationBar() {
         <Link to="/jeong-ju-haeng">정주행</Link>
       </Navigation>
       <Navigation
-        active={location.pathname.includes('/learning')}
+        active={location.pathname.includes('/chapter')}
         variant="textHover"
         size="large"
       >
-        <Link to="/learning">단원별</Link>
+        <Link to="/chapter">단원별</Link>
       </Navigation>
       <Navigation
         onClick={(e) => {

@@ -23,7 +23,7 @@ export default function CardList() {
       title: '단원 학습',
       description: '단원별로 정리된 한국사 정보',
       button: '자료 보러가기',
-      to: '/learning',
+      to: '/chapter',
     },
     {
       id: '2',

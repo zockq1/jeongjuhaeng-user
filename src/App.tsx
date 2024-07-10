@@ -1,4 +1,5 @@
 import { domAnimation, LazyMotion } from 'framer-motion';
+import { HelmetProvider } from 'react-helmet-async';
 import { Outlet } from 'react-router-dom';
 import { StyleSheetManager } from 'styled-components';
 
@@ -15,11 +16,13 @@ export default function App() {
 
   return (
     <main>
-      <LazyMotion features={domAnimation}>
-        <StyleSheetManager enableVendorPrefixes>
-          <Outlet />
-        </StyleSheetManager>
-      </LazyMotion>
+      <HelmetProvider>
+        <LazyMotion features={domAnimation}>
+          <StyleSheetManager enableVendorPrefixes>
+            <Outlet />
+          </StyleSheetManager>
+        </LazyMotion>
+      </HelmetProvider>
     </main>
   );
 }

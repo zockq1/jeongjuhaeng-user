@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
+import { useParams } from 'react-router-dom';
 
-import useQuesryString from '@/share/hook/useQueryString';
 import Async from '@/share/state/Async';
 import ErrorUI from '@/share/state/Error';
 import Menu from '@/share/ui/menu/Menu';
@@ -9,7 +9,7 @@ import { useGetChapterListQuery } from '@/store/api/chapterApi';
 import { ChapterModel } from '@/types/chapterTypes';
 
 export default function ChapterSideMenu() {
-  const { chapter: currentChapter } = useQuesryString();
+  const { chapterId } = useParams();
   const {
     data: chapterList,
     isLoading,
@@ -31,9 +31,9 @@ export default function ChapterSideMenu() {
   }, [chapterList]);
 
   const currentDateComment = useMemo(() => {
-    return chapterList?.find((chapter) => chapter.number === currentChapter)
+    return chapterList?.find((chapter) => chapter.number === Number(chapterId))
       ?.dateComment;
-  }, [chapterList, currentChapter]);
+  }, [chapterList, chapterId]);
 
   return (
     <Async
@@ -58,8 +58,8 @@ export default function ChapterSideMenu() {
                 {chapters.map((chapter: ChapterModel) => (
                   <Menu.Item
                     key={chapter.number}
-                    selected={currentChapter === chapter.number}
-                    to={`/learning/chapter?chapter=${chapter.number}&title=${chapter.title}(${dateComment})`}
+                    selected={Number(chapterId) === chapter.number}
+                    to={`/chapter/${chapter.number}`}
                   >
                     {`${chapter.title} (${chapter.topicCount})`}
                   </Menu.Item>

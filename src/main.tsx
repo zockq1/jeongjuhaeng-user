@@ -48,11 +48,11 @@ const router = createBrowserRouter([
         element: <NaverLoginPage />,
       },
       {
-        path: '/learning',
+        path: '/chapter',
         element: <ChapterListPage />,
       },
       {
-        path: '/learning/chapter',
+        path: '/chapter/:chapterId',
         element: <LearningTopicPage />,
       },
       {
