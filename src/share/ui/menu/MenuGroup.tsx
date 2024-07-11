@@ -100,7 +100,7 @@ const MenuItemList = styled.ul<{
   max-height: 0;
   padding-left: 10px;
 
-  transition: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
 
   &.selected {
     max-height: ${({ $maxHeight }) => $maxHeight}px;
