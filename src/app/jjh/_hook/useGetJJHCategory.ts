@@ -135,11 +135,11 @@ export default function useGetJJHCategory() {
     return finalGroup;
   }, [jjhList, jjhId]);
 
-  const { next, prev, current } = useMemo(() => {
+  const { next, prev, curr } = useMemo(() => {
     const nextJJHNumber = Number(jjhId) + 1;
     const prevJJHNumber = Number(jjhId) - 1;
 
-    let current: JJHModel | undefined;
+    let curr: JJHModel | undefined;
     let next: JJHModel | undefined;
     let prev: JJHModel | undefined;
 
@@ -154,12 +154,12 @@ export default function useGetJJHCategory() {
           prev = item;
         }
         if (item.jjhNumber === Number(jjhId)) {
-          current = item;
+          curr = item;
         }
       });
     }
 
-    return { next, prev, current };
+    return { next, prev, curr };
   }, [jjhId, groupedByDateComment]);
 
   return {
@@ -167,9 +167,9 @@ export default function useGetJJHCategory() {
     currentJJHList: groupedByDateComment
       ? groupedByDateComment[currentGroup]
       : null,
-    prevJJH: prev,
-    nextJJH: next,
-    currentJJH: current,
+    prev: prev,
+    next: next,
+    curr: curr,
     isLoading,
     isError,
     error,

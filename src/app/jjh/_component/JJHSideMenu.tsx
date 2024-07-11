@@ -8,7 +8,7 @@ import getColorAndIcon from '@/share/util/getColorAndIcon';
 import useGetJJHCategory from '../_hook/useGetJJHCategory';
 
 export default function JJHSideMenu() {
-  const { groupedJJHList, currentJJH, isLoading, isError, error } =
+  const { groupedJJHList, curr, isLoading, isError, error } =
     useGetJJHCategory();
 
   return (
@@ -38,7 +38,7 @@ export default function JJHSideMenu() {
                       &nbsp;{dateComment}
                     </>
                   }
-                  open={currentJJH?.category === dateComment}
+                  open={curr?.category === dateComment}
                   length={chapters.items.length}
                   color={color}
                   lock={chapters.state === 'Locked'}
@@ -51,7 +51,7 @@ export default function JJHSideMenu() {
                       return (
                         <Menu.Item
                           key={jjhNumber}
-                          selected={currentJJH?.jjhNumber === jjhNumber}
+                          selected={curr?.jjhNumber === jjhNumber}
                           to={to}
                           color={color}
                           lock={state === 'Locked'}

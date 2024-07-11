@@ -5,11 +5,11 @@ import Footer from '@/share/layout/Footer';
 import Header from '@/share/layout/header';
 import Layout from '@/share/layout/Layout';
 import Title from '@/share/layout/Title';
-import PrevNextButton, { PrevNext } from '@/share/ui/button/PrevNextButton';
 import ToggleButton from '@/share/ui/button/ToggleButton';
 import { usePrefetch } from '@/store/api/topicApi';
 
 import QuizAnchor from './_component/QuizAnchor';
+import QuizPrevNext from './_component/QuizPrevNext';
 import QuizSideMenu from './_component/QuizSideMenu';
 import QuizTopicList from './_component/QuizTopicList';
 import useGetQuiz from './_hook/useGetQuiz';
@@ -20,24 +20,6 @@ export default function QuizCategoryTopicPage() {
   const title = curr
     ? `${curr.title.split('/')[1]}(${curr.title.split('/')[0]})`
     : '';
-  const toPrev: PrevNext | undefined = prev
-    ? {
-        title: prev.title.split('/')[1],
-        category: prev.title.split('/')[0],
-        to: `/quiz/${prev.id}`,
-        lock: false,
-        color: 'black',
-      }
-    : undefined;
-  const toNext: PrevNext | undefined = next
-    ? {
-        title: next.title.split('/')[1],
-        category: next.title.split('/')[0],
-        to: `/quiz/${next.id}`,
-        lock: false,
-        color: 'black',
-      }
-    : undefined;
 
   useEffect(() => {
     next && prefetchQuiz(next.id);
@@ -57,7 +39,7 @@ export default function QuizCategoryTopicPage() {
         <Title>{title}</Title>
         <ToggleButton />
         <QuizTopicList />
-        <PrevNextButton prev={toPrev} next={toNext} toMenu="/quiz" />
+        <QuizPrevNext prev={prev} next={next} />
       </Layout.Main>
       <Layout.Right>
         <QuizAnchor />
