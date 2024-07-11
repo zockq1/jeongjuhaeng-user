@@ -14,7 +14,7 @@ import useGetJJHCategory from '../_hook/useGetJJHCategory';
 export default function JJHTimelineList() {
   const navigate = useNavigate();
   const { jjhId, timelineId } = useParams();
-  const { currentJJH } = useGetJJHCategory();
+  const { curr } = useGetJJHCategory();
 
   const {
     data: dateList,
@@ -42,9 +42,9 @@ export default function JJHTimelineList() {
       {(dateList) => (
         <>
           <ContentBox
-            key={currentJJH?.title}
-            title={currentJJH?.title || ''}
-            subTitle={currentJJH?.date}
+            key={curr?.title}
+            title={curr?.title || ''}
+            subTitle={curr?.date}
             run={isSuccess && contentList[0].state === 'InProgress'}
             lock={isSuccess && contentList[0].state === 'Locked'}
             extraButton={
