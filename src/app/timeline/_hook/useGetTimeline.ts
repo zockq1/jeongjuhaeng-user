@@ -20,7 +20,7 @@ export default function useGetTimeline() {
         (timeline) => timeline.id === Number(timelineId),
       );
 
-      curr = timelineList[currentIndex];
+      curr = sortedTimeline[currentIndex];
       currentIndex !== 0 && (prev = sortedTimeline[currentIndex - 1]);
       currentIndex !== sortedTimeline.length - 1 &&
         (next = sortedTimeline[currentIndex + 1]);
