@@ -70,7 +70,8 @@ const Navigation = styled(Button)`
   margin: 0 10px;
 `;
 const LinkContainer = styled(Link)`
-  display: block;
+  display: flex;
+  align-items: center;
 
   width: 100%;
   height: 100%;
