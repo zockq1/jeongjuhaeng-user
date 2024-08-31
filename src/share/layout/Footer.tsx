@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Logo from '@/share/ui/icon/Logo';
 import { media } from '@/theme/theme';
 
-const FooterContainer = styled.header`
+const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: center;
