@@ -1,15 +1,16 @@
-import useQuesryString from '@/share/hook/useQueryString';
+import { useParams } from 'react-router-dom';
+
 import Async from '@/share/state/Async';
 import Anchor from '@/share/ui/anchor/Anchor';
 import { useGetChapterTopicListQuery } from '@/store/api/topicApi';
 
 export default function TopicAnchor() {
-  const { chapter: chapterNumber } = useQuesryString();
+  const { chapterId } = useParams();
   const {
     data: topicList,
     isLoading,
     isError,
-  } = useGetChapterTopicListQuery(chapterNumber);
+  } = useGetChapterTopicListQuery(Number(chapterId));
 
   return (
     <Async data={topicList} isLoading={isLoading} isError={isError}>
